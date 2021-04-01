@@ -1,0 +1,154 @@
+```{r 02-setup, include=FALSE, eval=TRUE}
+knitr::opts_chunk$set()
+```
+
+# Guía de Estilo {#guiaestilo}
+
+* Esta guía la realice con el fin de que puedas programar tu código de la forma más ordenada posible, logrando que sea comprensible por los demás.
+* Puedes inventar tus propias reglas, para acostumbrarte a programar bajo diferentes normas.
+* Basada en la guía de estilo de `tidyverse` y `PEP 8`.
+
+## Directorio
+
+* Siempre usaremos un directorio que nos aporte una ruta relativa.
+* Lo haremos a través de la creación de proyectos.
+
+## Archivos del directorio
+
+* Los archivos del directorio serán nombrados usando guiones medios o guiones bajos en vez de espacios y letras minúsculas.
+* Tampoco usaremos caracteres especiales como los tildes.
+* Usaremos fecha de creación (en formato ISO 8601) y nombres explicativos.
+* Ejemplo:
+
+```{r eval=FALSE}
+# Guardamos un archivo 'csv' en el directorio
+# Mal
+data(iris)
+write.csv(iris, 'base.csv')
+
+# Bien
+data(iris)
+write.csv(iris, '2021-03-26_iris-sin-procesar.csv')
+```
+
+## Asignación de variables
+
+* Usaremos el formato `snake_case` para nombrar variables, o sea, escritas en minúsculas, sin caracteres especiales (como el punto) y creando espacios mediante guiones bajos.
+* Para asignar variables usaremos el operador `<-` en vez de `=`. Solo usaremos `=` para definir argumentos dentro de funciones.
+* Preferiremos nombres de variables informativos.
+* Ejemplo:
+
+```{r eval=FALSE}
+# Mal
+String.Hola = 'Hola mundo'
+
+# Bien
+string_hola <- 'Hola mundo'
+```
+
+## Operadores
+
+* Siempre usaremos espacios a los lados de los operadores.
+* Ejemplo:
+
+```{r eval=FALSE}
+# Mal
+suma<-3*5+2<=24^2
+
+# Bien
+suma <- 3 * 5 + 2 <= 24 ^ 2
+```
+
+## Paréntesis
+
+* Para las funciones `for`, `while`, `function`, `if` y `else if` antepondremos un espacio antes de usar paréntesis.
+* Después de cerrar paréntesis en estas funciones, haremos un espacio y pondremos solo la llave de apertura en la misma línea, y abajo pondremos la llave de cierre.
+* Ejemplo:
+
+```{r eval=FALSE}
+# Mal
+for(i in 1:5){runif(i)
+    print(i)}
+
+# Bien
+for (i in 1:5) {
+    runif(i)
+    print(i)
+}
+```
+
+## Comas
+
+* Después de escribir una coma, adicionamos un espacio. 
+* Ejemplo:
+
+```{r eval=FALSE}
+# Mal
+notas_epg3308 <- c(NA,6.5,7,5.2)
+promedio_de_notas <- mean(notas_epg3308,na.rm = TRUE)
+
+# Bien
+notas_epg3308 <- c(NA, 6.5, 7, 5.2)
+promedio_de_notas <- mean(notas_epg3308, na.rm = TRUE)
+```
+
+## Punto y coma
+
+* No usaremos una linea para realizar más de una ejecución usando `;`.
+* Ejemplo
+
+```{r, eval=FALSE}
+# Mal
+valores_aleatorios <- runif(10); mean(valores_aleatorios)
+
+# Bien
+valores_aleatorios <- runif(10)
+mean(valores_aleatorios)
+```
+
+## Packages
+
+* Declararemos explícitamente los nombres de los packages de procedencia al momento de usar una función, a excepción de los packages que se cargan automáticamente al iniciar `R` y packages que permiten utilizar pipes (por ejemplo: `%>%`).
+* Ejemplo:
+
+
+```{r eval=FALSE}
+data(iris)
+
+# Mal
+require(magrittr)
+require(dplyr)
+
+filtro_sepal_length <- iris %>% 
+    filter(Sepal.Length >= 7.4) %>%
+    arrange(Sepal.Length)
+
+# Bien
+require(magrittr)
+
+filtro_sepal_length <- iris %>% 
+    dplyr::filter(Sepal.Length >= 7.4) %>% 
+    dplyr::arrange(Sepal.Length)
+```
+
+## Cantidad de código por fila
+
+* Esta no debe exceder los 80 caracteres (es posible añadir una línea vertical a RStudio para tener una referencia de los 80 caracteres).
+* Algunas buenas prácticas es separar en líneas los argumentos de una función, o separar en líneas la utilización de pipes.
+* Ejemplo:
+
+```{r, eval=FALSE}
+# Mal
+require(magrittr)
+
+data(iris)
+
+iris %>% dplyr::filter(Sepal.Length >= 7) %$% plot(x = Sepal.Length, y = Sepal.Width, main = ' Gráfico de Sepal')
+
+# Bien
+iris %>%
+    dplyr::filter(Sepal.Length >= 7) %$% 
+    plot(x = Sepal.Length,
+         y = Sepal.Width, 
+         main = ' Gráfico de Sepal')
+```
