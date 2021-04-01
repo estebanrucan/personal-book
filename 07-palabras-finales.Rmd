@@ -1,1 +1,14 @@
 # Palabras Finales
+
+¡Espero que hayas disfrutado mucho el material! Esta es una pequeña base para empezar a investigar nuevos conocimientos en Estadística y Programación.
+
+¡Tienes todo un mundo por descubrir! Te invito a explorarlo.
+
+```{r}
+writeLines(c('Realizado con cariño por Esteban Rucán Carrasco', '¡Hasta pronto!'))
+```
+
+Si quieres agradecerme el material puedes hacerlo saber por Redes Sociales.
+
+* [Instagram](https://www.instagram.com/estebanrucan)
+* [Correo](mailto:errucan@uc.cl)
