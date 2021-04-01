@@ -70,5 +70,7 @@ imágenes
 reportes-automáticos
 actividad-6
 mis-proyectos
+visualización-interactiva-del-coronavirus
 palabras-finales
 referencias
+guía-de-estilo
