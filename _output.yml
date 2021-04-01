@@ -4,9 +4,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Firt Bookdown</a></li>
-    edit: https://estebanrucan.github.io/%s
-    download: ['pdf', 'epub']
+        <li><a href="./">Personal Book</a></li>
     sharing:
       facebook: no
       twitter: no
@@ -16,9 +14,9 @@ bookdown::gitbook:
     in_header: [ga.html, social.html]
 bookdown::pdf_book:
   includes:
-    in_header: latex/preamble.tex
-    before_body: latex/before_body.tex
-    after_body: latex/after_body.tex
+    in_header: ../latex/preamble.tex
+    before_body: ../latex/before_body.tex
+    after_body: /..latex/after_body.tex
   keep_tex: true
   dev: "cairo_pdf"
   latex_engine: xelatex

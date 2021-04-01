@@ -1,7 +1,6 @@
 --- 
-title: "Primer Bookdown"
+title: "Personal Bookdown"
 author: "Esteban Rucán"
-date: "`r Sys.Date()`"
 documentclass: krantz
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -13,8 +12,8 @@ colorlinks: yes
 lot: yes
 lof: yes
 site: bookdown::bookdown_site
-description: "Invite JavaScript into your Data Science workflow."
-github-repo: JohnCoene/javascript-for-r
+description: "Expande tus conocimientos de R con el material que he preparado."
+github-repo: estebanrucan/personal-book
 graphics: yes
 ---
 
