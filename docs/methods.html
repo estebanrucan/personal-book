@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Primer Bookdown</title>
+  <title>Capítulo 3 Methods | Primer Bookdown</title>
   <meta name="description" content="Invite JavaScript into your Data Science workflow." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Primer Bookdown" />
+  <meta property="og:title" content="Capítulo 3 Methods | Primer Bookdown" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="JohnCoene/javascript-for-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Primer Bookdown" />
+  <meta name="twitter:title" content="Capítulo 3 Methods | Primer Bookdown" />
   
   <meta name="twitter:description" content="Invite JavaScript into your Data Science workflow." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="literature.html"/>
+<link rel="next" href="applications.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -185,48 +185,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Primer Bookdown</h1>
-<p class="author"><em>Esteban Rucán</em></p>
-<p class="date"><em>2021-04-01</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>The R programming language has seen the integration of many languages; C, C++, Python, to name a few, can be seamlessly embedded into R so one can conveniently call code written in other languages from the R console. Little known to many, R works just as well with JavaScript—this book delves into the various ways both languages can work together.</p>
-<p>The ultimate aim of this work is to demonstrate to the reader the many great benefits one can reap by inviting JavaScript into their data science workflow. In that respect, the book is not teaching one JavaScript but instead demonstrates how little JavaScript can significantly support and enhance R code. Therefore the focus is on integrating external JavaScript libraries and only limited knowledge of JavaScript is required in order to learn from the book. Moreover, the book focuses on generalisable learnings so the reader can transfer takeaways from the book to solve real-world problems.</p>
-<p>Throughout the book, several shiny applications and R packages are put together as examples. All of these, along with the code for the entire book, can be found on the Github repository: <a href="https://github.com/JohnCoene/javascript-for-r">github.com/JohnCoene/javascript-for-r</a>.</p>
-<div id="premise" class="section level2 unnumbered">
-<h2>Premise</h2>
-<p>The R programming language has been propelled into web browsers with the introduction of packages such as <a href="https://shiny.rstudio.com/">shiny</a> <span class="citation">(<a href="references.html#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and <a href="https://rmarkdown.rstudio.com/">rmarkdown</a> <span class="citation">(<a href="references.html#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2021</a>)</span> which have greatly improved how R users can communicate complex insights by building interactive web applications and interactive documents. Yet most R developers are not familiar with one of web browsers’ core technology: JavaScript. This book aims to remedy that by revealing how much JavaScript can greatly enhance various stages of data science pipelines from the analysis to the communication of results.</p>
-<p>Notably, the focus of the book truly is the integration of JavaScript with R, where both languages either actively interact with one another, or where JavaScript enables doing things otherwise not accessible to R users. It is not merely about including JavaScript code that works alongside R.</p>
-</div>
-<div id="book-structure" class="section level2 unnumbered">
-<h2>Book Structure</h2>
-<ol style="list-style-type: decimal">
-<li><p>The book opens with an introduction to illustrate its premise better, it provides rationales for using JavaScript in conjunction with R which it supports with existing R packages that make use of JavaScript and are available on CRAN. Then it briefly describes concepts essential to understanding the rest of the book to ensure the reader can follow along. Finally, this part closes by listing the various methods with which one might make JavaScript work with R.</p></li>
-<li><p>We explore existing integrations of JavaScript and R namely by exploring packages to grasp how these tend to work and the interface to JavaScript they provide.</p></li>
-<li><p>A sizeable part of the book concerns data visualisation, it plunges into creating interactive outputs with the htmlwidgets package. This opens with a brief overview of how it works and libraries that make great candidates to integrate with the htmlwidgets package. Then a first, admittedly unimpressive, widget is built to look under the hood and observe the inner-workings of such outputs to grasp a better understanding of how htmlwidgets work. Next, we tackle a more substantial library that allows drawing arcs between countries on a 3D globe, which we cover in great depth. The last two chapters go into more advanced topics, such as security and resizing.</p></li>
-<li><p>The fourth part of the book details how JavaScript can work with Shiny. Once the basics out of the way, the second chapter builds the first utility to display notifications programmatically. Then we create a shiny application that runs an image classification algorithm in the browser. This is then followed by the creation of custom shiny inputs and outputs. Finally, shiny and htmlwidgets are (literally) connected by including additional functionalities in interactive visualisations when used with the shiny framework.</p></li>
-<li><p>Then the book delves into using JavaScript for computations, namely via the V8 engine and node.js. After a short introduction, chapters will walk the reader through various examples: a fuzzy search, a time format converter, and some basic natural language operations.</p></li>
-<li><p>Finally, we look at how one can use some of the more modern JavaScript technologies such as Vue, React, and webpack with R—these can make the use of JavaScript more agile and robust.</p></li>
-<li><p>Next the book closes with examples of all the integrations explored previously. This involves recreating (a part of) the plotly package, building an image classifier, adding progress bars to a shiny application, building an app with HTTP cookies and running basic machine learning operations in JavaScript.</p></li>
-<li><p>Finally, the book concludes with some noteworthy remarks on where to go next.</p></li>
-</ol>
-</div>
-<div id="acknowledgement" class="section level2 unnumbered">
-<h2>Acknowledgement</h2>
-<p>Many people in the R community have inspired me and provided the knowledge to write this book, amongst them ultimately are <a href="https://github.com/ramnathv/">Ramnath Vaidyanathan</a> for his amazing work on the htmlwidgets <span class="citation">(<a href="references.html#ref-R-htmlwidgets" role="doc-biblioref">Vaidyanathan et al. 2020</a>)</span> package, <a href="https://github.com/timelyportfolio">Kent Russell</a> from whom I have learned a lot via his work on making Vue and React accessible in R, and <a href="https://github.com/cpsievert">Carson Sievert</a> for pioneering probably the most popular integration of R and JavaScript with the plotly <span class="citation">(<a href="references.html#ref-R-plotly" role="doc-biblioref">Sievert et al. 2021</a>)</span> package.</p>
-<p>Early reviewers also shared precious feedback that helped make the book dramatically better, thanks to <a href="@mayacelium">Maya Gans</a>, <a href="@felipe_mattioni">Felipe Mattioni Maturana</a>, and <a href="@Wei_Su">Wei Su</a> for thoroughly going through every line of the book.</p>
+<div id="methods" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Methods</h1>
+<p>We describe our methods in this chapter.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="literature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -257,7 +227,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://estebanrucan.github.io/index.Rmd",
+"link": "https://estebanrucan.github.io/03-method.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -268,7 +238,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": {},
+"download": ["personal-bookdown.pdf", "personal-bookdown.epub"],
 "toc": {
 "collapse": "section"
 }

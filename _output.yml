@@ -6,7 +6,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Firt Bookdown</a></li>
     edit: https://estebanrucan.github.io/%s
-    download: []
+    download: ['pdf', 'epub']
     sharing:
       facebook: no
       twitter: no
