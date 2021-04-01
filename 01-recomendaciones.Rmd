@@ -1,0 +1,31 @@
+# Recomendaciones
+
+En esta sección te recomendaré una serie de libros y paginas web, para que de esta forma, expandas tus conocimientos de Programación, `R` y Estadística.
+
+
+## Libros
+
+* [Learn the tidyverse](https://www.tidyverse.org/learn/)
+* [Mastering Software Development in R](https://leanpub.com/msdr)
+
+## Páginas web
+* [Documentación de R](https://www.rdocumentation.org/)
+* [Traducción de R4DS: R para Ciencias de Datos](https://es.r4ds.hadley.nz/.)
+* [Advanced R](https://adv-r.hadley.nz/)
+* [R Packages](https://r-pkgs.org/)
+* [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/)
+* [Do More with R](https://www.infoworld.com/article/3411819/do-more-with-r-video-tutorials.html)
+* [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+* [Julia Silge](https://juliasilge.com/)
+* [R-Ladies Global](https://rladies.org/)
+
+## Canales de Youtube
+* [StatQuest with Josh Starmer](https://www.youtube.com/channel/UCtYLUTtgS3k1Fg4y5tAhLbw)
+* [RStudio](https://www.youtube.com/channel/UC3xfbCMLCw1Hh4dWop3XtHg)
+* [Bruno Rodrigues](https://www.youtube.com/channel/UCTZXht1RTL2Duc3eU8MYGzQ)
+* [LatinR](https://www.youtube.com/channel/UCt950nC6jlh2ELDRPigWOkg)
+* [IDG TECHtalk](https://www.youtube.com/channel/UCyhpw4-Etc79Sq77Swre5KA)
+
+## Aprendizaje interactivo
+* [HackerRank](https://www.hackerrank.com/)
+* [DataCamp](https://www.datacamp.com/)
