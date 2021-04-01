@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Transformación de datos con Tidyverse | Libro Personal de Apuntes</title>
+  <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Transformación de datos con Tidyverse | Libro Personal de Apuntes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="github-repo" content="estebanrucan/personal-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Transformación de datos con Tidyverse | Libro Personal de Apuntes" />
+  
+  <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  
+
+<meta name="author" content="Hecho por Esteban Rucán Carrasco" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="guiaestilo.html"/>
+<link rel="next" href="gráficos-estáticos-con-ggplot2.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
+<script src="libs/plotly-binding/plotly.js"></script>
+<script src="libs/typedarray/typedarray.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main/plotly-latest.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
+<meta property="og:title" content="JavaScript for R">
+<meta property="og:description" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta property="og:image" content="https://book.javascript-for-r.com/images/social.png">
+<meta property="og:url" content="https://book.javascript-for-r.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="JavaScript for R">
+<meta name="twitter:image:alt" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta name="twitter:site" content="@jdatap">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Libro Personal de Apuntes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos con Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>3.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-magrittr"><i class="fa fa-check"></i><b>3.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#ejemplos"><i class="fa fa-check"></i><b>3.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-2"><i class="fa fa-check"></i><b>3.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-dplyr"><i class="fa fa-check"></i><b>3.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#filter"><i class="fa fa-check"></i><b>3.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#group_by-summarize"><i class="fa fa-check"></i><b>3.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#mutate"><i class="fa fa-check"></i><b>3.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#arrange"><i class="fa fa-check"></i><b>3.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#select"><i class="fa fa-check"></i><b>3.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividades"><i class="fa fa-check"></i><b>3.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-3"><i class="fa fa-check"></i><b>3.4.1</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-4"><i class="fa fa-check"></i><b>3.4.2</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-5"><i class="fa fa-check"></i><b>3.4.3</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-6"><i class="fa fa-check"></i><b>3.4.4</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-7"><i class="fa fa-check"></i><b>3.4.5</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#solución-de-actividades"><i class="fa fa-check"></i><b>3.5</b> Solución de Actividades</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-1"><i class="fa fa-check"></i><b>3.5.1</b> Actividad 1</a></li>
+<li class="chapter" data-level="3.5.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-2"><i class="fa fa-check"></i><b>3.5.2</b> Actividad 2</a></li>
+<li class="chapter" data-level="3.5.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-3"><i class="fa fa-check"></i><b>3.5.3</b> Actividad 3</a></li>
+<li class="chapter" data-level="3.5.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-4"><i class="fa fa-check"></i><b>3.5.4</b> Actividad 4</a></li>
+<li class="chapter" data-level="3.5.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-5"><i class="fa fa-check"></i><b>3.5.5</b> Actividad 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Gráficos estáticos con ggplot2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Primer gráfico con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>4.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="4.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>4.3</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>4.3.1</b> <code>geom_point()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>4.3.2</b> <code>geom_line()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>4.3.3</b> <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>4.3.4</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>4.3.5</b> <code>geom_bar</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>4.4</b> Labs</a></li>
+<li class="chapter" data-level="4.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>4.5</b> Lims</a></li>
+<li class="chapter" data-level="4.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>4.6</b> Temas</a></li>
+<li class="chapter" data-level="4.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>4.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>4.7.1</b> 1. Distintos Geoms</a></li>
+<li class="chapter" data-level="4.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>4.7.2</b> 2. Gráficos interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>4.8</b> Actividad</a></li>
+<li class="chapter" data-level="4.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>4.9</b> Solución de Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>5</b> Reportes con R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>5.1</b> La estructura YAML</a></li>
+<li class="chapter" data-level="5.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>5.2</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>5.2.1</b> Tablas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>5.3</b> Chunks</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>5.3.1</b> Parámetros de un chunk</a></li>
+<li class="chapter" data-level="5.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>5.3.2</b> El chunk “setup”</a></li>
+<li class="chapter" data-level="5.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>5.3.3</b> Chunks inline</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>5.4</b> Tablas desde R</a></li>
+<li class="chapter" data-level="5.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>5.5</b> Imágenes</a></li>
+<li class="chapter" data-level="5.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>5.6</b> Reportes automáticos</a></li>
+<li class="chapter" data-level="5.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>5.7</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>6</b> Mis Proyectos</a></li>
+<li class="chapter" data-level="7" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>7</b> Palabras Finales</a></li>
+<li class="chapter" data-level="8" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>8</b> Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Libro Personal de Apuntes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="transformación-de-datos-con-tidyverse" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Transformación de datos con Tidyverse</h1>
+<ul>
+<li>En esta sección se hablo sobre algunas nociones básicas de transformación de datos.</li>
+<li>Puedes acceder a una clase en video que realicé sobre este tema en el siguiente <a href="">link</a></li>
+</ul>
+<div id="importar-un-data-frame-en-r" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Importar un data frame en R</h2>
+<p>En vez de escribir nuestro directorio como <code>data//covid//owid-covid-data.csv</code>, podemos usar lo siguiente gracias al package <code>here</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="transformación-de-datos-con-tidyverse.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;vroom&quot;)</span></span>
+<span id="cb9-2"><a href="transformación-de-datos-con-tidyverse.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;here&quot;)</span></span>
+<span id="cb9-3"><a href="transformación-de-datos-con-tidyverse.html#cb9-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;covid&quot;</span>, <span class="st">&quot;owid-covid-data.csv&quot;</span>))</span></code></pre></div>
+<blockquote>
+<p>El package <code>vroom</code> acepta cualquier formato de archivo.</p>
+</blockquote>
+</div>
+<div id="el-package-magrittr" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> El package <code>magrittr</code></h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="transformación-de-datos-con-tidyverse.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;maggritr&quot;</span>)</span>
+<span id="cb10-2"><a href="transformación-de-datos-con-tidyverse.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(magrittr)</span></code></pre></div>
+<ul>
+<li>Nos permite usar el famoso “pipe” <code>%&gt;%</code>.</li>
+<li>Es una forma más moderna y ordenada para programar en R.</li>
+<li>Usa la memoria del sistema de forma más eficiente.</li>
+<li>Se hace con <code>CTRL o CMD</code> + <code>SHIFT</code> + <code>M</code>.</li>
+<li>Su uso más común es para explorar bases de datos.</li>
+</ul>
+<div id="ejemplos" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Ejemplos</h3>
+<div id="section" class="section level4" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> <span class="math inline">\(\,\)</span></h4>
+<p>En vez de hacer:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="transformación-de-datos-con-tidyverse.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>((<span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">ncol =</span> <span class="dv">2</span>)), <span class="dv">2</span>, mean)</span></code></pre></div>
+<pre><code>[1] 25.5 75.5</code></pre>
+<p>Podemos hacer:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="transformación-de-datos-con-tidyverse.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span> <span class="sc">%&gt;%</span> <span class="co"># Crear vector del 1 al 100</span></span>
+<span id="cb13-2"><a href="transformación-de-datos-con-tidyverse.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">matrix</span>(<span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co"># Crear una matriz con 2 columnas</span></span>
+<span id="cb13-3"><a href="transformación-de-datos-con-tidyverse.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span>(<span class="dv">2</span>, mean) <span class="co"># Aplicar función mean a columnas</span></span></code></pre></div>
+<pre><code>[1] 25.5 75.5</code></pre>
+<p>Se ve mucho más ✨ ordenado ✨.</p>
+</div>
+<div id="section-1" class="section level4" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> <span class="math inline">\(\,\)</span></h4>
+<p>Esto nos dará error</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="transformación-de-datos-con-tidyverse.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="transformación-de-datos-con-tidyverse.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="er">*</span> <span class="dv">5</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="transformación-de-datos-con-tidyverse.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span></code></pre></div>
+<p>Debemos hacer:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="transformación-de-datos-con-tidyverse.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span> <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="transformación-de-datos-con-tidyverse.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;*&quot;</span> (<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="transformación-de-datos-con-tidyverse.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span></code></pre></div>
+<pre><code>[1] 15</code></pre>
+<blockquote>
+<p>Admite operadores como “+,” “-,” "*" y “/.” El valor numérico debe ir siempre entre paréntesis.</p>
+</blockquote>
+</div>
+</div>
+<div id="section-2" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> <span class="math inline">\(\,\)</span></h3>
+<p>Podemos crear una variable y después realizarle una modificación.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="transformación-de-datos-con-tidyverse.html#cb18-1" aria-hidden="true" tabindex="-1"></a>suma_y_media <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="transformación-de-datos-con-tidyverse.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;+&quot;</span> (<span class="dv">50</span>)</span>
+<span id="cb18-3"><a href="transformación-de-datos-con-tidyverse.html#cb18-3" aria-hidden="true" tabindex="-1"></a>suma_y_media</span></code></pre></div>
+<pre><code> [1] 51 52 53 54 55 56 57 58 59 60</code></pre>
+<p>Ahora calculamos la media:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="transformación-de-datos-con-tidyverse.html#cb20-1" aria-hidden="true" tabindex="-1"></a>suma_y_media <span class="ot">&lt;-</span> suma_y_media <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="transformación-de-datos-con-tidyverse.html#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>()</span>
+<span id="cb20-3"><a href="transformación-de-datos-con-tidyverse.html#cb20-3" aria-hidden="true" tabindex="-1"></a>suma_y_media</span></code></pre></div>
+<pre><code>[1] 55.5</code></pre>
+</div>
+</div>
+<div id="el-package-dplyr" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> El package <code>dplyr</code></h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="transformación-de-datos-con-tidyverse.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb22-2"><a href="transformación-de-datos-con-tidyverse.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span></code></pre></div>
+<ul>
+<li>Es una potente herramienta en conjunto a <code>magrittr</code> para analizar datos en R.</li>
+<li>Sus principales funciones son <code>filter</code>, <code>group_by</code>, <code>summarize</code>, <code>mutate</code>, <code>arrange</code> y <code>select</code>.</li>
+</ul>
+<div id="filter" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> <code>filter</code></h3>
+<p>Sirve para indicarle a R que seleccione solo las filas que cumplan la condición que establezcamos. Ejemplo:</p>
+<p>Para empezar, veamos el tipo de variables de la base de datos <code>iris</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="transformación-de-datos-con-tidyverse.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>Ahora usemos la función <code>filter</code> para ver tuplas que solo tengan la variable <code>Sepal.Length</code> mayor o igual a 7.4:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="transformación-de-datos-con-tidyverse.html#cb25-1" aria-hidden="true" tabindex="-1"></a>filtro_Sepal.Length <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="transformación-de-datos-con-tidyverse.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;=</span> <span class="fl">7.4</span>)</span>
+<span id="cb25-3"><a href="transformación-de-datos-con-tidyverse.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="transformación-de-datos-con-tidyverse.html#cb25-4" aria-hidden="true" tabindex="-1"></a>filtro_Sepal.Length <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="transformación-de-datos-con-tidyverse.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>() <span class="co"># Para visualizar tablas de forma interactiva</span></span></code></pre></div>
+<div id="htmlwidget-5ac3cbedba6a305272ef" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5ac3cbedba6a305272ef">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Sepal.Length":[7.6,7.7,7.7,7.7,7.4,7.9,7.7],"Sepal.Width":[3,3.8,2.6,2.8,2.8,3.8,3],"Petal.Length":[6.6,6.7,6.9,6.7,6.1,6.4,6.1],"Petal.Width":[2.1,2.2,2.3,2,1.9,2,2.3],"Species":["virginica","virginica","virginica","virginica","virginica","virginica","virginica"]},"columns":[{"accessor":"Sepal.Length","name":"Sepal.Length","type":"numeric"},{"accessor":"Sepal.Width","name":"Sepal.Width","type":"numeric"},{"accessor":"Petal.Length","name":"Petal.Length","type":"numeric"},{"accessor":"Petal.Width","name":"Petal.Width","type":"numeric"},{"accessor":"Species","name":"Species","type":"factor"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"d5c414f7df43225a0a6c4a1bc74e78bb","key":"d5c414f7df43225a0a6c4a1bc74e78bb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="group_by-summarize" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> <code>group_by</code> &amp; <code>summarize</code></h3>
+<ul>
+<li>Ambas deben ser usadas en conjunto.</li>
+<li><code>group_by</code>: Sirve para agrupar según una variable categórica. Puede recibir más de una variable, según la necesidad que se tenga.</li>
+<li><code>summarize</code>: Para mostrar la información que necesitamos ver después de usar <code>group_by</code>.</li>
+</ul>
+<p>Ejemplo:</p>
+<p>Veamos la media de <code>Sepal.Length</code> y <code>Sepal.Width</code> para cada especie.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="transformación-de-datos-con-tidyverse.html#cb26-1" aria-hidden="true" tabindex="-1"></a>group_by_Species <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="transformación-de-datos-con-tidyverse.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> <span class="co"># Agrupamos según especie </span></span>
+<span id="cb26-3"><a href="transformación-de-datos-con-tidyverse.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">mean_Sepal.Width =</span> <span class="fu">mean</span>(Sepal.Width),</span>
+<span id="cb26-4"><a href="transformación-de-datos-con-tidyverse.html#cb26-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">mean_Sepal.Length =</span> <span class="fu">mean</span>(Sepal.Length)) <span class="co"># Información que necesitamos ver de cada Especie</span></span>
+<span id="cb26-5"><a href="transformación-de-datos-con-tidyverse.html#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="transformación-de-datos-con-tidyverse.html#cb26-6" aria-hidden="true" tabindex="-1"></a>group_by_Species <span class="sc">%&gt;%</span> </span>
+<span id="cb26-7"><a href="transformación-de-datos-con-tidyverse.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>() <span class="co"># Vizualizamos</span></span></code></pre></div>
+<div id="htmlwidget-228b9f8abb0d5f00c570" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-228b9f8abb0d5f00c570">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Species":["setosa","versicolor","virginica"],"mean_Sepal.Width":[3.428,2.77,2.974],"mean_Sepal.Length":[5.006,5.936,6.588]},"columns":[{"accessor":"Species","name":"Species","type":"factor"},{"accessor":"mean_Sepal.Width","name":"mean_Sepal.Width","type":"numeric"},{"accessor":"mean_Sepal.Length","name":"mean_Sepal.Length","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"35932f74323eea8825e28d8ec714224e","key":"35932f74323eea8825e28d8ec714224e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="mutate" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> <code>mutate</code></h3>
+<p>Podemos crear una variable nueva en la base de datos a partir de variables ya existentes. Ejemplo:</p>
+<p>Creamos una base de datos que en su última columna tenga información sobre la suma de <code>Sepal.Length</code> y <code>Sepal.Width</code> para cada tupla.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="transformación-de-datos-con-tidyverse.html#cb27-1" aria-hidden="true" tabindex="-1"></a>mutate_iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="transformación-de-datos-con-tidyverse.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Sepal.Sum =</span> Sepal.Length <span class="sc">+</span> Sepal.Width) <span class="co"># Creamos una variable Sepal.Sum</span></span>
+<span id="cb27-3"><a href="transformación-de-datos-con-tidyverse.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="transformación-de-datos-con-tidyverse.html#cb27-4" aria-hidden="true" tabindex="-1"></a>mutate_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="transformación-de-datos-con-tidyverse.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-394f330d048f0431603a" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-394f330d048f0431603a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Sepal.Length":[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],"Sepal.Width":[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],"Petal.Length":[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],"Petal.Width":[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],"Species":["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"],"Sepal.Sum":[8.6,7.9,7.9,7.7,8.6,9.3,8,8.4,7.3,8,9.1,8.2,7.8,7.3,9.8,10.1,9.3,8.6,9.5,8.9,8.8,8.8,8.2,8.4,8.2,8,8.4,8.7,8.6,7.9,7.9,8.8,9.3,9.7,8,8.2,9,8.5,7.4,8.5,8.5,6.8,7.6,8.5,8.9,7.8,8.9,7.8,9,8.3,10.2,9.6,10,7.8,9.3,8.5,9.6,7.3,9.5,7.9,7,8.9,8.2,9,8.5,9.8,8.6,8.5,8.4,8.1,9.1,8.9,8.8,8.9,9.3,9.6,9.6,9.7,8.9,8.3,7.9,7.9,8.5,8.7,8.4,9.4,9.8,8.6,8.6,8,8.1,9.1,8.4,7.3,8.3,8.7,8.6,9.1,7.6,8.5,9.6,8.5,10.1,9.2,9.5,10.6,7.4,10.2,9.2,10.8,9.7,9.1,9.8,8.2,8.6,9.6,9.5,11.5,10.3,8.2,10.1,8.4,10.5,9,10,10.4,9,9.1,9.2,10.2,10.2,11.7,9.2,9.1,8.7,10.7,9.7,9.5,9,10,9.8,10,8.5,10,10,9.7,8.8,9.5,9.6,8.9]},"columns":[{"accessor":"Sepal.Length","name":"Sepal.Length","type":"numeric"},{"accessor":"Sepal.Width","name":"Sepal.Width","type":"numeric"},{"accessor":"Petal.Length","name":"Petal.Length","type":"numeric"},{"accessor":"Petal.Width","name":"Petal.Width","type":"numeric"},{"accessor":"Species","name":"Species","type":"factor"},{"accessor":"Sepal.Sum","name":"Sepal.Sum","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"74c163dd2ada81bd8d6ce57e462fe618","key":"74c163dd2ada81bd8d6ce57e462fe618"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<blockquote>
+<p>Vemos que se creo una variable nueva al final de la base.</p>
+</blockquote>
+</div>
+<div id="arrange" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> <code>arrange</code></h3>
+<ul>
+<li>Sirve para ordenar las columnas de la base de datos en orden ascendente o descendente.</li>
+<li>Se puede seleccionar más de una variable, según la necesidad que se tenga.</li>
+<li>Para ordenar las columnas de la base es necesario llamar a la función <code>desc</code>.</li>
+</ul>
+<p>Ejemplo:</p>
+<ul>
+<li>Para ordenar la columna de la variable <code>Sepal.Width</code> en orden ascendente:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="transformación-de-datos-con-tidyverse.html#cb28-1" aria-hidden="true" tabindex="-1"></a>arrange_asc <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="transformación-de-datos-con-tidyverse.html#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Sepal.Width)</span>
+<span id="cb28-3"><a href="transformación-de-datos-con-tidyverse.html#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="transformación-de-datos-con-tidyverse.html#cb28-4" aria-hidden="true" tabindex="-1"></a>arrange_asc <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="transformación-de-datos-con-tidyverse.html#cb28-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-7481a3be572b34f71961" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7481a3be572b34f71961">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Sepal.Length":[5,6,6.2,6,4.5,5.5,6.3,5,4.9,5.5,5.5,5.6,6.3,5.5,5.1,4.9,6.7,5.7,6.3,5.7,5.5,5.8,7.7,6.1,5.2,5.8,5.8,6,5.6,5.8,6.4,6.3,5.8,6.5,5.7,6.1,6.1,6.8,5.7,5.8,5.6,7.7,6.2,6.4,7.4,6.4,6.3,4.4,6.6,6.1,5.6,6.4,6,5.7,6.2,6.3,7.3,4.9,4.8,4.3,5,4.4,4.8,5.9,5.6,6.6,6.7,5.4,5.6,6.1,5.7,7.1,6.5,7.6,6.8,6.5,6.1,7.2,7.7,6,6.7,6.5,5.9,4.6,4.9,4.8,4.9,6.9,6.7,6.7,6.4,6.9,6.7,6.9,4.7,4.7,5,4.4,4.6,7,6.4,5.9,6.5,6.4,6.9,7.2,6.8,5.1,5,6.3,6.3,6.7,6.7,4.6,5,4.8,5.4,4.8,5,5.2,5.4,5.1,6,6.3,6.2,5.1,5.1,5.2,5.5,5,5,5,4.6,4.9,7.2,5.4,5.1,5.3,5.7,5.1,5.1,5.1,7.7,7.9,5.4,5.4,5.8,5.2,5.5,5.7],"Sepal.Width":[2,2.2,2.2,2.2,2.3,2.3,2.3,2.3,2.4,2.4,2.4,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.6,2.6,2.6,2.6,2.6,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.8,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,2.9,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.1,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.2,3.3,3.3,3.3,3.3,3.3,3.3,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.5,3.5,3.5,3.5,3.5,3.5,3.6,3.6,3.6,3.6,3.7,3.7,3.7,3.8,3.8,3.8,3.8,3.8,3.8,3.9,3.9,4,4.1,4.2,4.4],"Petal.Length":[3.5,4,4.5,5,1.3,4,4.4,3.3,3.3,3.8,3.7,3.9,4.9,4,3,4.5,5.8,5,5,3.5,4.4,4,6.9,5.6,3.9,4.1,3.9,5.1,4.2,5.1,5.3,4.9,5.1,4.6,4.5,4,4.7,4.8,4.1,5.1,4.9,6.7,4.8,5.6,6.1,5.6,5.1,1.4,4.6,4.7,3.6,4.3,4.5,4.2,4.3,5.6,6.3,1.4,1.4,1.1,1.6,1.3,1.4,4.2,4.5,4.4,5,4.5,4.1,4.6,4.2,5.9,5.8,6.6,5.5,5.5,4.9,5.8,6.1,4.8,5.2,5.2,5.1,1.5,1.5,1.6,1.5,4.9,4.4,4.7,5.5,5.4,5.6,5.1,1.3,1.6,1.2,1.3,1.4,4.7,4.5,4.8,5.1,5.3,5.7,6,5.9,1.7,1.4,4.7,6,5.7,5.7,1.4,1.5,1.6,1.7,1.9,1.6,1.4,1.5,1.5,4.5,5.6,5.4,1.4,1.4,1.5,1.3,1.3,1.6,1.4,1,1.4,6.1,1.5,1.5,1.5,1.7,1.5,1.9,1.6,6.7,6.4,1.7,1.3,1.2,1.5,1.4,1.5],"Petal.Width":[1,1,1.5,1.5,0.3,1.3,1.3,1,1,1.1,1,1.1,1.5,1.3,1.1,1.7,1.8,2,1.9,1,1.2,1.2,2.3,1.4,1.4,1,1.2,1.6,1.3,1.9,1.9,1.8,1.9,1.5,1.3,1.3,1.2,1.4,1.3,2.4,2,2,1.8,2.1,1.9,2.2,1.5,0.2,1.3,1.4,1.3,1.3,1.5,1.3,1.3,1.8,1.8,0.2,0.1,0.1,0.2,0.2,0.3,1.5,1.5,1.4,1.7,1.5,1.3,1.4,1.2,2.1,2.2,2.1,2.1,1.8,1.8,1.6,2.3,1.8,2.3,2,1.8,0.2,0.1,0.2,0.2,1.5,1.4,1.5,1.8,2.1,2.4,2.3,0.2,0.2,0.2,0.2,0.2,1.4,1.5,1.8,2,2.3,2.3,1.8,2.3,0.5,0.2,1.6,2.5,2.1,2.5,0.3,0.2,0.2,0.2,0.2,0.4,0.2,0.4,0.2,1.6,2.4,2.3,0.2,0.3,0.2,0.2,0.3,0.6,0.2,0.2,0.1,2.5,0.2,0.4,0.2,0.3,0.3,0.4,0.2,2.2,2,0.4,0.4,0.2,0.1,0.2,0.4],"Species":["versicolor","versicolor","versicolor","virginica","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","versicolor","versicolor","versicolor","virginica","virginica","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","setosa","setosa","versicolor","virginica","virginica","virginica","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","virginica","virginica","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","virginica","setosa","setosa","setosa","setosa","setosa","setosa","setosa","virginica","virginica","setosa","setosa","setosa","setosa","setosa","setosa"]},"columns":[{"accessor":"Sepal.Length","name":"Sepal.Length","type":"numeric"},{"accessor":"Sepal.Width","name":"Sepal.Width","type":"numeric"},{"accessor":"Petal.Length","name":"Petal.Length","type":"numeric"},{"accessor":"Petal.Width","name":"Petal.Width","type":"numeric"},{"accessor":"Species","name":"Species","type":"factor"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"1a699838a6f698a2b7594b42b04b65ba","key":"1a699838a6f698a2b7594b42b04b65ba"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>Ordenar la columna <code>Species</code> en orden descendente:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="transformación-de-datos-con-tidyverse.html#cb29-1" aria-hidden="true" tabindex="-1"></a>arrange_desc <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span>  </span>
+<span id="cb29-2"><a href="transformación-de-datos-con-tidyverse.html#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(Species))</span>
+<span id="cb29-3"><a href="transformación-de-datos-con-tidyverse.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="transformación-de-datos-con-tidyverse.html#cb29-4" aria-hidden="true" tabindex="-1"></a>arrange_desc <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a href="transformación-de-datos-con-tidyverse.html#cb29-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-3f9f4a199be92505fe07" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3f9f4a199be92505fe07">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Sepal.Length":[6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5],"Sepal.Width":[3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3],"Petal.Length":[6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4],"Petal.Width":[2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2],"Species":["virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]},"columns":[{"accessor":"Sepal.Length","name":"Sepal.Length","type":"numeric"},{"accessor":"Sepal.Width","name":"Sepal.Width","type":"numeric"},{"accessor":"Petal.Length","name":"Petal.Length","type":"numeric"},{"accessor":"Petal.Width","name":"Petal.Width","type":"numeric"},{"accessor":"Species","name":"Species","type":"factor"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"40727b1a496d1add48b015008fddc6b6","key":"40727b1a496d1add48b015008fddc6b6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="select" class="section level3" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> <code>select</code></h3>
+<ul>
+<li>Sirve para seleccionar o no seleccionar variables de la base de datos.</li>
+<li>Para no seleccionar una variable hay que anteponer un signo <code>!</code> y un vector con los nombres de las variables.</li>
+</ul>
+<p>Ejemplo:</p>
+<ul>
+<li>Para seleccionar variables:</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="transformación-de-datos-con-tidyverse.html#cb30-1" aria-hidden="true" tabindex="-1"></a>select_Sepal <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="transformación-de-datos-con-tidyverse.html#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Sepal.Length, Sepal.Width) <span class="co"># Alternativamente select(matches(&quot;Sepal&quot;))</span></span>
+<span id="cb30-3"><a href="transformación-de-datos-con-tidyverse.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="transformación-de-datos-con-tidyverse.html#cb30-4" aria-hidden="true" tabindex="-1"></a>select_Sepal <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a href="transformación-de-datos-con-tidyverse.html#cb30-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-74a5f004667c7640a925" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-74a5f004667c7640a925">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Sepal.Length":[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],"Sepal.Width":[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3]},"columns":[{"accessor":"Sepal.Length","name":"Sepal.Length","type":"numeric"},{"accessor":"Sepal.Width","name":"Sepal.Width","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"0fe1eb2322230b4d5c1023f4b6772410","key":"0fe1eb2322230b4d5c1023f4b6772410"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>Para no seleccionar variables:</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="transformación-de-datos-con-tidyverse.html#cb31-1" aria-hidden="true" tabindex="-1"></a>not_select_Sepal <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="transformación-de-datos-con-tidyverse.html#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Sepal.Length, Sepal.Width)) <span class="co"># Alternativamente select(!matches(&quot;Sepal&quot;))</span></span>
+<span id="cb31-3"><a href="transformación-de-datos-con-tidyverse.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="transformación-de-datos-con-tidyverse.html#cb31-4" aria-hidden="true" tabindex="-1"></a>not_select_Sepal <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="transformación-de-datos-con-tidyverse.html#cb31-5" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-7927352acc96bd784452" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7927352acc96bd784452">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Petal.Length":[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],"Petal.Width":[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],"Species":["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]},"columns":[{"accessor":"Petal.Length","name":"Petal.Length","type":"numeric"},{"accessor":"Petal.Width","name":"Petal.Width","type":"numeric"},{"accessor":"Species","name":"Species","type":"factor"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"d4c3c58ed7c5a28cf4cda16ab39e3e0e","key":"d4c3c58ed7c5a28cf4cda16ab39e3e0e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<blockquote>
+<p>Podemos ver que están todas las variables menos las que escribimos en la función <code>select</code>.</p>
+</blockquote>
+</div>
+</div>
+<div id="actividades" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Actividades</h2>
+<div id="section-3" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> <span class="math inline">\(\,\)</span></h3>
+<p>Cargue la base de datos con información sobre el coronavirus desde <a href="https://ourworldindata.org/coronavirus-testing" class="uri">https://ourworldindata.org/coronavirus-testing</a>. Luego muestre el tipo de cada variable de la base.</p>
+</div>
+<div id="section-4" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> <span class="math inline">\(\,\)</span></h3>
+<p>¿Cuál es la media de casos en Chile en el mes de enero de 2021?</p>
+</div>
+<div id="section-5" class="section level3" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> <span class="math inline">\(\,\)</span></h3>
+<p>Genere una tabla con la cantidad de test hechos en los países de América del Sur en el último mes, ordenado de menor a mayor.</p>
+</div>
+<div id="section-6" class="section level3" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> <span class="math inline">\(\,\)</span></h3>
+<p>¿Cuál es el país con mayor cantidad de casos por millón de habitantes en Europa desde el inicio de la pandemia? ¿Y el segundo?</p>
+</div>
+<div id="section-7" class="section level3" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> <span class="math inline">\(\,\)</span></h3>
+<p>Muestre información sobre la cantidad de casos que han habido en las últimas 2 semanas en cada continente.</p>
+</div>
+</div>
+<div id="solución-de-actividades" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Solución de Actividades</h2>
+<div id="actividad-1" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Actividad 1</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="transformación-de-datos-con-tidyverse.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2); <span class="fu">require</span>(gghighlight); <span class="fu">require</span>(magrittr); <span class="fu">require</span>(dplyr)</span>
+<span id="cb32-2"><a href="transformación-de-datos-con-tidyverse.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="transformación-de-datos-con-tidyverse.html#cb32-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;covid&quot;</span>, <span class="st">&quot;owid-covid-data.csv&quot;</span>))</span>
+<span id="cb32-4"><a href="transformación-de-datos-con-tidyverse.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="transformación-de-datos-con-tidyverse.html#cb32-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb32-6"><a href="transformación-de-datos-con-tidyverse.html#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str</span>()</span></code></pre></div>
+<pre><code>spec_tbl_df[,59] [78,664 x 59] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ iso_code                             : chr [1:78664] &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; &quot;AFG&quot; ...
+ $ continent                            : chr [1:78664] &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; &quot;Asia&quot; ...
+ $ location                             : chr [1:78664] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; ...
+ $ date                                 : Date[1:78664], format: &quot;2020-02-24&quot; ...
+ $ total_cases                          : num [1:78664] 1 1 1 1 1 1 1 1 2 4 ...
+ $ new_cases                            : num [1:78664] 1 0 0 0 0 0 0 0 1 2 ...
+ $ new_cases_smoothed                   : num [1:78664] NA NA NA NA NA 0.143 0.143 0 0.143 0.429 ...
+ $ total_deaths                         : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_deaths                           : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_deaths_smoothed                  : num [1:78664] NA NA NA NA NA 0 0 0 0 0 ...
+ $ total_cases_per_million              : num [1:78664] 0.026 0.026 0.026 0.026 0.026 0.026 0.026 0.026 0.051 0.103 ...
+ $ new_cases_per_million                : num [1:78664] 0.026 0 0 0 0 0 0 0 0.026 0.051 ...
+ $ new_cases_smoothed_per_million       : num [1:78664] NA NA NA NA NA 0.004 0.004 0 0.004 0.011 ...
+ $ total_deaths_per_million             : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_deaths_per_million               : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_deaths_smoothed_per_million      : num [1:78664] NA NA NA NA NA 0 0 0 0 0 ...
+ $ reproduction_rate                    : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ icu_patients                         : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ icu_patients_per_million             : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ hosp_patients                        : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ hosp_patients_per_million            : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ weekly_icu_admissions                : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ weekly_icu_admissions_per_million    : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ weekly_hosp_admissions               : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ weekly_hosp_admissions_per_million   : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_tests                            : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ total_tests                          : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ total_tests_per_thousand             : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_tests_per_thousand               : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_tests_smoothed                   : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_tests_smoothed_per_thousand      : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ positive_rate                        : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ tests_per_case                       : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ tests_units                          : chr [1:78664] NA NA NA NA ...
+ $ total_vaccinations                   : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ people_vaccinated                    : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ people_fully_vaccinated              : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_vaccinations                     : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_vaccinations_smoothed            : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ total_vaccinations_per_hundred       : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ people_vaccinated_per_hundred        : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ people_fully_vaccinated_per_hundred  : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ new_vaccinations_smoothed_per_million: num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ stringency_index                     : num [1:78664] 8.33 8.33 8.33 8.33 8.33 ...
+ $ population                           : num [1:78664] 38928341 38928341 38928341 38928341 38928341 ...
+ $ population_density                   : num [1:78664] 54.4 54.4 54.4 54.4 54.4 ...
+ $ median_age                           : num [1:78664] 18.6 18.6 18.6 18.6 18.6 18.6 18.6 18.6 18.6 18.6 ...
+ $ aged_65_older                        : num [1:78664] 2.58 2.58 2.58 2.58 2.58 ...
+ $ aged_70_older                        : num [1:78664] 1.34 1.34 1.34 1.34 1.34 ...
+ $ gdp_per_capita                       : num [1:78664] 1804 1804 1804 1804 1804 ...
+ $ extreme_poverty                      : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ cardiovasc_death_rate                : num [1:78664] 597 597 597 597 597 ...
+ $ diabetes_prevalence                  : num [1:78664] 9.59 9.59 9.59 9.59 9.59 9.59 9.59 9.59 9.59 9.59 ...
+ $ female_smokers                       : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ male_smokers                         : num [1:78664] NA NA NA NA NA NA NA NA NA NA ...
+ $ handwashing_facilities               : num [1:78664] 37.7 37.7 37.7 37.7 37.7 ...
+ $ hospital_beds_per_thousand           : num [1:78664] 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
+ $ life_expectancy                      : num [1:78664] 64.8 64.8 64.8 64.8 64.8 ...
+ $ human_development_index              : num [1:78664] 0.511 0.511 0.511 0.511 0.511 0.511 0.511 0.511 0.511 0.511 ...
+ - attr(*, &quot;spec&quot;)=
+  .. cols(
+  ..   iso_code = col_character(),
+  ..   continent = col_character(),
+  ..   location = col_character(),
+  ..   date = col_date(format = &quot;&quot;),
+  ..   total_cases = col_double(),
+  ..   new_cases = col_double(),
+  ..   new_cases_smoothed = col_double(),
+  ..   total_deaths = col_double(),
+  ..   new_deaths = col_double(),
+  ..   new_deaths_smoothed = col_double(),
+  ..   total_cases_per_million = col_double(),
+  ..   new_cases_per_million = col_double(),
+  ..   new_cases_smoothed_per_million = col_double(),
+  ..   total_deaths_per_million = col_double(),
+  ..   new_deaths_per_million = col_double(),
+  ..   new_deaths_smoothed_per_million = col_double(),
+  ..   reproduction_rate = col_double(),
+  ..   icu_patients = col_double(),
+  ..   icu_patients_per_million = col_double(),
+  ..   hosp_patients = col_double(),
+  ..   hosp_patients_per_million = col_double(),
+  ..   weekly_icu_admissions = col_double(),
+  ..   weekly_icu_admissions_per_million = col_double(),
+  ..   weekly_hosp_admissions = col_double(),
+  ..   weekly_hosp_admissions_per_million = col_double(),
+  ..   new_tests = col_double(),
+  ..   total_tests = col_double(),
+  ..   total_tests_per_thousand = col_double(),
+  ..   new_tests_per_thousand = col_double(),
+  ..   new_tests_smoothed = col_double(),
+  ..   new_tests_smoothed_per_thousand = col_double(),
+  ..   positive_rate = col_double(),
+  ..   tests_per_case = col_double(),
+  ..   tests_units = col_character(),
+  ..   total_vaccinations = col_double(),
+  ..   people_vaccinated = col_double(),
+  ..   people_fully_vaccinated = col_double(),
+  ..   new_vaccinations = col_double(),
+  ..   new_vaccinations_smoothed = col_double(),
+  ..   total_vaccinations_per_hundred = col_double(),
+  ..   people_vaccinated_per_hundred = col_double(),
+  ..   people_fully_vaccinated_per_hundred = col_double(),
+  ..   new_vaccinations_smoothed_per_million = col_double(),
+  ..   stringency_index = col_double(),
+  ..   population = col_double(),
+  ..   population_density = col_double(),
+  ..   median_age = col_double(),
+  ..   aged_65_older = col_double(),
+  ..   aged_70_older = col_double(),
+  ..   gdp_per_capita = col_double(),
+  ..   extreme_poverty = col_double(),
+  ..   cardiovasc_death_rate = col_double(),
+  ..   diabetes_prevalence = col_double(),
+  ..   female_smokers = col_double(),
+  ..   male_smokers = col_double(),
+  ..   handwashing_facilities = col_double(),
+  ..   hospital_beds_per_thousand = col_double(),
+  ..   life_expectancy = col_double(),
+  ..   human_development_index = col_double()
+  .. )
+ - attr(*, &quot;problems&quot;)=&lt;externalptr&gt; </code></pre>
+</div>
+<div id="actividad-2" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Actividad 2</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="transformación-de-datos-con-tidyverse.html#cb34-1" aria-hidden="true" tabindex="-1"></a>media_casos_chile_enero_2021 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="transformación-de-datos-con-tidyverse.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(location <span class="sc">==</span> <span class="st">&quot;Chile&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="transformación-de-datos-con-tidyverse.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2021-01-01&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2021-01-31&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-4"><a href="transformación-de-datos-con-tidyverse.html#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-5"><a href="transformación-de-datos-con-tidyverse.html#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">media_casos =</span> <span class="fu">mean</span>(new_cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb34-6"><a href="transformación-de-datos-con-tidyverse.html#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="transformación-de-datos-con-tidyverse.html#cb34-7" aria-hidden="true" tabindex="-1"></a>media_casos_chile_enero_2021  <span class="sc">%&gt;%</span> </span>
+<span id="cb34-8"><a href="transformación-de-datos-con-tidyverse.html#cb34-8" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-d78b6583b580b8e3cfc9" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d78b6583b580b8e3cfc9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"location":["Chile"],"media_casos":[3810.83870967742]},"columns":[{"accessor":"location","name":"location","type":"character"},{"accessor":"media_casos","name":"media_casos","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"2b0491afe16b74240c2ff671cc33540f","key":"2b0491afe16b74240c2ff671cc33540f"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="actividad-3" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Actividad 3</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="transformación-de-datos-con-tidyverse.html#cb35-1" aria-hidden="true" tabindex="-1"></a>test_latinoamerica_ultimo_mes <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="transformación-de-datos-con-tidyverse.html#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;South America&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="transformación-de-datos-con-tidyverse.html#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2021-01-10&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2021-02-10&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-4"><a href="transformación-de-datos-con-tidyverse.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_tests)) <span class="sc">%&gt;%</span></span>
+<span id="cb35-5"><a href="transformación-de-datos-con-tidyverse.html#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="transformación-de-datos-con-tidyverse.html#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">total_test =</span> <span class="fu">sum</span>(new_tests)) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-7"><a href="transformación-de-datos-con-tidyverse.html#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(total_test)</span>
+<span id="cb35-8"><a href="transformación-de-datos-con-tidyverse.html#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="transformación-de-datos-con-tidyverse.html#cb35-9" aria-hidden="true" tabindex="-1"></a>test_latinoamerica_ultimo_mes <span class="sc">%&gt;%</span> </span>
+<span id="cb35-10"><a href="transformación-de-datos-con-tidyverse.html#cb35-10" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-1f905f7000a5951153fd" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1f905f7000a5951153fd">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"location":["Paraguay","Ecuador","Uruguay","Bolivia","Peru","Argentina","Chile","Colombia"],"total_test":[102846,137365,161270,176713,500220,1223061,1685850,2025873]},"columns":[{"accessor":"location","name":"location","type":"character"},{"accessor":"total_test","name":"total_test","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"2e3f136081c66020ddcffd22aa5bf2ea","key":"2e3f136081c66020ddcffd22aa5bf2ea"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="actividad-4" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Actividad 4</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="transformación-de-datos-con-tidyverse.html#cb36-1" aria-hidden="true" tabindex="-1"></a>paises_europa_xmill <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="transformación-de-datos-con-tidyverse.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Europe&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="transformación-de-datos-con-tidyverse.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases_per_million)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href="transformación-de-datos-con-tidyverse.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-5"><a href="transformación-de-datos-con-tidyverse.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">cases_per_million =</span> <span class="fu">sum</span>(new_cases_per_million)) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-6"><a href="transformación-de-datos-con-tidyverse.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(cases_per_million))</span>
+<span id="cb36-7"><a href="transformación-de-datos-con-tidyverse.html#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="transformación-de-datos-con-tidyverse.html#cb36-8" aria-hidden="true" tabindex="-1"></a>paises_europa_xmill <span class="sc">%&gt;%</span> </span>
+<span id="cb36-9"><a href="transformación-de-datos-con-tidyverse.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-104764b1792d25bb9cf4" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-104764b1792d25bb9cf4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"location":["Andorra","Montenegro","Czechia","San Marino","Slovenia","Luxembourg","Serbia","Portugal","Estonia","Sweden","Lithuania","Belgium","Netherlands","Spain","Liechtenstein","Switzerland","France","Hungary","Croatia","Slovakia","Malta","United Kingdom","North Macedonia","Poland","Austria","Italy","Monaco","Moldova","Latvia","Cyprus","Bosnia and Herzegovina","Romania","Bulgaria","Ireland","Kosovo","Albania","Denmark","Ukraine","Belarus","Germany","Vatican","Russia","Greece","Iceland","Norway","Finland"],"cases_per_million":[155439.061,145237.253,143088.488,139371.766,103708.054,98473.442,88263.289,80587.008,80226.824,79697.442,79388.645,76141.705,75448.826,70246.35,70010.748,69457.019,69042.229,67537.209,66166.689,66155.422,65754.101,64225.059,62409.177,61345.462,60648.989,59291.935,58301.904,57075.638,54269.354,52362.2,51702.396,49527.945,49310.755,47765.037,46141.455,43490.508,39932.134,39443.874,34056.103,33940.205,33374.538,30796.25,25298.625,18183.135,17722.694,13978.691]},"columns":[{"accessor":"location","name":"location","type":"character"},{"accessor":"cases_per_million","name":"cases_per_million","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"77ecf7415ff637dab11837463a9aad18","key":"77ecf7415ff637dab11837463a9aad18"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="actividad-5" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Actividad 5</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="transformación-de-datos-con-tidyverse.html#cb37-1" aria-hidden="true" tabindex="-1"></a>casos_contientes_2_semanas <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="transformación-de-datos-con-tidyverse.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">&quot;2021-01-27&quot;</span> <span class="sc">&amp;</span> date <span class="sc">&lt;=</span> <span class="st">&quot;2021-02-10&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="transformación-de-datos-con-tidyverse.html#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(new_cases)) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4"><a href="transformación-de-datos-con-tidyverse.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-5"><a href="transformación-de-datos-con-tidyverse.html#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">casos =</span> <span class="fu">sum</span>(new_cases))</span>
+<span id="cb37-6"><a href="transformación-de-datos-con-tidyverse.html#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="transformación-de-datos-con-tidyverse.html#cb37-7" aria-hidden="true" tabindex="-1"></a>casos_contientes_2_semanas <span class="sc">%&gt;%</span> </span>
+<span id="cb37-8"><a href="transformación-de-datos-con-tidyverse.html#cb37-8" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-6c3a297fe1f55a4ce551" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6c3a297fe1f55a4ce551">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"continent":["Africa","Asia","Europe","North America","Oceania","South America",null],"casos":[230969,1068812,2426340,2162091,174,1190232,15852556]},"columns":[{"accessor":"continent","name":"continent","type":"character"},{"accessor":"casos","name":"casos","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"3bbecbab3732f7fb13e0d180ec6f80e4","key":"3bbecbab3732f7fb13e0d180ec6f80e4"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="guiaestilo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gráficos-estáticos-con-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

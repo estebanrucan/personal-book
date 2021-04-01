@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Reportes con R Markdown | Libro Personal de Apuntes</title>
+  <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Reportes con R Markdown | Libro Personal de Apuntes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="github-repo" content="estebanrucan/personal-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Reportes con R Markdown | Libro Personal de Apuntes" />
+  
+  <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  
+
+<meta name="author" content="Hecho por Esteban Rucán Carrasco" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="gráficos-estáticos-con-ggplot2.html"/>
+<link rel="next" href="mis-proyectos.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
+<script src="libs/plotly-binding/plotly.js"></script>
+<script src="libs/typedarray/typedarray.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main/plotly-latest.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
+<meta property="og:title" content="JavaScript for R">
+<meta property="og:description" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta property="og:image" content="https://book.javascript-for-r.com/images/social.png">
+<meta property="og:url" content="https://book.javascript-for-r.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="JavaScript for R">
+<meta name="twitter:image:alt" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta name="twitter:site" content="@jdatap">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Libro Personal de Apuntes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos con Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>3.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-magrittr"><i class="fa fa-check"></i><b>3.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#ejemplos"><i class="fa fa-check"></i><b>3.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-2"><i class="fa fa-check"></i><b>3.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-dplyr"><i class="fa fa-check"></i><b>3.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#filter"><i class="fa fa-check"></i><b>3.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#group_by-summarize"><i class="fa fa-check"></i><b>3.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#mutate"><i class="fa fa-check"></i><b>3.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#arrange"><i class="fa fa-check"></i><b>3.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#select"><i class="fa fa-check"></i><b>3.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividades"><i class="fa fa-check"></i><b>3.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-3"><i class="fa fa-check"></i><b>3.4.1</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-4"><i class="fa fa-check"></i><b>3.4.2</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-5"><i class="fa fa-check"></i><b>3.4.3</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-6"><i class="fa fa-check"></i><b>3.4.4</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="3.4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-7"><i class="fa fa-check"></i><b>3.4.5</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#solución-de-actividades"><i class="fa fa-check"></i><b>3.5</b> Solución de Actividades</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-1"><i class="fa fa-check"></i><b>3.5.1</b> Actividad 1</a></li>
+<li class="chapter" data-level="3.5.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-2"><i class="fa fa-check"></i><b>3.5.2</b> Actividad 2</a></li>
+<li class="chapter" data-level="3.5.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-3"><i class="fa fa-check"></i><b>3.5.3</b> Actividad 3</a></li>
+<li class="chapter" data-level="3.5.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-4"><i class="fa fa-check"></i><b>3.5.4</b> Actividad 4</a></li>
+<li class="chapter" data-level="3.5.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-5"><i class="fa fa-check"></i><b>3.5.5</b> Actividad 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Gráficos estáticos con ggplot2</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Primer gráfico con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="4.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>4.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="4.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>4.3</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>4.3.1</b> <code>geom_point()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>4.3.2</b> <code>geom_line()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>4.3.3</b> <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>4.3.4</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>4.3.5</b> <code>geom_bar</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>4.4</b> Labs</a></li>
+<li class="chapter" data-level="4.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>4.5</b> Lims</a></li>
+<li class="chapter" data-level="4.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>4.6</b> Temas</a></li>
+<li class="chapter" data-level="4.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>4.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>4.7.1</b> 1. Distintos Geoms</a></li>
+<li class="chapter" data-level="4.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>4.7.2</b> 2. Gráficos interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>4.8</b> Actividad</a></li>
+<li class="chapter" data-level="4.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>4.9</b> Solución de Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>5</b> Reportes con R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>5.1</b> La estructura YAML</a></li>
+<li class="chapter" data-level="5.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>5.2</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>5.2.1</b> Tablas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>5.3</b> Chunks</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>5.3.1</b> Parámetros de un chunk</a></li>
+<li class="chapter" data-level="5.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>5.3.2</b> El chunk “setup”</a></li>
+<li class="chapter" data-level="5.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>5.3.3</b> Chunks inline</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>5.4</b> Tablas desde R</a></li>
+<li class="chapter" data-level="5.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>5.5</b> Imágenes</a></li>
+<li class="chapter" data-level="5.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>5.6</b> Reportes automáticos</a></li>
+<li class="chapter" data-level="5.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>5.7</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>6</b> Mis Proyectos</a></li>
+<li class="chapter" data-level="7" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>7</b> Palabras Finales</a></li>
+<li class="chapter" data-level="8" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>8</b> Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Libro Personal de Apuntes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reportes-con-r-markdown" class="section level1" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Reportes con R Markdown</h1>
+<ul>
+<li>En esta sección explicaré cómo usar R Markdown.</li>
+<li>Su función principal es la generación de informes, documentos o
+presentaciones. Es una herramienta muy potente ya que permite
+escribir código en muchos <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">lenguajes de
+programación</a>
+a través de estructuras llamadas “chunks.”</li>
+<li>Soporta el lenguaje Markdown.</li>
+<li>Es posible escribir expresiones matemáticas entre signos de dólar
+($ $) usando LaTeX. También acepta la opción de doble signo dólar
+($ $ $ $).</li>
+</ul>
+<div id="la-estructura-yaml" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> La estructura YAML</h2>
+<ul>
+<li>Esta entre tres guiones medios por arriba y abajo (“---”)</li>
+<li>Es la configuración inicial de R Markdown.</li>
+</ul>
+<p>Algunos parámetros que pueden ir en la estructura YAML son:</p>
+<ul>
+<li><code>title</code>: Es para especificar el título del R Markdown (no confundir
+con nombre del archivo con extensión <code>.Rmd</code>)</li>
+<li><code>subtitle</code>: Es para especificar el subtítulo del R Markdown.</li>
+<li><code>author</code>: Acá se especifica le autor del R Markdown.</li>
+<li><code>date</code>: En este parámetro se indica la fecha en que se está
+escribiendo el R Markdown.</li>
+<li><code>output</code>: Este parámetro hay que especificarlo obligatoriamente,
+pues acá indicamos cuál es el formato del archivo de salida.</li>
+</ul>
+<p>Ejemplos:</p>
+<ul>
+<li>Una estructura YAML con salida en formato html.</li>
+</ul>
+<p>--- <br> title: “Taller de Software Estadístico” <br> subtitle: “Módulo
+3” <br> author: “CA FMAT &amp; CEFMAT” <br> date: “17 de febrero” <br>
+output: html_document <br> ---</p>
+<p>Podemos usar el lenguaje html para personalizar el documento.</p>
+<p>¡Les invitamos a que busquen el tema html que más les guste! En
+<a href="https://github.com/yixuan/prettydoc/">prettydoc</a> y
+<a href="https://github.com/juba/rmdformats">rmdformats</a>.</p>
+<ul>
+<li>Una estructura YAML con salida en formato pdf:</li>
+</ul>
+<p>--- <br> title: “Informe coronavirus en chile” <br> author: “Comisión de
+salud” <br> date: “17 de julio 2021” <br> output: pdf_document <br> ---</p>
+<p>Podemos usar todas las funciones de LaTeX en este caso, ¡Puede ser muy
+provechoso!</p>
+<p>Les invitamos a encontrar más opciones de personalización
+<a href="https://bookdown.org/yihui/rmarkdown/documents.html">acá</a>.</p>
+</div>
+<div id="markdown" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Markdown</h2>
+<p>Es un lenguaje de marcado que facilita la escritura de texto a través de
+simples carácteres.</p>
+<p>Resumen:</p>
+<table>
+<colgroup>
+<col width="57%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Código</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td># Texto</td>
+<td><h1 id="texto">Texto</h1></td>
+</tr>
+<tr class="even">
+<td>## Texto</td>
+<td><h2 id="texto-1">Texto</h2></td>
+</tr>
+<tr class="odd">
+<td>### Texto</td>
+<td><h3 id="texto-2">Texto</h3></td>
+</tr>
+<tr class="even">
+<td>#### Texto</td>
+<td><h4 id="texto-3">Texto</h4></td>
+</tr>
+<tr class="odd">
+<td>_cursiva_</td>
+<td><em>cursiva</em></td>
+</tr>
+<tr class="even">
+<td>__negrita__</td>
+<td><strong>negrita</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\text{[Google](http://www.google.cl)}\)</span></td>
+<td><a href="http://www.google.cl">Google</a></td>
+</tr>
+<tr class="even">
+<td>`codigo`</td>
+<td><code>codigo</code></td>
+</tr>
+<tr class="odd">
+<td><br />
+1. Texto 1<br />
+2. Texto 2<br />
+3. Texto 3<br />
+4. Texto 4</td>
+<td><ol style="list-style-type: decimal">
+<li><p>Texto 1</p></li>
+<li><p>Texto 2</p></li>
+<li><p>Texto 3</p></li>
+<li><p>Texto 4</p></li>
+</ol></td>
+</tr>
+<tr class="even">
+<td><br />
+* Texto 1<br />
+* Texto 2<br />
+* Texto 3<br />
+* Texto 4</td>
+<td><ul>
+<li><p>Texto 1</p></li>
+<li><p>Texto 2</p></li>
+<li><p>Texto 3</p></li>
+<li><p>Texto 4</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<div id="tablas" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Tablas</h3>
+<ul>
+<li>Se pueden hacer tablas rápidamente usando barras verticales (|) y
+guiones medios (-)</li>
+<li>Para entender mejor cómo crear tablas veamos el siguiente ejemplo:</li>
+</ul>
+<p>Para crear la siguiente tabla:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Edad</th>
+<th>Nacimientos</th>
+<th>Mujeres</th>
+<th>TFR por 1000</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20</td>
+<td>20</td>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr class="even">
+<td>21</td>
+<td>25</td>
+<td>100</td>
+<td>250</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>30</td>
+<td>100</td>
+<td>300</td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td>35</td>
+<td>100</td>
+<td>350</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>40</td>
+<td>100</td>
+<td>400</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>150</td>
+<td>500</td>
+<td>1500</td>
+</tr>
+<tr class="odd">
+<td>20-24</td>
+<td>150</td>
+<td>500</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<p>Debemos usar el siguiente código.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb73-1"><a href="reportes-con-r-markdown.html#cb73-1" aria-hidden="true" tabindex="-1"></a>| Edad  | Nacimientos | Mujeres | TFR por 1000 |</span>
+<span id="cb73-2"><a href="reportes-con-r-markdown.html#cb73-2" aria-hidden="true" tabindex="-1"></a>|-------|-------------|---------|--------------|</span>
+<span id="cb73-3"><a href="reportes-con-r-markdown.html#cb73-3" aria-hidden="true" tabindex="-1"></a>| 20    | 20          | 100     | 200          |</span>
+<span id="cb73-4"><a href="reportes-con-r-markdown.html#cb73-4" aria-hidden="true" tabindex="-1"></a>| 21    | 25          | 100     | 250          |</span>
+<span id="cb73-5"><a href="reportes-con-r-markdown.html#cb73-5" aria-hidden="true" tabindex="-1"></a>| 22    | 30          | 100     | 300          |</span>
+<span id="cb73-6"><a href="reportes-con-r-markdown.html#cb73-6" aria-hidden="true" tabindex="-1"></a>| 23    | 35          | 100     | 350          |</span>
+<span id="cb73-7"><a href="reportes-con-r-markdown.html#cb73-7" aria-hidden="true" tabindex="-1"></a>| 24    | 40          | 100     | 400          |</span>
+<span id="cb73-8"><a href="reportes-con-r-markdown.html#cb73-8" aria-hidden="true" tabindex="-1"></a>| Total | 150         | 500     | 1500         |</span>
+<span id="cb73-9"><a href="reportes-con-r-markdown.html#cb73-9" aria-hidden="true" tabindex="-1"></a>| 20-24 | 150         | 500     | 300          |</span></code></pre></div>
+</div>
+</div>
+<div id="chunks" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Chunks</h2>
+<ul>
+<li>La siguiente estructura es un “chunk” de R.</li>
+</ul>
+<p>```{r}</p>
+<p>```</p>
+<ul>
+<li>Dentro podemos escribir código en en lenguaje que especifiquemos en
+la llave {}.</li>
+</ul>
+<p>Esto es un chunk con código de Python:</p>
+<p>```{python} <br> for i in range(3): <br> <span class="math inline">\(\ \ \ \ \)</span> print(i) <br> ```</p>
+<ul>
+<li>Podemos nombrar un chunk para trabajar con más orden:</li>
+</ul>
+<p>```{r IMPORTAR DATOS}</p>
+<p>data &lt;- rio::import(“datos.csv”)</p>
+<p>```</p>
+<div id="parámetros-de-un-chunk" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Parámetros de un chunk</h3>
+<p>Dentro de las llaves pueden ir los siguientes parámetros:</p>
+<ul>
+<li><code>echo</code>: Cuando el argumento es FALSE, muestra el output pero no el
+código.</li>
+<li><code>include</code>: Cuando es FALSE, no muestra ni el código ni el output.</li>
+<li><code>result</code>: Cuando es FALSE, muestra el código pero no el resultado.</li>
+<li><code>message</code>: Cuando es FALSE, no muestra mensajes provocados por la
+ejecución del código.</li>
+<li><code>warning</code>: Cuando es FALSE, no muestra advertencias provocadas por
+el código.</li>
+<li><code>fig.align</code>: Puede recibir como argumentos a “center,” “right” y
+“left.”</li>
+</ul>
+<p>Pueden ver más opciones en este
+<a href="https://yihui.org/knitr/options/">enlace</a>.</p>
+<p>Ejemplo:</p>
+<p>```{r GRAFICO 1, echo=FALSE, fig.align = “center”}</p>
+<p>ggplot(iris) + <br>
+<span class="math inline">\(\ \ \ \ \)</span> aes(Sepal.Length, Petal.Length) + <br>
+<span class="math inline">\(\ \ \ \ \)</span> geom_point(color = “brown4”)</p>
+<p>```</p>
+<p>Mostrará en el output un gráfico centrado, pero no el código que lo
+produce.</p>
+</div>
+<div id="el-chunk-setup" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> El chunk “setup”</h3>
+<ul>
+<li><p>Al crear un archivo R Markdown, se creará un chunk por defecto,
+abajo de la estructura YAML, llamado “setup” y tendrá como parámetro
+<code>include=FALSE</code>.</p></li>
+<li><p>Es muy importante, ya que incluye las configuraciones iniciales de
+los chunks.</p></li>
+<li><p>Dentro de la función <code>knitr::opts_chunk$set</code>, podemos escribir
+nuevos parámetros que se aplicarán a TODOS los chunks.</p></li>
+</ul>
+<p>Ejemplo:</p>
+<p>``` {r setup, include=FALSE}<br> knitr::opts_chunk$set(echo = TRUE,
+message = FALSE, warning = FALSE, fig.align = “center”) <br>
+```</p>
+<p>Además, podemos agregar los packages que usaremos durante la utilización
+de R Markdown:</p>
+<p>```{r setup, include=FALSE} <br> knitr::opts_chunk$set(echo = TRUE,
+message = FALSE, warning = FALSE, fig.align = “center,” comment = NA)</p>
+<p># Packages <br> require(tidyverse) <br> require(DT) <br>
+```</p>
+</div>
+<div id="chunks-inline" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Chunks inline</h3>
+<ul>
+<li>Son bastante útiles, nos permite usar un lenguaje de programación
+mientras escribimos.</li>
+<li>Su uso se debe hacer mediante acentos graves (` `)</li>
+<li>Debemos especificar el lenguaje que usaremos antes de usar código.</li>
+</ul>
+<p>Ejemplo:</p>
+<p>La media entre los números 2, 4 y 12 es ` r mean(c(2, 4, 12)) `.</p>
+<p>Producirá:</p>
+<p>La media entre los números 2, 4 y 12 es 6.</p>
+<ul>
+<li>Podemos llamar variables creadas anteriormente en el código.
+Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="reportes-con-r-markdown.html#cb74-1" aria-hidden="true" tabindex="-1"></a>media_Petal.Length <span class="ot">&lt;-</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">%&gt;%</span> mean</span></code></pre></div>
+<p>La media del largo de los pétalos de iris es ` r media_Petal.Length `.
+<br> La media del largo de los pétalos de iris es
+5.8433.</p>
+</div>
+</div>
+<div id="tablas-desde-r" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Tablas desde R</h2>
+<ul>
+<li>En html, la mejor opción es usar la función <code>reactable</code> del package
+`reactable``, ya que es una opción interactiva.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="reportes-con-r-markdown.html#cb75-1" aria-hidden="true" tabindex="-1"></a>grupos_iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="reportes-con-r-markdown.html#cb75-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-3"><a href="reportes-con-r-markdown.html#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">max_Sepal.Length =</span> <span class="fu">max</span>(Sepal.Length))</span>
+<span id="cb75-4"><a href="reportes-con-r-markdown.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># require(DT)</span></span>
+<span id="cb75-5"><a href="reportes-con-r-markdown.html#cb75-5" aria-hidden="true" tabindex="-1"></a>grupos_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb75-6"><a href="reportes-con-r-markdown.html#cb75-6" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
+<div id="htmlwidget-121038299e72eb61b44b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-121038299e72eb61b44b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Species":["setosa","versicolor","virginica"],"max_Sepal.Length":[5.8,7,7.9]},"columns":[{"accessor":"Species","name":"Species","type":"factor"},{"accessor":"max_Sepal.Length","name":"max_Sepal.Length","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"8e87fb0cdad045d79630c336c13d6323","key":"8e87fb0cdad045d79630c336c13d6323"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>En formatos pdf, la mejor opción es usar la función <code>kable</code> del
+package <code>knitr</code>.</li>
+</ul>
+<p>Ejemplo</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="reportes-con-r-markdown.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># require(knitr)</span></span>
+<span id="cb76-2"><a href="reportes-con-r-markdown.html#cb76-2" aria-hidden="true" tabindex="-1"></a>grupos_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb76-3"><a href="reportes-con-r-markdown.html#cb76-3" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Species</th>
+<th align="right">max_Sepal.Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">setosa</td>
+<td align="right">5.8</td>
+</tr>
+<tr class="even">
+<td align="left">versicolor</td>
+<td align="right">7.0</td>
+</tr>
+<tr class="odd">
+<td align="left">virginica</td>
+<td align="right">7.9</td>
+</tr>
+</tbody>
+</table>
+<p>Les invitamos a aprender más sobre tablas en el siguiente
+<a href="https://bookdown.org/yihui/rmarkdown-cookbook/tables.html">link</a>.</p>
+</div>
+<div id="imágenes" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Imágenes</h2>
+<p>Podemos cargar imágenes usando la función <code>include_graphics</code> del package
+<code>knitr</code>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="reportes-con-r-markdown.html#cb77-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;images&quot;</span>, <span class="st">&quot;ejemplo.jpg&quot;</span>))</span></code></pre></div>
+<p><img src="images/ejemplo.jpg" width="900" style="display: block; margin: auto;" /></p>
+</div>
+<div id="reportes-automáticos" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Reportes automáticos</h2>
+<ul>
+<li>Se puede crear un “template,” e ir cambiando el argumento <code>params</code>.</li>
+<li><code>params</code> es un parámetro de la estructura YAML.</li>
+<li>Muy útil para la generación de reportes automáticos.</li>
+</ul>
+<p>Ejemplo:</p>
+<p>--- <br> title: “Taller de Software Estadístico” <br> subtitle: “Módulo
+3” <br> author: “CA FMAT &amp; CEFMAT” <br> date: “17 de febrero” <br>
+output: html_document <br> params: <br> <span class="math inline">\(\ \ \)</span>especie: “setosa” <br> ---</p>
+<p>Creemos un histograma para la variable <code>Sepal.Length</code>, para la especie
+“setosa” de iris.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="reportes-con-r-markdown.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(magrittr)</span>
+<span id="cb78-2"><a href="reportes-con-r-markdown.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb78-3"><a href="reportes-con-r-markdown.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb78-4"><a href="reportes-con-r-markdown.html#cb78-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="reportes-con-r-markdown.html#cb78-5" aria-hidden="true" tabindex="-1"></a>iris_especie_Sepal.Length <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb78-6"><a href="reportes-con-r-markdown.html#cb78-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Species <span class="sc">==</span> params<span class="sc">$</span>especie)</span>
+<span id="cb78-7"><a href="reportes-con-r-markdown.html#cb78-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb78-8"><a href="reportes-con-r-markdown.html#cb78-8" aria-hidden="true" tabindex="-1"></a>grafico_especie <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(iris_especie_Sepal.Length) <span class="sc">+</span></span>
+<span id="cb78-9"><a href="reportes-con-r-markdown.html#cb78-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length) <span class="sc">+</span></span>
+<span id="cb78-10"><a href="reportes-con-r-markdown.html#cb78-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&quot;dodgerblue3&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;dodgerblue4&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb78-11"><a href="reportes-con-r-markdown.html#cb78-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Sepal Length&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frecuencia&quot;</span>, </span>
+<span id="cb78-12"><a href="reportes-con-r-markdown.html#cb78-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma de Sepal Lenth para la especie&quot;</span>, params<span class="sc">$</span>especie, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)) <span class="sc">+</span></span>
+<span id="cb78-13"><a href="reportes-con-r-markdown.html#cb78-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>()</span>
+<span id="cb78-14"><a href="reportes-con-r-markdown.html#cb78-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-15"><a href="reportes-con-r-markdown.html#cb78-15" aria-hidden="true" tabindex="-1"></a>grafico_especie <span class="sc">%&gt;%</span></span>
+<span id="cb78-16"><a href="reportes-con-r-markdown.html#cb78-16" aria-hidden="true" tabindex="-1"></a>    plotly<span class="sc">::</span><span class="fu">ggplotly</span>()</span></code></pre></div>
+<div id="htmlwidget-b80d4729e229245e5b5e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b80d4729e229245e5b5e">{"x":{"data":[{"orientation":"v","width":[0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[4.29310344827586,4.3448275862069,4.39655172413793,4.44827586206896,4.5,4.55172413793103,4.60344827586207,4.6551724137931,4.70689655172414,4.75862068965517,4.81034482758621,4.86206896551724,4.91379310344828,4.96551724137931,5.01724137931034,5.06896551724138,5.12068965517241,5.17241379310345,5.22413793103448,5.27586206896552,5.32758620689655,5.37931034482759,5.43103448275862,5.48275862068965,5.53448275862069,5.58620689655172,5.63793103448276,5.68965517241379,5.74137931034483,5.79310344827586],"y":[1,0,3,0,1,0,4,0,2,0,5,0,4,0,8,0,8,0,3,1,0,5,0,2,0,0,0,2,0,1],"text":["count: 1<br />Sepal.Length: 4.293","count: 0<br />Sepal.Length: 4.345","count: 3<br />Sepal.Length: 4.397","count: 0<br />Sepal.Length: 4.448","count: 1<br />Sepal.Length: 4.500","count: 0<br />Sepal.Length: 4.552","count: 4<br />Sepal.Length: 4.603","count: 0<br />Sepal.Length: 4.655","count: 2<br />Sepal.Length: 4.707","count: 0<br />Sepal.Length: 4.759","count: 5<br />Sepal.Length: 4.810","count: 0<br />Sepal.Length: 4.862","count: 4<br />Sepal.Length: 4.914","count: 0<br />Sepal.Length: 4.966","count: 8<br />Sepal.Length: 5.017","count: 0<br />Sepal.Length: 5.069","count: 8<br />Sepal.Length: 5.121","count: 0<br />Sepal.Length: 5.172","count: 3<br />Sepal.Length: 5.224","count: 1<br />Sepal.Length: 5.276","count: 0<br />Sepal.Length: 5.328","count: 5<br />Sepal.Length: 5.379","count: 0<br />Sepal.Length: 5.431","count: 2<br />Sepal.Length: 5.483","count: 0<br />Sepal.Length: 5.534","count: 0<br />Sepal.Length: 5.586","count: 0<br />Sepal.Length: 5.638","count: 2<br />Sepal.Length: 5.690","count: 0<br />Sepal.Length: 5.741","count: 1<br />Sepal.Length: 5.793"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(16,78,139,0.7)","line":{"width":1.88976377952756,"color":"rgba(24,116,205,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":31.4155251141553},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Histograma de Sepal Lenth para la especie setosa","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[4.18965517241379,5.89655172413793],"tickmode":"array","ticktext":["4.5","5.0","5.5"],"tickvals":[4.5,5,5.5],"categoryorder":"array","categoryarray":["4.5","5.0","5.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Sepal Length","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.4,8.4],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Frecuencia","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"32f855862ded":{"x":{},"type":"bar"}},"cur_data":"32f855862ded","visdat":{"32f855862ded":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="actividad-6" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Actividad</h2>
+<p>Genere un reporte automático en R Markdown (formato html) que describa
+la situación en enero de 2021 respecto al coronavirus en Argentina, Chile y Perú. ¡Use toda su imaginación!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="gráficos-estáticos-con-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mis-proyectos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
