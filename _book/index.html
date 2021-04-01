@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Primer Bookdown</title>
+  <meta name="description" content="Invite JavaScript into your Data Science workflow." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Primer Bookdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Invite JavaScript into your Data Science workflow." />
+  <meta name="github-repo" content="JohnCoene/javascript-for-r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Primer Bookdown" />
+  
+  <meta name="twitter:description" content="Invite JavaScript into your Data Science workflow." />
+  
+
+<meta name="author" content="Esteban Rucán" />
+
+
+<meta name="date" content="2021-04-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
+<meta property="og:title" content="JavaScript for R">
+<meta property="og:description" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta property="og:image" content="https://book.javascript-for-r.com/images/social.png">
+<meta property="og:url" content="https://book.javascript-for-r.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="JavaScript for R">
+<meta name="twitter:image:alt" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta name="twitter:site" content="@jdatap">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Firt Bookdown</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#premise"><i class="fa fa-check"></i>Premise</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#book-structure"><i class="fa fa-check"></i>Book Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgement"><i class="fa fa-check"></i>Acknowledgement</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Primer Bookdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Primer Bookdown</h1>
+<p class="author"><em>Esteban Rucán</em></p>
+<p class="date"><em>2021-04-01</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>The R programming language has seen the integration of many languages; C, C++, Python, to name a few, can be seamlessly embedded into R so one can conveniently call code written in other languages from the R console. Little known to many, R works just as well with JavaScript—this book delves into the various ways both languages can work together.</p>
+<p>The ultimate aim of this work is to demonstrate to the reader the many great benefits one can reap by inviting JavaScript into their data science workflow. In that respect, the book is not teaching one JavaScript but instead demonstrates how little JavaScript can significantly support and enhance R code. Therefore the focus is on integrating external JavaScript libraries and only limited knowledge of JavaScript is required in order to learn from the book. Moreover, the book focuses on generalisable learnings so the reader can transfer takeaways from the book to solve real-world problems.</p>
+<p>Throughout the book, several shiny applications and R packages are put together as examples. All of these, along with the code for the entire book, can be found on the Github repository: <a href="https://github.com/JohnCoene/javascript-for-r">github.com/JohnCoene/javascript-for-r</a>.</p>
+<div id="premise" class="section level2 unnumbered">
+<h2>Premise</h2>
+<p>The R programming language has been propelled into web browsers with the introduction of packages such as <a href="https://shiny.rstudio.com/">shiny</a> <span class="citation">(<a href="references.html#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span> and <a href="https://rmarkdown.rstudio.com/">rmarkdown</a> <span class="citation">(<a href="references.html#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2021</a>)</span> which have greatly improved how R users can communicate complex insights by building interactive web applications and interactive documents. Yet most R developers are not familiar with one of web browsers’ core technology: JavaScript. This book aims to remedy that by revealing how much JavaScript can greatly enhance various stages of data science pipelines from the analysis to the communication of results.</p>
+<p>Notably, the focus of the book truly is the integration of JavaScript with R, where both languages either actively interact with one another, or where JavaScript enables doing things otherwise not accessible to R users. It is not merely about including JavaScript code that works alongside R.</p>
+</div>
+<div id="book-structure" class="section level2 unnumbered">
+<h2>Book Structure</h2>
+<ol style="list-style-type: decimal">
+<li><p>The book opens with an introduction to illustrate its premise better, it provides rationales for using JavaScript in conjunction with R which it supports with existing R packages that make use of JavaScript and are available on CRAN. Then it briefly describes concepts essential to understanding the rest of the book to ensure the reader can follow along. Finally, this part closes by listing the various methods with which one might make JavaScript work with R.</p></li>
+<li><p>We explore existing integrations of JavaScript and R namely by exploring packages to grasp how these tend to work and the interface to JavaScript they provide.</p></li>
+<li><p>A sizeable part of the book concerns data visualisation, it plunges into creating interactive outputs with the htmlwidgets package. This opens with a brief overview of how it works and libraries that make great candidates to integrate with the htmlwidgets package. Then a first, admittedly unimpressive, widget is built to look under the hood and observe the inner-workings of such outputs to grasp a better understanding of how htmlwidgets work. Next, we tackle a more substantial library that allows drawing arcs between countries on a 3D globe, which we cover in great depth. The last two chapters go into more advanced topics, such as security and resizing.</p></li>
+<li><p>The fourth part of the book details how JavaScript can work with Shiny. Once the basics out of the way, the second chapter builds the first utility to display notifications programmatically. Then we create a shiny application that runs an image classification algorithm in the browser. This is then followed by the creation of custom shiny inputs and outputs. Finally, shiny and htmlwidgets are (literally) connected by including additional functionalities in interactive visualisations when used with the shiny framework.</p></li>
+<li><p>Then the book delves into using JavaScript for computations, namely via the V8 engine and node.js. After a short introduction, chapters will walk the reader through various examples: a fuzzy search, a time format converter, and some basic natural language operations.</p></li>
+<li><p>Finally, we look at how one can use some of the more modern JavaScript technologies such as Vue, React, and webpack with R—these can make the use of JavaScript more agile and robust.</p></li>
+<li><p>Next the book closes with examples of all the integrations explored previously. This involves recreating (a part of) the plotly package, building an image classifier, adding progress bars to a shiny application, building an app with HTTP cookies and running basic machine learning operations in JavaScript.</p></li>
+<li><p>Finally, the book concludes with some noteworthy remarks on where to go next.</p></li>
+</ol>
+</div>
+<div id="acknowledgement" class="section level2 unnumbered">
+<h2>Acknowledgement</h2>
+<p>Many people in the R community have inspired me and provided the knowledge to write this book, amongst them ultimately are <a href="https://github.com/ramnathv/">Ramnath Vaidyanathan</a> for his amazing work on the htmlwidgets <span class="citation">(<a href="references.html#ref-R-htmlwidgets" role="doc-biblioref">Vaidyanathan et al. 2020</a>)</span> package, <a href="https://github.com/timelyportfolio">Kent Russell</a> from whom I have learned a lot via his work on making Vue and React accessible in R, and <a href="https://github.com/cpsievert">Carson Sievert</a> for pioneering probably the most popular integration of R and JavaScript with the plotly <span class="citation">(<a href="references.html#ref-R-plotly" role="doc-biblioref">Sievert et al. 2021</a>)</span> package.</p>
+<p>Early reviewers also shared precious feedback that helped make the book dramatically better, thanks to <a href="@mayacelium">Maya Gans</a>, <a href="@felipe_mattioni">Felipe Mattioni Maturana</a>, and <a href="@Wei_Su">Wei Su</a> for thoroughly going through every line of the book.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://estebanrucan.github.io/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

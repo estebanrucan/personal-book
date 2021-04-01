@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Ubuntu+Mono:ital@0;1&display=swap');
+
+body, div, p, h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
+code, pre{
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+.sourceCode{
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+  -webkit-box-shadow: 0px 8px 5px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 8px 5px -8px rgba(0,0,0,0.75);
+  box-shadow: 0px 8px 5px -8px rgba(0,0,0,0.75);
+}
+pre code {
+  white-space: inherit;
+}
+
+section.normal strong {
+  color: #0462a1;
+}
+
+section.normal h1  {
+  color: #0462a1;
+}
+
+section.normal h2  {
+  color: #0462a1;
+}
+
+section.normal h3  {
+  color: #0462a1;
+}
+
+section.normal h4  {
+  color: #0462a1;
+}
+
+section.normal h5  {
+  color: #0462a1;
+}
+
+section.normal h6  {
+  color: #0462a1;
+}
+
+.btn-default {
+  border-style: solid;
+}
+
+.btn {
+  background-color: #0462a1; 
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.book-header.fixed a:link { 
+  background-color:#FFF;
+  color: #0462a1
+}
+.book-header.fixed a:visited{ 
+  background-color:#FFF;
+  color: #0462a1
+}
+.book-header.fixed a:hover{ 
+  background-color:#FFF;
+  color: #0462a1
+}
+.book-header.fixed a:active{ 
+  background-color:#FFF;
+  color: #0462a1
+}
+.book-header { 
+  border-color: #fff!important;
+}
+
+.page-wrapper a:link { color: #0462a1 !important; }
+.page-wrapper a:visited { color: #0462a1 !important; }
+.page-wrapper a:hover { color: #0462a1 !important; }
+.page-wrapper a:active { color: #0462a1 !important; }
+
+.dropdown-menu .buttons .button {
+    color: #0462a1;
+}
+
+/* notes */
+.rmdnote {
+  background-color: #f5f5f5;
+  margin: 2em 0;
+  padding: 12px 24px 12px 30px;
+  position: relative;
+  border-bottom: hidden;
+  border-top: hidden;
+  border-right: hidden;
+}
+
+.rmdnote{
+  border-left: 4px solid #0462a1;
+}
+
+.rmdnote:before{
+  background-color: #0462a1;
+  border-radius: 100%;
+  color: #fff;
+  content: "!";
+  font-size: 14px;
+  font-weight: 700;
+  left: -12px;
+  line-height: 20px;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  top: 14px;
+}
