@@ -1,5 +1,5 @@
 --- 
-title: "Libro personal de apuntes"
+title: "Libro Personal de Apuntes"
 author: "Hecho por Esteban Rucán Carrasco"
 documentclass: krantz
 bibliography: [book.bib, packages.bib]

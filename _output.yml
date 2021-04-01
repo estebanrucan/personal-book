@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">Libro Personal</a></li>
+        <li><a href="./">Libro Personal de Apuntes</a></li>
     sharing:
       facebook: no
       twitter: no
