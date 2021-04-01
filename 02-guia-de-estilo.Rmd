@@ -84,12 +84,12 @@ for (i in 1:5) {
 
 ```{r eval=FALSE}
 # Mal
-notas_epg3308 <- c(NA,6.5,7,5.2)
-promedio_de_notas <- mean(notas_epg3308,na.rm = TRUE)
+notas_finales <- c(NA,6.5,7,5.2)
+promedio_de_notas <- mean(notas_finales,na.rm = TRUE)
 
 # Bien
-notas_epg3308 <- c(NA, 6.5, 7, 5.2)
-promedio_de_notas <- mean(notas_epg3308, na.rm = TRUE)
+notas_finales <- c(NA, 6.5, 7, 5.2)
+promedio_de_notas <- mean(notas_finales, na.rm = TRUE)
 ```
 
 ## Punto y coma

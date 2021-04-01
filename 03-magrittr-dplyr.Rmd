@@ -5,7 +5,7 @@ require(magrittr)
 require(dplyr)
 ```
 
-# Transformación de datos
+# Transformación de datos con Tidyverse
 
 * En esta sección se hablo sobre algunas nociones básicas de transformación de datos. 
 * Puedes acceder a una clase en video que realicé sobre este tema en el siguiente [link]() 
