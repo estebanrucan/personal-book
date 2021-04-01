@@ -50,6 +50,12 @@
 
 
 
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
 <script>
@@ -154,16 +160,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
 <ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
-<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
-<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>3.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="3.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#el-package-magrittr"><i class="fa fa-check"></i><b>3.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#ejemplos"><i class="fa fa-check"></i><b>3.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#section-2"><i class="fa fa-check"></i><b>3.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#el-package-dplyr"><i class="fa fa-check"></i><b>3.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#filter"><i class="fa fa-check"></i><b>3.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#group_by-summarize"><i class="fa fa-check"></i><b>3.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#mutate"><i class="fa fa-check"></i><b>3.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#arrange"><i class="fa fa-check"></i><b>3.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#select"><i class="fa fa-check"></i><b>3.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#actividades"><i class="fa fa-check"></i><b>3.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#solución"><i class="fa fa-check"></i><b>3.4.1</b> Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>4</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -185,11 +224,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-xie2015" class="csl-entry">
-Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
-</div>
-</div>
 </div>
             </section>
 
@@ -247,6 +281,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

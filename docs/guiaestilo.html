@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 Guía de Estilo | Libro Personal de Apuntes</title>
+  <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 Guía de Estilo | Libro Personal de Apuntes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="github-repo" content="estebanrucan/personal-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 Guía de Estilo | Libro Personal de Apuntes" />
+  
+  <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  
+
+<meta name="author" content="Hecho por Esteban Rucán Carrasco" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="recomendaciones.html"/>
+<link rel="next" href="transformación-de-datos.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74544116-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74544116-1');
+</script>
+<meta property="og:title" content="JavaScript for R">
+<meta property="og:description" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta property="og:image" content="https://book.javascript-for-r.com/images/social.png">
+<meta property="og:url" content="https://book.javascript-for-r.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="JavaScript for R">
+<meta name="twitter:image:alt" content="Book on using JavaScript with R for visualisations, web development, and computations.">
+<meta name="twitter:site" content="@jdatap">
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Libro Personal de Apuntes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html"><i class="fa fa-check"></i><b>3</b> Transformación de datos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>3.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="3.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#el-package-magrittr"><i class="fa fa-check"></i><b>3.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#ejemplos"><i class="fa fa-check"></i><b>3.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="3.2.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#section-2"><i class="fa fa-check"></i><b>3.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#el-package-dplyr"><i class="fa fa-check"></i><b>3.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#filter"><i class="fa fa-check"></i><b>3.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#group_by-summarize"><i class="fa fa-check"></i><b>3.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="3.3.3" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#mutate"><i class="fa fa-check"></i><b>3.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="3.3.4" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#arrange"><i class="fa fa-check"></i><b>3.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="3.3.5" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#select"><i class="fa fa-check"></i><b>3.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#actividades"><i class="fa fa-check"></i><b>3.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="transformación-de-datos.html"><a href="transformación-de-datos.html#solución"><i class="fa fa-check"></i><b>3.4.1</b> Solución</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>4</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Libro Personal de Apuntes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="guiaestilo" class="section level1" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> Guía de Estilo</h1>
+<ul>
+<li>Esta guía la realice con el fin de que puedas programar tu código de la forma más ordenada posible, logrando que sea comprensible por los demás.</li>
+<li>Puedes inventar tus propias reglas, para acostumbrarte a programar bajo diferentes normas.</li>
+<li>Basada en la guía de estilo de <code>tidyverse</code> y <code>PEP 8</code>.</li>
+</ul>
+<div id="directorio" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Directorio</h2>
+<ul>
+<li>Siempre usaremos un directorio que nos aporte una ruta relativa.</li>
+<li>Lo haremos a través de la creación de proyectos.</li>
+</ul>
+</div>
+<div id="archivos-del-directorio" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Archivos del directorio</h2>
+<ul>
+<li>Los archivos del directorio serán nombrados usando guiones medios o guiones bajos en vez de espacios y letras minúsculas.</li>
+<li>Tampoco usaremos caracteres especiales como los tildes.</li>
+<li>Usaremos fecha de creación (en formato ISO 8601) y nombres explicativos.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="guiaestilo.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardamos un archivo &#39;csv&#39; en el directorio</span></span>
+<span id="cb1-2"><a href="guiaestilo.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb1-3"><a href="guiaestilo.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb1-4"><a href="guiaestilo.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iris, <span class="st">&#39;base.csv&#39;</span>)</span>
+<span id="cb1-5"><a href="guiaestilo.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="guiaestilo.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb1-7"><a href="guiaestilo.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb1-8"><a href="guiaestilo.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iris, <span class="st">&#39;2021-03-26_iris-sin-procesar.csv&#39;</span>)</span></code></pre></div>
+</div>
+<div id="asignación-de-variables" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Asignación de variables</h2>
+<ul>
+<li>Usaremos el formato <code>snake_case</code> para nombrar variables, o sea, escritas en minúsculas, sin caracteres especiales (como el punto) y creando espacios mediante guiones bajos.</li>
+<li>Para asignar variables usaremos el operador <code>&lt;-</code> en vez de <code>=</code>. Solo usaremos <code>=</code> para definir argumentos dentro de funciones.</li>
+<li>Preferiremos nombres de variables informativos.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="guiaestilo.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb2-2"><a href="guiaestilo.html#cb2-2" aria-hidden="true" tabindex="-1"></a>String.Hola <span class="ot">=</span> <span class="st">&#39;Hola mundo&#39;</span></span>
+<span id="cb2-3"><a href="guiaestilo.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="guiaestilo.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb2-5"><a href="guiaestilo.html#cb2-5" aria-hidden="true" tabindex="-1"></a>string_hola <span class="ot">&lt;-</span> <span class="st">&#39;Hola mundo&#39;</span></span></code></pre></div>
+</div>
+<div id="operadores" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Operadores</h2>
+<ul>
+<li>Siempre usaremos espacios a los lados de los operadores.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="guiaestilo.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb3-2"><a href="guiaestilo.html#cb3-2" aria-hidden="true" tabindex="-1"></a>suma<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span><span class="dv">5</span><span class="sc">+</span><span class="dv">2</span><span class="sc">&lt;=</span><span class="dv">24</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-3"><a href="guiaestilo.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="guiaestilo.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb3-5"><a href="guiaestilo.html#cb3-5" aria-hidden="true" tabindex="-1"></a>suma <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">&lt;=</span> <span class="dv">24</span> <span class="sc">^</span> <span class="dv">2</span></span></code></pre></div>
+</div>
+<div id="paréntesis" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Paréntesis</h2>
+<ul>
+<li>Para las funciones <code>for</code>, <code>while</code>, <code>function</code>, <code>if</code> y <code>else if</code> antepondremos un espacio antes de usar paréntesis.</li>
+<li>Después de cerrar paréntesis en estas funciones, haremos un espacio y pondremos solo la llave de apertura en la misma línea, y abajo pondremos la llave de cierre.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="guiaestilo.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb4-2"><a href="guiaestilo.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){<span class="fu">runif</span>(i)</span>
+<span id="cb4-3"><a href="guiaestilo.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)}</span>
+<span id="cb4-4"><a href="guiaestilo.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="guiaestilo.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb4-6"><a href="guiaestilo.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb4-7"><a href="guiaestilo.html#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">runif</span>(i)</span>
+<span id="cb4-8"><a href="guiaestilo.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb4-9"><a href="guiaestilo.html#cb4-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="comas" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Comas</h2>
+<ul>
+<li>Después de escribir una coma, adicionamos un espacio.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="guiaestilo.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb5-2"><a href="guiaestilo.html#cb5-2" aria-hidden="true" tabindex="-1"></a>notas_epg3308 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="fl">6.5</span>,<span class="dv">7</span>,<span class="fl">5.2</span>)</span>
+<span id="cb5-3"><a href="guiaestilo.html#cb5-3" aria-hidden="true" tabindex="-1"></a>promedio_de_notas <span class="ot">&lt;-</span> <span class="fu">mean</span>(notas_epg3308,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="guiaestilo.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="guiaestilo.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb5-6"><a href="guiaestilo.html#cb5-6" aria-hidden="true" tabindex="-1"></a>notas_epg3308 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="fl">6.5</span>, <span class="dv">7</span>, <span class="fl">5.2</span>)</span>
+<span id="cb5-7"><a href="guiaestilo.html#cb5-7" aria-hidden="true" tabindex="-1"></a>promedio_de_notas <span class="ot">&lt;-</span> <span class="fu">mean</span>(notas_epg3308, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="punto-y-coma" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Punto y coma</h2>
+<ul>
+<li>No usaremos una linea para realizar más de una ejecución usando <code>;</code>.</li>
+<li>Ejemplo</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="guiaestilo.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb6-2"><a href="guiaestilo.html#cb6-2" aria-hidden="true" tabindex="-1"></a>valores_aleatorios <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>); <span class="fu">mean</span>(valores_aleatorios)</span>
+<span id="cb6-3"><a href="guiaestilo.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="guiaestilo.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb6-5"><a href="guiaestilo.html#cb6-5" aria-hidden="true" tabindex="-1"></a>valores_aleatorios <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
+<span id="cb6-6"><a href="guiaestilo.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(valores_aleatorios)</span></code></pre></div>
+</div>
+<div id="packages" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Packages</h2>
+<ul>
+<li>Declararemos explícitamente los nombres de los packages de procedencia al momento de usar una función, a excepción de los packages que se cargan automáticamente al iniciar <code>R</code> y packages que permiten utilizar pipes (por ejemplo: <code>%&gt;%</code>).</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="guiaestilo.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb7-2"><a href="guiaestilo.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="guiaestilo.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb7-4"><a href="guiaestilo.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(magrittr)</span>
+<span id="cb7-5"><a href="guiaestilo.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="cb7-6"><a href="guiaestilo.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="guiaestilo.html#cb7-7" aria-hidden="true" tabindex="-1"></a>filtro_sepal_length <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="guiaestilo.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;=</span> <span class="fl">7.4</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="guiaestilo.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Sepal.Length)</span>
+<span id="cb7-10"><a href="guiaestilo.html#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="guiaestilo.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb7-12"><a href="guiaestilo.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(magrittr)</span>
+<span id="cb7-13"><a href="guiaestilo.html#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="guiaestilo.html#cb7-14" aria-hidden="true" tabindex="-1"></a>filtro_sepal_length <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb7-15"><a href="guiaestilo.html#cb7-15" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;=</span> <span class="fl">7.4</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-16"><a href="guiaestilo.html#cb7-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(Sepal.Length)</span></code></pre></div>
+</div>
+<div id="cantidad-de-código-por-fila" class="section level2" number="2.9">
+<h2><span class="header-section-number">2.9</span> Cantidad de código por fila</h2>
+<ul>
+<li>Esta no debe exceder los 80 caracteres (es posible añadir una línea vertical a RStudio para tener una referencia de los 80 caracteres).</li>
+<li>Algunas buenas prácticas es separar en líneas los argumentos de una función, o separar en líneas la utilización de pipes.</li>
+<li>Ejemplo:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="guiaestilo.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mal</span></span>
+<span id="cb8-2"><a href="guiaestilo.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(magrittr)</span>
+<span id="cb8-3"><a href="guiaestilo.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="guiaestilo.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb8-5"><a href="guiaestilo.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="guiaestilo.html#cb8-6" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;=</span> <span class="dv">7</span>) <span class="sc">%$%</span> <span class="fu">plot</span>(<span class="at">x =</span> Sepal.Length, <span class="at">y =</span> Sepal.Width, <span class="at">main =</span> <span class="st">&#39; Gráfico de Sepal&#39;</span>)</span>
+<span id="cb8-7"><a href="guiaestilo.html#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="guiaestilo.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Bien</span></span>
+<span id="cb8-9"><a href="guiaestilo.html#cb8-9" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="guiaestilo.html#cb8-10" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(Sepal.Length <span class="sc">&gt;=</span> <span class="dv">7</span>) <span class="sc">%$%</span> </span>
+<span id="cb8-11"><a href="guiaestilo.html#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="at">x =</span> Sepal.Length,</span>
+<span id="cb8-12"><a href="guiaestilo.html#cb8-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> Sepal.Width, </span>
+<span id="cb8-13"><a href="guiaestilo.html#cb8-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">main =</span> <span class="st">&#39; Gráfico de Sepal&#39;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="recomendaciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transformación-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

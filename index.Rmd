@@ -17,15 +17,14 @@ github-repo: estebanrucan/personal-book
 graphics: yes
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, eval=TRUE}
 library(knitr)
 
 opts_chunk$set( 
   comment = "",
   fig.align = "center", 
-  # https://github.com/gadenbuie/grkstyle
   tidy = FALSE, 
-  tidy.opts=list(width.cutoff = 10)
+  tidy.opts = list(width.cutoff = 10)
 )
 
 options(
@@ -74,3 +73,8 @@ Agradezco que hayas ingresado a mi libro personal. En él encontrarás apuntes d
 
 El libro contiene apuntes enfocados principalmente en el lenguaje `R`, por lo que la mayoría de su contenido esta enfocado en este. Podrás navegar entre diversos tópicos sobre el lenguaje desde la barra lateral. También está habilitado un modo oscuro y un selector de fuente.
 
+## Agradecimientos
+
+Sin duda, todos los conocimietos que tengo de `R` se los debo a los docentes que me han realizado clases, en conjunto a muchas plataformas para practicar el software.
+
+En la próxima página encontrarás algunas páginas y libros interesantes, todo libre de *Copyright*.
