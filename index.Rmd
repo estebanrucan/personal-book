@@ -71,12 +71,14 @@ Hola, mi nombre es Esteban Rucán, actual estudiante de cuarto año de la carrer
 
 Agradezco que hayas ingresado a mi libro personal. En él encontrarás apuntes de diversos temas que he realizado con mucha dedicación, con el fin de poder contribuir a quien lo necesite. Si este es tu caso, espero que disfrutes el material disponible. ¡Si tienes alguna sugerencia o duda no dudes en escribirme a mi [correo](mailto:errucan@uc.cl)!.
 
+Puedes difundir la información de este libro siempre y cuando me lo informes.
+
 ## Estructura del libro
 
-El libro contiene apuntes enfocados principalmente en el lenguaje `R`, por lo que la mayoría de su contenido esta enfocado en este. Podrás navegar entre diversos tópicos sobre el lenguaje desde la barra lateral. También está habilitado un modo oscuro y un selector de fuente.
+El libro contiene apuntes enfocados principalmente en el lenguaje `R`, por lo que la mayoría de su contenido esta enfocado en este. Podrás navegar entre diversos tópicos sobre el lenguaje desde la barra lateral. También está habilitado un modo oscuro y un selector de fuente en la parte superior de tu pantalla.
 
 ## Agradecimientos
 
-Sin duda, todos los conocimietos que tengo de `R` se los debo a los docentes que me han realizado clases, en conjunto a muchas plataformas para practicar el software.
+Sin duda, todos los conocimietos que tengo de `R` se los debo a los docentes que me han realizado clases, en conjunto a muchas plataformas para practicar el software. Si te identifica esta frase, te quiero dar mis sinceras gratitudes.
 
 En la próxima página encontrarás algunas páginas y libros interesantes, todo libre de *Copyright*.
