@@ -10,8 +10,6 @@ bookdown::gitbook:
       twitter: no
       github: yes
       all: []
-  includes:
-    in_header: [ga.html, social.html]
 bookdown::pdf_book:
   includes:
     in_header: latex/preamble.tex
