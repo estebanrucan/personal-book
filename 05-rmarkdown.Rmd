@@ -1,5 +1,5 @@
 # Reportes con R Markdown
--   En esta sección explicaré cómo usar R Markdown.
+-   En esta sección explicaré cómo usar R Markdown, si así lo deseas, puedes ver la clase que hice sobre este tema en este [link](https://www.youtube.com/watch?v=RQ0UdWYmpFM).
 -   Su función principal es la generación de informes, documentos o
     presentaciones. Es una herramienta muy potente ya que permite
     escribir código en muchos [lenguajes de

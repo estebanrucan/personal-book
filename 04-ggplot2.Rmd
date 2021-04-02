@@ -4,6 +4,7 @@
 * Sirve para hacer gráficos mucho más elegantes.
 * Implementa el concepto de "gramática de gráficos en capas".
 * Cuenta con muchas opciones de personalización.
+* Ve la clase que realicé en video desde el siguiente [link](https://www.youtube.com/watch?v=CjYdFCuLzXc).
 
 ```{r eval=FALSE}
 install.packages("ggplot2")
