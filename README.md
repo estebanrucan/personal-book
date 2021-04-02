@@ -1,1 +1,5 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/home/about/ for how to compile this example.
+# Libro de apuntes personales
+
+* Realizado con el package `bookdown` de R.
+* En este libro iré publicando mi trabajo realizado en torno al lenguaje R.
+* Link a la página: <https://github.com/estebanrucan/personal-book>
