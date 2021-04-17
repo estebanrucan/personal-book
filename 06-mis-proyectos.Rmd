@@ -1,8 +1,0 @@
-# Mis Proyectos
-
-En esta sección quiero mostrar los principales proyectos que he realizado.
-
-## Visualización Interactiva del Coronavirus
-
-* Mi principal motivación para realizar esta App interactiva realizada con Shiny y Flexdashboard, es mostrar a las personas, estadísticas interesantes sobre el Covid-19, incluso añadiendo la posibilidad de interactuar con los resultados.
-* Puedes ingresar a la App desde este [link](https://estebanr.shinyapps.io/covid-interactive-exploration/).

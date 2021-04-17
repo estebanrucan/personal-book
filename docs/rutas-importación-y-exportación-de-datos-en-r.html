@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 3 Rutas, Importación y exportación de datos en R | Libro Personal de Apuntes</title>
+  <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 3 Rutas, Importación y exportación de datos en R | Libro Personal de Apuntes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="github-repo" content="estebanrucan/personal-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 3 Rutas, Importación y exportación de datos en R | Libro Personal de Apuntes" />
+  
+  <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  
+
+<meta name="author" content="Hecho por Esteban Rucán Carrasco" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="guiaestilo.html"/>
+<link rel="next" href="transformación-de-datos-con-tidyverse.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
+<script src="libs/plotly-binding/plotly.js"></script>
+<script src="libs/typedarray/typedarray.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Libro Personal de Apuntes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html"><i class="fa fa-check"></i><b>3</b> Rutas, Importación y exportación de datos en R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas"><i class="fa fa-check"></i><b>3.1</b> Rutas</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas-absolutas"><i class="fa fa-check"></i><b>3.1.1</b> Rutas Absolutas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas-relativas"><i class="fa fa-check"></i><b>3.1.2</b> Rutas relativas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#importación-y-exportación-de-archivos-de-texto-plano."><i class="fa fa-check"></i><b>3.2</b> Importación y exportación de archivos de texto plano.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.csv.-comma-separated-values"><i class="fa fa-check"></i><b>3.2.1</b> Formato <code>.csv</code>. (comma-separated values)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.txt-text"><i class="fa fa-check"></i><b>3.2.2</b> Formato <code>.txt</code> (text)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.tsv-tab-separed-values"><i class="fa fa-check"></i><b>3.2.3</b> Formato <code>.tsv</code> (tab separed values)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-generalizado"><i class="fa fa-check"></i><b>3.2.4</b> Formato generalizado</a></li>
+<li class="chapter" data-level="3.2.5" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.json-javascript-object-notation"><i class="fa fa-check"></i><b>3.2.5</b> Formato <code>.json</code> (JavaScript object notation)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#importación-y-exportación-de-archivos-de-texto-no-plano."><i class="fa fa-check"></i><b>3.3</b> Importación y exportación de archivos de texto no plano.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.rds"><i class="fa fa-check"></i><b>3.3.1</b> Formato <code>.RDS</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.xlsx-y-.xls."><i class="fa fa-check"></i><b>3.3.2</b> Formato <code>.xlsx</code> y <code>.xls</code>.</a></li>
+<li class="chapter" data-level="3.3.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#comentario"><i class="fa fa-check"></i><b>3.3.3</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#bonus"><i class="fa fa-check"></i><b>3.4</b> Bonus</a></li>
+<li class="chapter" data-level="3.5" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#bonus-2"><i class="fa fa-check"></i><b>3.5</b> Bonus 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html"><i class="fa fa-check"></i><b>4</b> Transformación de datos con Tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>4.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-magrittr"><i class="fa fa-check"></i><b>4.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#ejemplos"><i class="fa fa-check"></i><b>4.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-dplyr"><i class="fa fa-check"></i><b>4.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#filter"><i class="fa fa-check"></i><b>4.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#group_by-summarize"><i class="fa fa-check"></i><b>4.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#mutate"><i class="fa fa-check"></i><b>4.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#arrange"><i class="fa fa-check"></i><b>4.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#select"><i class="fa fa-check"></i><b>4.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividades"><i class="fa fa-check"></i><b>4.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-3"><i class="fa fa-check"></i><b>4.4.1</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-4"><i class="fa fa-check"></i><b>4.4.2</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-5"><i class="fa fa-check"></i><b>4.4.3</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-6"><i class="fa fa-check"></i><b>4.4.4</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-7"><i class="fa fa-check"></i><b>4.4.5</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#solución-de-actividades"><i class="fa fa-check"></i><b>4.5</b> Solución de Actividades</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-1"><i class="fa fa-check"></i><b>4.5.1</b> Actividad 1</a></li>
+<li class="chapter" data-level="4.5.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-2"><i class="fa fa-check"></i><b>4.5.2</b> Actividad 2</a></li>
+<li class="chapter" data-level="4.5.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-3"><i class="fa fa-check"></i><b>4.5.3</b> Actividad 3</a></li>
+<li class="chapter" data-level="4.5.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-4"><i class="fa fa-check"></i><b>4.5.4</b> Actividad 4</a></li>
+<li class="chapter" data-level="4.5.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-5"><i class="fa fa-check"></i><b>4.5.5</b> Actividad 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Gráficos estáticos con ggplot2</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Primer gráfico con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="5.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>5.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="5.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>5.3</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>5.3.1</b> <code>geom_point()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>5.3.2</b> <code>geom_line()</code></a></li>
+<li class="chapter" data-level="5.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>5.3.3</b> <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>5.3.4</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>5.3.5</b> <code>geom_bar</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>5.4</b> Labs</a></li>
+<li class="chapter" data-level="5.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>5.5</b> Lims</a></li>
+<li class="chapter" data-level="5.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>5.6</b> Temas</a></li>
+<li class="chapter" data-level="5.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>5.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>5.7.1</b> 1. Distintos Geoms</a></li>
+<li class="chapter" data-level="5.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>5.7.2</b> 2. Gráficos interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>5.8</b> Actividad</a></li>
+<li class="chapter" data-level="5.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>5.9</b> Solución de Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reportes con R Markdown</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>6.1</b> La estructura YAML</a></li>
+<li class="chapter" data-level="6.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>6.2</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>6.2.1</b> Tablas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>6.3</b> Chunks</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>6.3.1</b> Parámetros de un chunk</a></li>
+<li class="chapter" data-level="6.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>6.3.2</b> El chunk “setup”</a></li>
+<li class="chapter" data-level="6.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>6.3.3</b> Chunks inline</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>6.4</b> Tablas desde R</a></li>
+<li class="chapter" data-level="6.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>6.5</b> Imágenes</a></li>
+<li class="chapter" data-level="6.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>6.6</b> Reportes automáticos</a></li>
+<li class="chapter" data-level="6.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>6.7</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>7</b> Mis Proyectos</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="mis-proyectos.html"><a href="mis-proyectos.html#visualización-interactiva-del-coronavirus"><i class="fa fa-check"></i><b>7.1</b> Visualización Interactiva del Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>8</b> Palabras Finales</a></li>
+<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> Referencias</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="referencias.html"><a href="referencias.html#guía-de-estilo"><i class="fa fa-check"></i><b>9.1</b> Guía de Estilo</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Libro Personal de Apuntes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rutas-importación-y-exportación-de-datos-en-r" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Rutas, Importación y exportación de datos en R</h1>
+<p>En esta sección veremos como importar diversos formatos de archivos a R, utilizando distintas funciones y packages. Además veremos como escribir rutas de forma más fácil.</p>
+<div id="rutas" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Rutas</h2>
+<div id="rutas-absolutas" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Rutas Absolutas</h3>
+<ul>
+<li>Hacen referencia a la ruta completa en que se ubica cierto archivo. En mi caso estoy trabajando este archivo en la siguiente ruta absoluta:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>[1] &quot;/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book&quot;</code></pre>
+<ul>
+<li>Podemos ver los archivos que hay en la ruta con el siguiente comando:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code></pre></div>
+<pre><code> [1] &quot;_bookdown_files&quot;                     
+ [2] &quot;_bookdown.yml&quot;                       
+ [3] &quot;_output.yml&quot;                         
+ [4] &quot;01-recomendaciones.Rmd&quot;              
+ [5] &quot;02-guia-de-estilo.Rmd&quot;               
+ [6] &quot;03-rutas-importacion-exportacion.Rmd&quot;
+ [7] &quot;04-magrittr-dplyr.Rmd&quot;               
+ [8] &quot;05-ggplot2.Rmd&quot;                      
+ [9] &quot;06-rmarkdown.Rmd&quot;                    
+[10] &quot;07-mis-proyectos.Rmd&quot;                
+[11] &quot;08-palabras-finales.Rmd&quot;             
+[12] &quot;09-referencias.Rmd&quot;                  
+[13] &quot;book.bib&quot;                            
+[14] &quot;css&quot;                                 
+[15] &quot;data&quot;                                
+[16] &quot;datasets&quot;                            
+[17] &quot;docs&quot;                                
+[18] &quot;images&quot;                              
+[19] &quot;index.Rmd&quot;                           
+[20] &quot;latex&quot;                               
+[21] &quot;packages.bib&quot;                        
+[22] &quot;personal-book_files&quot;                 
+[23] &quot;personal-book.Rmd&quot;                   
+[24] &quot;personal-book.Rproj&quot;                 
+[25] &quot;personal-bookdown_files&quot;             
+[26] &quot;README.md&quot;                           </code></pre>
+</div>
+<div id="rutas-relativas" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Rutas relativas</h3>
+<ul>
+<li><p>Son una abreviación de las rutas absolutas, basicamente sirve para no escribir la ruta bsoluta al momento de hacer alusión a un archivo.</p></li>
+<li><p>Podemos hacer uso de estas a través de crear un proyecto en RStudio, o establecer un directorio de trabajo con la siguiente función. En mi caso estableceré como directorio de trabajo la ruta absoluta <code>/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book</code>.</p></li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book&quot;</span>)</span></code></pre></div>
+<ul>
+<li>En la seguiente sección haremos ejemplos prácticos sobre usos de rutas relativas.</li>
+</ul>
+</div>
+</div>
+<div id="importación-y-exportación-de-archivos-de-texto-plano." class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Importación y exportación de archivos de texto plano.</h2>
+<ul>
+<li>Que un archivo sea de texto plano significa que al momento de abrir un atchivo en un visor de texto (como el Bloc de Notas), se puede ver explícitamente una representación de sus filas, columnas o anidamientos.</li>
+<li>Para ello usaremos rutas relativas. Una herramienta potente para trabajar con estas, es usar la función <code>here</code> del package <code>here</code>.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;here&#39;</span>)</span></code></pre></div>
+<ul>
+<li>Para ver mi directorio de trabajo usando el package <code>here</code>.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb15-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>()</span></code></pre></div>
+<pre><code>[1] &quot;/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book&quot;</code></pre>
+<ul>
+<li>Para obtener la ruta donde esta ubicada la carpeta <code>datasets</code> de mi directorio de trabajo.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>)</span></code></pre></div>
+<pre><code>[1] &quot;/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book/datasets&quot;</code></pre>
+<ul>
+<li>Para usar la ruta del archivo <code>datos.csv</code> ubicado en la carpeta <code>datasets</code> de mi directorio de trabajo.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>)</span></code></pre></div>
+<pre><code>[1] &quot;/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book/datasets/datos.csv&quot;</code></pre>
+<blockquote>
+<p>Notar que podemos escribir las carpetas y archivos separadas por comas para acceder a las distintas rutas que necesitemos.</p>
+</blockquote>
+<ul>
+<li><p>En todas las funciones que usemos para importar y exportar archivos, debemos especificar la ruta del archivo como primer argumento. ¡Empezar a usar la función <code>here</code> puede ser una muy buena idea!.</p></li>
+<li><p>Para importar archivos a R usaremos los siguientes packages:</p></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;readr&#39;</span>)  <span class="co"># Crea objetos del tipo tibble</span></span>
+<span id="cb21-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rio&#39;</span>)    <span class="co"># Crea objetos del tipo data.frame</span></span>
+<span id="cb21-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;vroom&#39;</span>)  <span class="co"># Crea objetos del tipo tibble</span></span>
+<span id="cb21-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;readxl&#39;</span>) <span class="co"># Crea objetos del tipo tibble</span></span>
+<span id="cb21-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;jsonlite&#39;</span>) <span class="co"># Crea objetos del tipo lista</span></span></code></pre></div>
+<ul>
+<li><p>Sin embargo, también usaremos funciones que facilita la base de R (Retornan objetos del tipo <code>data.frame</code>), para ello podemos agregar a las funciones los siguientes argumentos:</p>
+<ul>
+<li><code>header</code>: Cuando es <code>TRUE</code>, indicamos a la función que la primera línea del archivo corresponde a los nombres de las variables.</li>
+<li><code>stringsAsFactors</code>: Si es <code>TRUE</code> se establecen las variables del tipo <code>character</code> como <code>factor</code>.</li>
+</ul></li>
+</ul>
+<div id="formato-.csv.-comma-separated-values" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Formato <code>.csv</code>. (comma-separated values)</h3>
+<ul>
+<li>Para importar un archivo <code>.csv</code> usamos:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 1</span></span>
+<span id="cb22-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>))</span>
+<span id="cb22-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Importa un objeto del tipo data.frame</span></span>
+<span id="cb22-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 2</span></span>
+<span id="cb22-6"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb22-6" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>))</span></code></pre></div>
+<blockquote>
+<p>Asegurarse de que el archivo tiene filas efectivamente separadas por comas, en caso de que estén separadas por ‘;’ usar <code>read.csv2</code> y <code>readr::read_csv2</code> respectivamente.</p>
+</blockquote>
+<ul>
+<li>Para exportar un archivo en formato <code>.csv</code> usamos:</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 1</span></span>
+<span id="cb23-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.csv&#39;</span>))</span>
+<span id="cb23-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 2</span></span>
+<span id="cb23-6"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.csv&#39;</span>))</span>
+<span id="cb23-7"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Considera nombre de las filas</span></span></code></pre></div>
+</div>
+<div id="formato-.txt-text" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Formato <code>.txt</code> (text)</h3>
+<ul>
+<li>Para importar archivos con esta extensión podemos usar:</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.txt&#39;</span>))</span>
+<span id="cb24-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.txt&#39;</span>))</span></code></pre></div>
+<ul>
+<li>Para exportar este tipo de formato usamos:</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(here<span class="sc">::</span><span class="fu">here</span>(objeto, <span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.txt&#39;</span>))</span></code></pre></div>
+</div>
+<div id="formato-.tsv-tab-separed-values" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Formato <code>.tsv</code> (tab separed values)</h3>
+<ul>
+<li>Para importar este formato de archivo usaremos:</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.tsv&#39;</span>))</span></code></pre></div>
+<ul>
+<li>Y para exportar a este formato de archivo usaremos:</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_tsv</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.tsv&#39;</span>))</span></code></pre></div>
+</div>
+<div id="formato-generalizado" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Formato generalizado</h3>
+<ul>
+<li>Es posible importar cualquier extensión de archivo de texto plano que represente una base de datos rectangular a R, se hace de la siguiente forma:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb28-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.tsv&#39;</span>), <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\t</span><span class="st">&#39;</span>)</span>
+<span id="cb28-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb28-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>), <span class="at">sep =</span> <span class="st">&#39;;&#39;</span>)</span>
+<span id="cb28-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Etc</span></span></code></pre></div>
+</div>
+<div id="formato-.json-javascript-object-notation" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Formato <code>.json</code> (JavaScript object notation)</h3>
+<ul>
+<li>Es una excepción, ya que no es una base de datos rectangular como las vistas anteriormente, sino que son listas anidadas. Importaremos este tipo de archivos de la siguiente forma:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">read_json</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.json&#39;</span>))</span></code></pre></div>
+<ul>
+<li>Para exportar un archivo con expansión <code>.json</code>:</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a>jsonlite<span class="sc">::</span><span class="fu">write_json</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.json&#39;</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="importación-y-exportación-de-archivos-de-texto-no-plano." class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Importación y exportación de archivos de texto no plano.</h2>
+<ul>
+<li>En este formato de archivos, no podemos ver explícitamente una representación de la base de datos como un archivo <code>.xlsx</code>, en el cuál no podemos ver su contenido a no ser de que usemos Microsoft Excel.</li>
+</ul>
+<div id="formato-.rds" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Formato <code>.RDS</code></h3>
+<ul>
+<li>Este formato de archivos es nativo de R, por lo que la lectura y exportación a este formato es muy eficiente y recomendada.</li>
+<li>Para importar datos con esta extensión usamos:</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 1</span></span>
+<span id="cb31-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb31-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.RDS&#39;</span>))</span>
+<span id="cb31-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 2</span></span>
+<span id="cb31-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb31-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_rds</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.RDS&#39;</span>))</span></code></pre></div>
+<ul>
+<li>Para exportar este formato de archivos</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 1</span></span>
+<span id="cb32-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.RDS&#39;</span>))</span>
+<span id="cb32-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprimé el tamaño del archivo creado, pero tarda más</span></span>
+<span id="cb32-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Opción 2</span></span>
+<span id="cb32-6"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-6" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_rds</span>(objeto, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;nuevo-archivo.RDS&#39;</span>))</span>
+<span id="cb32-7"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># No comprime el tamaño del archivo creado, pero tarda menos</span></span></code></pre></div>
+</div>
+<div id="formato-.xlsx-y-.xls." class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Formato <code>.xlsx</code> y <code>.xls</code>.</h3>
+<ul>
+<li>Para importar estos formatos de archivo provenientes de Excel, usaremos,</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.xlsx&#39;</span>))</span>
+<span id="cb33-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.xls&#39;</span>))</span></code></pre></div>
+</div>
+<div id="comentario" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Comentario</h3>
+<ul>
+<li>En vez de utilizar una ruta absoluta o relativa, podemos pegar un link directamente desde la web.</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;https://covid.ourworldindata.org/data/owid-covid-data.csv&#39;</span>)</span>
+<span id="cb34-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb34-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;https://covid.ourworldindata.org/data/owid-covid-data.csv&#39;</span>)</span></code></pre></div>
+<ul>
+<li>No funciona para archivos de Excel.</li>
+</ul>
+</div>
+</div>
+<div id="bonus" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Bonus</h2>
+<ul>
+<li>Si te preguntas sobre la existencia de alguna función que carge un archivo indistintamente de su extensión. ¡Claro que lo hay!.</li>
+<li>Por ejemplo la función <code>import</code> del package <code>rio</code>, acepta todos los formatos antes mencionados.</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;rio&#39;)</span></span>
+<span id="cb35-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb35-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.xlsx&#39;</span>))</span>
+<span id="cb35-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb35-4" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>))</span>
+<span id="cb35-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb35-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.json&#39;</span>))</span></code></pre></div>
+<ul>
+<li>Acepta links de internet, incluso para archivos Excel.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">&#39;https://covid.ourworldindata.org/data/owid-covid-data.xlsx&#39;</span>)</span></code></pre></div>
+</div>
+<div id="bonus-2" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Bonus 2</h2>
+<ul>
+<li>Existe una función para cargar archivos de texto plano que representan bases bases de datos rectangulares, que es mucho más rápida que las funciones anteriormente vistas. Esta función es <code>vroom</code> del package <code>vroom</code>.</li>
+<li>Acepta links de sitios web.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;vroom&#39;)</span></span>
+<span id="cb37-2"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb37-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.csv&#39;</span>))</span>
+<span id="cb37-4"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb37-4" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&#39;datasets&#39;</span>, <span class="st">&#39;datos.txt&#39;</span>))</span>
+<span id="cb37-5"><a href="rutas-importación-y-exportación-de-datos-en-r.html#cb37-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> vroom<span class="sc">::</span><span class="fu">vroom</span>(<span class="st">&#39;https://covid.ourworldindata.org/data/owid-covid-data.csv&#39;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="guiaestilo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transformación-de-datos-con-tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

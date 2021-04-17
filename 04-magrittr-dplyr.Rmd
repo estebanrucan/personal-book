@@ -1,0 +1,311 @@
+```{r 03-setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, 
+                      fig.align = "center", comment = NA, eval = TRUE)
+require(magrittr)
+require(dplyr)
+```
+
+# Transformación de datos con Tidyverse
+
+* En esta sección hablo sobre algunas nociones básicas de transformación de datos. 
+* Puedes acceder a una clase en video que realicé sobre este tema en el siguiente [link](https://www.youtube.com/watch?v=u-ktUNe-Itg).
+
+## Importar un data frame en R
+
+En vez de escribir nuestro directorio como `data//covid//owid-covid-data.csv`, podemos usar lo siguiente gracias al package `here`:
+
+```{r pressure}
+# install.packages("vroom")
+# install.packages("here")
+data <- vroom::vroom(here::here("data", "covid", "owid-covid-data.csv"))
+```
+
+
+> El package `vroom` acepta cualquier formato de archivo.
+
+## El package `magrittr`
+
+```{r eval=FALSE}
+install.packages("maggritr")
+require(magrittr)
+```
+
+
+* Nos permite usar el famoso "pipe" `%>%`. 
+* Es una forma más moderna y ordenada para programar en R.
+* Usa la memoria del sistema de forma más eficiente.
+* Se hace con `CTRL o CMD` + `SHIFT` + `M`.
+* Su uso más común es para explorar bases de datos.
+
+### Ejemplos
+
+#### $\,$
+
+
+En vez de hacer:
+
+```{r}
+apply((matrix(1:100, ncol = 2)), 2, mean)
+```
+
+Podemos hacer:
+
+```{r}
+1:100 %>% # Crear vector del 1 al 100
+    matrix(ncol = 2) %>% # Crear una matriz con 2 columnas
+    apply(2, mean) # Aplicar función mean a columnas
+```
+Se ve mucho más &#10024; ordenado &#10024;. 
+
+#### $\,$
+
+Esto nos dará error
+
+```{r, eval=FALSE}
+1:5 %>%
+    * 5 %>% 
+    mean()
+```
+
+Debemos hacer:
+
+```{r}
+1:5 %>%
+    "*" (5) %>% 
+    mean()
+```
+> Admite operadores como "+", "-", "*" y "/". El valor numérico debe ir siempre entre paréntesis.
+
+### $\,$
+
+Podemos crear una variable y después realizarle una modificación.
+
+```{r}
+suma_y_media <- 1:10 %>%
+    "+" (50)
+suma_y_media
+```
+
+Ahora calculamos la media:
+
+```{r}
+suma_y_media <- suma_y_media %>% 
+    mean()
+suma_y_media
+```
+
+## El package `dplyr`
+
+```{r eval=FALSE}
+install.packages("dplyr")
+require(dplyr)
+```
+
+* Es una potente herramienta en conjunto a `magrittr` para analizar datos en R.
+* Sus principales funciones son `filter`, `group_by`, `summarize`, `mutate`, `arrange` y `select`.
+
+### `filter`
+
+Sirve para indicarle a R que seleccione solo las filas que cumplan la condición que establezcamos. Ejemplo:
+
+Para empezar, veamos el tipo de variables de la base de datos `iris`.
+
+```{r}
+str(iris)
+```
+
+Ahora usemos la función `filter` para ver tuplas que solo tengan la variable `Sepal.Length` mayor o igual a 7.4:
+
+```{r}
+filtro_Sepal.Length <- iris %>% 
+    filter(Sepal.Length >= 7.4)
+
+filtro_Sepal.Length %>%
+    reactable::reactable() # Para visualizar tablas de forma interactiva
+```
+
+
+### `group_by` & `summarize`
+
+* Ambas deben ser usadas en conjunto.
+* `group_by`: Sirve para agrupar según una variable categórica. Puede recibir más de una variable, según la necesidad que se tenga.
+* `summarize`: Para mostrar la información que necesitamos ver después de usar `group_by`.
+
+Ejemplo:
+
+Veamos la media de `Sepal.Length` y `Sepal.Width` para cada especie.
+
+```{r}
+group_by_Species <- iris %>% 
+    group_by(Species) %>% # Agrupamos según especie 
+    summarize(mean_Sepal.Width = mean(Sepal.Width),
+              mean_Sepal.Length = mean(Sepal.Length)) # Información que necesitamos ver de cada Especie
+
+group_by_Species %>% 
+    reactable::reactable() # Vizualizamos
+```
+
+### `mutate`
+
+Podemos crear una variable nueva en la base de datos a partir de variables ya existentes. Ejemplo:
+
+Creamos una base de datos que en su última columna tenga información sobre la suma de `Sepal.Length` y `Sepal.Width` para cada tupla.
+
+```{r}
+mutate_iris <- iris %>% 
+    mutate(Sepal.Sum = Sepal.Length + Sepal.Width) # Creamos una variable Sepal.Sum
+
+mutate_iris %>% 
+    reactable::reactable()
+```
+
+> Vemos que se creo una variable nueva al final de la base.
+
+### `arrange`
+
+* Sirve para ordenar las columnas de la base de datos en orden ascendente o descendente.
+* Se puede seleccionar más de una variable, según la necesidad que se tenga.
+* Para ordenar las columnas de la base es necesario llamar a la función `desc`.
+
+Ejemplo:
+
+* Para ordenar la columna de la variable `Sepal.Width` en orden ascendente:
+
+```{r}
+arrange_asc <- iris %>% 
+    arrange(Sepal.Width)
+
+arrange_asc %>% 
+    reactable::reactable()
+```
+
+* Ordenar la columna `Species` en orden descendente:
+
+```{r}
+arrange_desc <- iris %>%  
+    arrange(desc(Species))
+
+arrange_desc %>% 
+    reactable::reactable()
+```
+
+### `select`
+
+* Sirve para seleccionar o no seleccionar variables de la base de datos.
+* Para no seleccionar una variable hay que anteponer un signo `!` y un vector con los nombres de las variables.
+
+Ejemplo: 
+
+* Para seleccionar variables:
+
+```{r}
+select_Sepal <- iris %>% 
+    select(Sepal.Length, Sepal.Width) # Alternativamente select(matches("Sepal"))
+
+select_Sepal %>% 
+    reactable::reactable()
+```
+
+* Para no seleccionar variables:
+
+```{r}
+not_select_Sepal <- iris %>% 
+    select(!c(Sepal.Length, Sepal.Width)) # Alternativamente select(!matches("Sepal"))
+
+not_select_Sepal %>% 
+    reactable::reactable()
+```
+
+> Podemos ver que están todas las variables menos las que escribimos en la función `select`.
+
+## Actividades
+
+### $\,$ 
+
+Cargue la base de datos con información sobre el coronavirus desde <https://ourworldindata.org/coronavirus-testing>. Luego muestre el tipo de cada variable de la base.
+
+### $\,$
+
+¿Cuál es la media de casos en Chile en el mes de enero de 2021?
+
+### $\,$
+
+Genere una tabla con la cantidad de test hechos en los países de América del Sur en el último mes, ordenado de menor a mayor.
+
+### $\,$
+
+¿Cuál es el país con mayor cantidad de casos por millón de habitantes en Europa desde el inicio de la pandemia? ¿Y el segundo?
+
+
+### $\,$
+
+Muestre información sobre la cantidad de casos que han habido en las últimas 2 semanas en cada continente.
+
+## Solución de Actividades
+
+### Actividad 1
+
+```{r}
+require(ggplot2); require(gghighlight); require(magrittr); require(dplyr)
+
+data <- vroom::vroom(here::here("data", "covid", "owid-covid-data.csv"))
+
+data %>% 
+    str()
+```
+
+### Actividad 2
+
+```{r}
+media_casos_chile_enero_2021 <- data %>% 
+    filter(location == "Chile") %>% 
+    filter(date >= "2021-01-01" & date <= "2021-01-31") %>% 
+    group_by(location) %>% 
+    summarize(media_casos = mean(new_cases, na.rm = TRUE))
+
+media_casos_chile_enero_2021  %>% 
+    reactable::reactable()
+```
+
+### Actividad 3
+
+```{r}
+test_latinoamerica_ultimo_mes <- data %>% 
+    filter(continent == "South America") %>% 
+    filter(date >= "2021-01-10" & date <= "2021-02-10") %>% 
+    filter(!is.na(new_tests)) %>%
+    group_by(location) %>% 
+    summarize(total_test = sum(new_tests)) %>% 
+    arrange(total_test)
+
+test_latinoamerica_ultimo_mes %>% 
+    reactable::reactable()
+```
+
+### Actividad 4
+
+```{r}
+paises_europa_xmill <- data %>%
+    filter(continent == "Europe") %>% 
+    filter(!is.na(new_cases_per_million)) %>% 
+    group_by(location) %>% 
+    summarize(cases_per_million = sum(new_cases_per_million)) %>% 
+    arrange(desc(cases_per_million))
+
+paises_europa_xmill %>% 
+    reactable::reactable()
+```
+
+### Actividad 5
+
+```{r}
+casos_contientes_2_semanas <- data %>% 
+    filter(date >= "2021-01-27" & date <= "2021-02-10") %>% 
+    filter(!is.na(new_cases)) %>% 
+    group_by(continent) %>% 
+    summarize(casos = sum(new_cases))
+
+casos_contientes_2_semanas %>% 
+    reactable::reactable()
+```
+

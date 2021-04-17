@@ -1,0 +1,6 @@
+# Referencias
+
+## Guía de Estilo
+
+1. `PEP 8`: <https://blogs.upm.es/estudiaciencia/pep-8-la-guia-de-estilo-para-python/>
+2. `tidyverse`: <https://style.tidyverse.org/>

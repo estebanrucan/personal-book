@@ -1,0 +1,240 @@
+# Rutas, Importación y exportación de datos en R
+
+En esta sección veremos como importar diversos formatos de archivos a R, utilizando distintas funciones y packages. Además veremos como escribir rutas de forma más fácil.
+
+## Rutas
+
+### Rutas Absolutas
+
+* Hacen referencia a la ruta completa en que se ubica cierto archivo. En mi caso estoy trabajando este archivo en la siguiente ruta absoluta:
+
+```{r eval=TRUE}
+getwd()
+```
+
+* Podemos ver los archivos que hay en la ruta con el siguiente comando:
+
+```{r eval=TRUE}
+list.files()
+```
+
+### Rutas relativas
+
+* Son una abreviación de las rutas absolutas, basicamente sirve para no escribir la ruta bsoluta al momento de hacer alusión a un archivo.
+
+* Podemos hacer uso de estas a través de crear un proyecto en RStudio, o establecer un directorio de trabajo con la siguiente función. En mi caso estableceré como directorio de trabajo la ruta absoluta `/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book`.
+
+```{r eval = FALSE}
+setwd("/mnt/c/users/esteb/Desktop 2/Otros/web/personal-book")
+```
+
+* En la seguiente sección haremos ejemplos prácticos sobre usos de rutas relativas.
+
+## Importación y exportación de archivos de texto plano.
+
+* Que un archivo sea de texto plano significa que al momento de abrir un atchivo en un visor de texto (como el Bloc de Notas), se puede ver explícitamente una representación de sus filas, columnas o anidamientos.
+* Para ello usaremos rutas relativas. Una herramienta potente para trabajar con estas, es usar la función `here` del package `here`.
+
+```{r eval = FALSE}
+install.packages('here')
+```
+* Para ver mi directorio de trabajo usando el package `here`.
+
+```{r}
+here::here()
+```
+
+* Para obtener la ruta donde esta ubicada la carpeta `datasets` de mi directorio de trabajo.
+
+```{r eval = TRUE}
+here::here('datasets')
+```
+
+* Para usar la ruta del archivo `datos.csv` ubicado en la carpeta `datasets` de mi directorio de trabajo.
+
+```{r eval=TRUE}
+here::here('datasets', 'datos.csv')
+```
+> Notar que podemos escribir las carpetas y archivos separadas por comas para acceder a las distintas rutas que necesitemos.
+
+
+* En todas las funciones que usemos para importar y exportar archivos, debemos especificar la ruta del archivo como primer argumento. ¡Empezar a usar la función `here` puede ser una muy buena idea!.
+
+* Para importar archivos a R usaremos los siguientes packages:
+
+```{r eval=FALSE}
+install.packages('readr')  # Crea objetos del tipo tibble
+install.packages('rio')    # Crea objetos del tipo data.frame
+install.packages('vroom')  # Crea objetos del tipo tibble
+install.packages('readxl') # Crea objetos del tipo tibble
+install.packages('jsonlite') # Crea objetos del tipo lista
+```
+
+* Sin embargo, también usaremos funciones que facilita la base de R (Retornan objetos del tipo `data.frame`), para ello podemos agregar a las funciones los siguientes argumentos:
+
+    * `header`: Cuando es `TRUE`, indicamos a la función que la primera línea del archivo corresponde a los nombres de las variables.
+    * `stringsAsFactors`: Si es `TRUE` se establecen las variables del tipo `character` como `factor`.
+
+
+### Formato `.csv`. (comma-separated values)
+
+* Para importar un archivo `.csv` usamos:
+
+```{r eval=FALSE}
+# Opción 1
+datos <- read.csv(here::here('datasets', 'datos.csv'))
+# Importa un objeto del tipo data.frame
+
+# Opción 2
+datos <- readr::read_csv(here::here('datasets', 'datos.csv'))
+```
+
+> Asegurarse de que el archivo tiene filas efectivamente separadas por comas, en caso de que estén separadas por ';', usar `read.csv2` y `readr::read_csv2` respectivamente.
+
+* Para exportar un archivo en formato `.csv` usamos:
+
+```{r eval=FALSE}
+# Opción 1
+write.csv(objeto, here::here('datasets', 'nuevo-archivo.csv'))
+
+
+# Opción 2
+readr::write_csv(objeto, here::here('datasets', 'nuevo-archivo.csv'))
+# Considera nombre de las filas
+```
+
+### Formato `.txt` (text)
+
+* Para importar archivos con esta extensión podemos usar:
+
+```{r eval = FALSE}
+datos <- read.table(here::here('datasets', 'datos.txt'))
+
+datos <- readr::read_table(here::here('datasets', 'datos.txt'))
+```
+
+* Para exportar este tipo de formato usamos:
+
+```{r eval = FALSE}
+write.table(here::here(objeto, 'datasets', 'nuevo-archivo.txt'))
+```
+
+### Formato `.tsv` (tab separed values)
+
+* Para importar este formato de archivo usaremos:
+
+```{r eval = FALSE}
+datos <- readr::read_tsv(here::here('datasets', 'datos.tsv'))
+```
+
+* Y para exportar a este formato de archivo usaremos:
+
+```{r eval = FALSE}
+readr::write_tsv(objeto, here::here('datasets', 'nuevo-archivo.tsv'))
+```
+
+### Formato generalizado
+
+* Es posible importar cualquier extensión de archivo de texto plano que represente una base de datos rectangular a R, se hace de la siguiente forma:
+
+```{r eval = FALSE}
+datos <- read.delim(here::here('datasets', 'datos.tsv'), sep = '\t')
+datos <- read.delim(here::here('datasets', 'datos.csv'), sep = ';')
+# Etc
+```
+
+### Formato `.json` (JavaScript object notation)
+
+* Es una excepción, ya que no es una base de datos rectangular como las vistas anteriormente, sino que son listas anidadas. Importaremos este tipo de archivos de la siguiente forma:
+
+```{r eval = FALSE}
+datos <- jsonlite::read_json(here::here('datasets', 'datos.json'))
+```
+
+* Para exportar un archivo con expansión `.json`:
+
+```{r eval = FALSE}
+jsonlite::write_json(objeto, here::here('datasets', 'nuevo-archivo.json'))
+```
+
+## Importación y exportación de archivos de texto no plano.
+
+* En este formato de archivos, no podemos ver explícitamente una representación de la base de datos como un archivo `.xlsx`, en el cuál no podemos ver su contenido a no ser de que usemos Microsoft Excel.
+
+### Formato `.RDS`
+
+* Este formato de archivos es nativo de R, por lo que la lectura y exportación a este formato es muy eficiente y recomendada.
+* Para importar datos con esta extensión usamos:
+
+```{r eval = FALSE} 
+# Opción 1
+datos <- readRDS(here::here('datasets', 'datos.RDS'))
+
+# Opción 2
+datos <- readr::read_rds(here::here('datasets', 'datos.RDS'))
+```
+
+* Para exportar este formato de archivos
+
+```{r eval = FALSE}
+# Opción 1
+saveRDS(objeto, here::here('datasets', 'nuevo-archivo.RDS'))
+# Comprimé el tamaño del archivo creado, pero tarda más
+
+# Opción 2
+readr::write_rds(objeto, here::here('datasets', 'nuevo-archivo.RDS'))
+# No comprime el tamaño del archivo creado, pero tarda menos
+```
+
+### Formato `.xlsx` y `.xls`.
+
+* Para importar estos formatos de archivo provenientes de Excel, usaremos,
+
+```{r eval = FALSE}
+datos <- readxl::read_excel(here::here('datasets', 'datos.xlsx'))
+datos <- readxl::read_excel(here::here('datasets', 'datos.xls'))
+```
+
+### Comentario
+
+* En vez de utilizar una ruta absoluta o relativa, podemos pegar un link directamente desde la web.
+
+```{r eval = FALSE}
+datos <- read.csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')
+datos <- readr::read_csv('https://covid.ourworldindata.org/data/owid-covid-data.csv')
+```
+
+* No funciona para archivos de Excel.
+
+## Bonus
+
+* Si te preguntas sobre la existencia de alguna función que carge un archivo indistintamente de su extensión. ¡Claro que lo hay!.
+* Por ejemplo la función `import` del package `rio`, acepta todos los formatos antes mencionados.
+
+```{r eval = FALSE}
+# install.packages('rio')
+
+datos <- rio::import(here::here('datasets', 'datos.xlsx'))
+datos <- rio::import(here::here('datasets', 'datos.csv'))
+datos <- rio::import(here::here('datasets', 'datos.json'))
+```
+
+* Acepta links de internet, incluso para archivos Excel.
+
+```{r eval = FALSE}
+datos <- rio::import('https://covid.ourworldindata.org/data/owid-covid-data.xlsx')
+```
+
+## Bonus 2
+
+* Existe una función para cargar archivos de texto plano que representan bases bases de datos rectangulares, que es mucho más rápida que las funciones anteriormente vistas. Esta función es `vroom` del package `vroom`.
+* Acepta links de sitios web.
+
+
+```{r eval = FALSE}
+# install.packages('vroom')
+
+datos <- vroom::vroom(here::here('datasets', 'datos.csv'))
+datos <- vroom::vroom(here::here('datasets', 'datos.txt'))
+datos <- vroom::vroom('https://covid.ourworldindata.org/data/owid-covid-data.csv')
+```
