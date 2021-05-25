@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 Reportes con R Markdown | Libro Personal de Apuntes</title>
+  <title>Capítulo 7 Reportes con R Markdown | Libro Personal de Apuntes</title>
   <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 6 Reportes con R Markdown | Libro Personal de Apuntes" />
+  <meta property="og:title" content="Capítulo 7 Reportes con R Markdown | Libro Personal de Apuntes" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estebanrucan/personal-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 Reportes con R Markdown | Libro Personal de Apuntes" />
+  <meta name="twitter:title" content="Capítulo 7 Reportes con R Markdown | Libro Personal de Apuntes" />
   
   <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
   
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/core-js/shim.min.js"></script>
 <script src="libs/react/react.min.js"></script>
 <script src="libs/react/react-dom.min.js"></script>
@@ -128,6 +130,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/toc.css" type="text/css" />
@@ -227,55 +230,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-5"><i class="fa fa-check"></i><b>4.5.5</b> Actividad 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>5</b> Gráficos estáticos con ggplot2</a>
+<li class="chapter" data-level="5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html"><i class="fa fa-check"></i><b>5</b> Principios de Visualización de Datos</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Primer gráfico con <code>ggplot2</code></a></li>
-<li class="chapter" data-level="5.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>5.2</b> Aesthetics</a></li>
-<li class="chapter" data-level="5.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>5.3</b> Geoms</a>
+<li class="chapter" data-level="5.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#carga-cognitiva"><i class="fa fa-check"></i><b>5.1</b> Carga cognitiva</a></li>
+<li class="chapter" data-level="5.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#principios-de-gestalt"><i class="fa fa-check"></i><b>5.2</b> Principios de Gestalt</a></li>
+<li class="chapter" data-level="5.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#público"><i class="fa fa-check"></i><b>5.3</b> Público</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>5.3.1</b> <code>geom_point()</code></a></li>
-<li class="chapter" data-level="5.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>5.3.2</b> <code>geom_line()</code></a></li>
-<li class="chapter" data-level="5.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>5.3.3</b> <code>geom_histogram</code></a></li>
-<li class="chapter" data-level="5.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>5.3.4</b> <code>geom_boxplot</code></a></li>
-<li class="chapter" data-level="5.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>5.3.5</b> <code>geom_bar</code></a></li>
+<li class="chapter" data-level="5.3.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#conoce-al-usuario"><i class="fa fa-check"></i><b>5.3.1</b> Conoce al usuario</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>5.4</b> Labs</a></li>
-<li class="chapter" data-level="5.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>5.5</b> Lims</a></li>
-<li class="chapter" data-level="5.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>5.6</b> Temas</a></li>
-<li class="chapter" data-level="5.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>5.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<li class="chapter" data-level="5.4" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#etiquetas-y-ejes."><i class="fa fa-check"></i><b>5.4</b> Etiquetas y ejes.</a></li>
+<li class="chapter" data-level="5.5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#tipos-de-gráficos"><i class="fa fa-check"></i><b>5.5</b> Tipos de gráficos</a>
 <ul>
-<li class="chapter" data-level="5.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>5.7.1</b> 1. Distintos Geoms</a></li>
-<li class="chapter" data-level="5.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>5.7.2</b> 2. Gráficos interactivos</a></li>
+<li class="chapter" data-level="5.5.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#el-gráfico-de-barras"><i class="fa fa-check"></i><b>5.5.1</b> El gráfico de barras</a></li>
+<li class="chapter" data-level="5.5.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#gráfico-de-pie"><i class="fa fa-check"></i><b>5.5.2</b> Gráfico de pie</a></li>
+<li class="chapter" data-level="5.5.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#el-gráfico-de-dispersión."><i class="fa fa-check"></i><b>5.5.3</b> El gráfico de dispersión.</a></li>
+<li class="chapter" data-level="5.5.4" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#mapas-de-calor"><i class="fa fa-check"></i><b>5.5.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="5.5.5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#la-gráfica-de-tabla"><i class="fa fa-check"></i><b>5.5.5</b> La gráfica de tabla</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>5.8</b> Actividad</a></li>
-<li class="chapter" data-level="5.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>5.9</b> Solución de Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>6</b> Reportes con R Markdown</a>
+<li class="chapter" data-level="5.6" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#reportes"><i class="fa fa-check"></i><b>5.6</b> Reportes</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>6.1</b> La estructura YAML</a></li>
-<li class="chapter" data-level="6.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>6.2</b> Markdown</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>6.2.1</b> Tablas</a></li>
+<li class="chapter" data-level="5.6.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#factores-a-considerar"><i class="fa fa-check"></i><b>5.6.1</b> Factores a considerar</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>6.3</b> Chunks</a>
+<li class="chapter" data-level="5.7" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#colores"><i class="fa fa-check"></i><b>5.7</b> Colores</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>6.3.1</b> Parámetros de un chunk</a></li>
-<li class="chapter" data-level="6.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>6.3.2</b> El chunk “setup”</a></li>
-<li class="chapter" data-level="6.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>6.3.3</b> Chunks inline</a></li>
+<li class="chapter" data-level="5.7.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#semiótica-de-colores"><i class="fa fa-check"></i><b>5.7.1</b> Semiótica de colores</a></li>
+<li class="chapter" data-level="5.7.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#daltonismo"><i class="fa fa-check"></i><b>5.7.2</b> Daltonismo</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>6.4</b> Tablas desde R</a></li>
-<li class="chapter" data-level="6.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>6.5</b> Imágenes</a></li>
-<li class="chapter" data-level="6.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>6.6</b> Reportes automáticos</a></li>
-<li class="chapter" data-level="6.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>6.7</b> Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>7</b> Mis Proyectos</a>
+<li class="chapter" data-level="5.8" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#construcción-de-paletas-de-colores"><i class="fa fa-check"></i><b>5.8</b> Construcción de paletas de colores</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="mis-proyectos.html"><a href="mis-proyectos.html#visualización-interactiva-del-coronavirus"><i class="fa fa-check"></i><b>7.1</b> Visualización Interactiva del Coronavirus</a></li>
+<li class="chapter" data-level="5.8.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-cualitativas"><i class="fa fa-check"></i><b>5.8.1</b> Escalas cualitativas</a></li>
+<li class="chapter" data-level="5.8.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-secuenciales"><i class="fa fa-check"></i><b>5.8.2</b> Escalas secuenciales</a></li>
+<li class="chapter" data-level="5.8.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-divergentes"><i class="fa fa-check"></i><b>5.8.3</b> Escalas divergentes</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>8</b> Palabras Finales</a></li>
-<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> Referencias</a>
+<li class="chapter" data-level="5.9" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#recomendaciones-de-visualización-de-datos"><i class="fa fa-check"></i><b>5.9</b> Recomendaciones de visualización de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos estáticos con ggplot2</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="referencias.html"><a href="referencias.html#guía-de-estilo"><i class="fa fa-check"></i><b>9.1</b> Guía de Estilo</a></li>
+<li class="chapter" data-level="6.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>6.1</b> Primer gráfico con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>6.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>6.3</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>6.3.1</b> <code>geom_point()</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>6.3.2</b> <code>geom_line()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>6.3.3</b> <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>6.3.4</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="6.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>6.3.5</b> <code>geom_bar</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>6.4</b> Labs</a></li>
+<li class="chapter" data-level="6.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>6.5</b> Lims</a></li>
+<li class="chapter" data-level="6.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>6.6</b> Temas</a></li>
+<li class="chapter" data-level="6.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>6.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>6.7.1</b> 1. Distintos Geoms</a></li>
+<li class="chapter" data-level="6.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>6.7.2</b> 2. Gráficos interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>6.8</b> Actividad</a></li>
+<li class="chapter" data-level="6.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>6.9</b> Solución de Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>7</b> Reportes con R Markdown</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>7.1</b> La estructura YAML</a></li>
+<li class="chapter" data-level="7.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>7.2</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>7.2.1</b> Tablas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>7.3</b> Chunks</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>7.3.1</b> Parámetros de un chunk</a></li>
+<li class="chapter" data-level="7.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>7.3.2</b> El chunk “setup”</a></li>
+<li class="chapter" data-level="7.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>7.3.3</b> Chunks inline</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>7.4</b> Tablas desde R</a></li>
+<li class="chapter" data-level="7.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>7.5</b> Imágenes</a></li>
+<li class="chapter" data-level="7.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>7.6</b> Reportes automáticos</a></li>
+<li class="chapter" data-level="7.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>7.7</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>8</b> Mis Proyectos</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mis-proyectos.html"><a href="mis-proyectos.html#visualización-interactiva-del-coronavirus"><i class="fa fa-check"></i><b>8.1</b> Visualización Interactiva del Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>9</b> Palabras Finales</a></li>
+<li class="chapter" data-level="10" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>10</b> Referencias</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="referencias.html"><a href="referencias.html#guía-de-estilo"><i class="fa fa-check"></i><b>10.1</b> Guía de Estilo</a></li>
+<li class="chapter" data-level="10.2" data-path="referencias.html"><a href="referencias.html#principios-de-visualización-de-datos-1"><i class="fa fa-check"></i><b>10.2</b> Principios de Visualización de Datos</a></li>
 </ul></li>
 </ul>
 
@@ -294,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reportes-con-r-markdown" class="section level1" number="6">
-<h1><span class="header-section-number">Capítulo 6</span> Reportes con R Markdown</h1>
+<div id="reportes-con-r-markdown" class="section level1" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Reportes con R Markdown</h1>
 <ul>
 <li>En esta sección explicaré cómo usar R Markdown, si así lo deseas, puedes ver la clase que hice sobre este tema en este <a href="https://www.youtube.com/watch?v=RQ0UdWYmpFM">link</a>.</li>
 <li>Su función principal es la generación de informes, documentos o
@@ -308,8 +346,8 @@ a través de estructuras llamadas “chunks.”</li>
 ($ $) usando LaTeX. También acepta la opción de doble signo dólar
 ($ $ $ $).</li>
 </ul>
-<div id="la-estructura-yaml" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> La estructura YAML</h2>
+<div id="la-estructura-yaml" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> La estructura YAML</h2>
 <ul>
 <li>Esta entre tres guiones medios por arriba y abajo (“---”)</li>
 <li>Es la configuración inicial de R Markdown.</li>
@@ -346,8 +384,8 @@ provechoso!</p>
 <p>Les invitamos a encontrar más opciones de personalización
 <a href="https://bookdown.org/yihui/rmarkdown/documents.html">acá</a>.</p>
 </div>
-<div id="markdown" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Markdown</h2>
+<div id="markdown" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Markdown</h2>
 <p>Es un lenguaje de marcado que facilita la escritura de texto a través de
 simples carácteres.</p>
 <p>Resumen:</p>
@@ -423,8 +461,8 @@ simples carácteres.</p>
 </tr>
 </tbody>
 </table>
-<div id="tablas" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Tablas</h3>
+<div id="tablas" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Tablas</h3>
 <ul>
 <li>Se pueden hacer tablas rápidamente usando barras verticales (|) y
 guiones medios (-)</li>
@@ -497,8 +535,8 @@ guiones medios (-)</li>
 <span id="cb102-9"><a href="reportes-con-r-markdown.html#cb102-9" aria-hidden="true" tabindex="-1"></a>| 20-24 | 150         | 500     | 300          |</span></code></pre></div>
 </div>
 </div>
-<div id="chunks" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Chunks</h2>
+<div id="chunks" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Chunks</h2>
 <ul>
 <li>La siguiente estructura es un “chunk” de R.</li>
 </ul>
@@ -516,8 +554,8 @@ la llave {}.</li>
 <p>```{r IMPORTAR DATOS}</p>
 <p>data &lt;- rio::import(“datos.csv”)</p>
 <p>```</p>
-<div id="parámetros-de-un-chunk" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Parámetros de un chunk</h3>
+<div id="parámetros-de-un-chunk" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Parámetros de un chunk</h3>
 <p>Dentro de las llaves pueden ir los siguientes parámetros:</p>
 <ul>
 <li><code>echo</code>: Cuando el argumento es FALSE, muestra el output pero no el
@@ -542,8 +580,8 @@ el código.</li>
 <p>Mostrará en el output un gráfico centrado, pero no el código que lo
 produce.</p>
 </div>
-<div id="el-chunk-setup" class="section level3" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> El chunk “setup”</h3>
+<div id="el-chunk-setup" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> El chunk “setup”</h3>
 <ul>
 <li><p>Al crear un archivo R Markdown, se creará un chunk por defecto,
 abajo de la estructura YAML, llamado “setup” y tendrá como parámetro
@@ -564,8 +602,8 @@ message = FALSE, warning = FALSE, fig.align = “center,” comment = NA)</p>
 <p># Packages <br> require(tidyverse) <br> require(DT) <br>
 ```</p>
 </div>
-<div id="chunks-inline" class="section level3" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Chunks inline</h3>
+<div id="chunks-inline" class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Chunks inline</h3>
 <ul>
 <li>Son bastante útiles, nos permite usar un lenguaje de programación
 mientras escribimos.</li>
@@ -586,8 +624,8 @@ Ejemplo:</li>
 5.8433.</p>
 </div>
 </div>
-<div id="tablas-desde-r" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Tablas desde R</h2>
+<div id="tablas-desde-r" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Tablas desde R</h2>
 <ul>
 <li>En html, la mejor opción es usar la función <code>reactable</code> del package
 `reactable``, ya que es una opción interactiva.</li>
@@ -599,8 +637,8 @@ Ejemplo:</li>
 <span id="cb104-4"><a href="reportes-con-r-markdown.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co"># require(DT)</span></span>
 <span id="cb104-5"><a href="reportes-con-r-markdown.html#cb104-5" aria-hidden="true" tabindex="-1"></a>grupos_iris <span class="sc">%&gt;%</span> </span>
 <span id="cb104-6"><a href="reportes-con-r-markdown.html#cb104-6" aria-hidden="true" tabindex="-1"></a>    reactable<span class="sc">::</span><span class="fu">reactable</span>()</span></code></pre></div>
-<div id="htmlwidget-c4781fd65f83be9483a0" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c4781fd65f83be9483a0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Species":["setosa","versicolor","virginica"],"max_Sepal.Length":[5.8,7,7.9]},"columns":[{"accessor":"Species","name":"Species","type":"factor"},{"accessor":"max_Sepal.Length","name":"max_Sepal.Length","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"8e87fb0cdad045d79630c336c13d6323","key":"8e87fb0cdad045d79630c336c13d6323"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d70d541d7494bfd0f148" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d70d541d7494bfd0f148">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Species":["setosa","versicolor","virginica"],"max_Sepal.Length":[5.8,7,7.9]},"columns":[{"accessor":"Species","name":"Species","type":"factor"},{"accessor":"max_Sepal.Length","name":"max_Sepal.Length","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"8e87fb0cdad045d79630c336c13d6323","key":"8e87fb0cdad045d79630c336c13d6323"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>En formatos pdf, la mejor opción es usar la función <code>kable</code> del
 package <code>knitr</code>.</li>
@@ -634,15 +672,15 @@ package <code>knitr</code>.</li>
 <p>Les invitamos a aprender más sobre tablas en el siguiente
 <a href="https://bookdown.org/yihui/rmarkdown-cookbook/tables.html">link</a>.</p>
 </div>
-<div id="imágenes" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Imágenes</h2>
+<div id="imágenes" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Imágenes</h2>
 <p>Podemos cargar imágenes usando la función <code>include_graphics</code> del package
 <code>knitr</code>.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="reportes-con-r-markdown.html#cb106-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;images&quot;</span>, <span class="st">&quot;ejemplo.jpg&quot;</span>))</span></code></pre></div>
 <p><img src="images/ejemplo.jpg" width="900" style="display: block; margin: auto;" /></p>
 </div>
-<div id="reportes-automáticos" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> Reportes automáticos</h2>
+<div id="reportes-automáticos" class="section level2" number="7.6">
+<h2><span class="header-section-number">7.6</span> Reportes automáticos</h2>
 <ul>
 <li>Se puede crear un “template,” e ir cambiando el argumento <code>params</code>.</li>
 <li><code>params</code> es un parámetro de la estructura YAML.</li>
@@ -670,11 +708,11 @@ output: html_document <br> params: <br> <span class="math inline">\(\ \ \)</span
 <span id="cb107-14"><a href="reportes-con-r-markdown.html#cb107-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-15"><a href="reportes-con-r-markdown.html#cb107-15" aria-hidden="true" tabindex="-1"></a>grafico_especie <span class="sc">%&gt;%</span></span>
 <span id="cb107-16"><a href="reportes-con-r-markdown.html#cb107-16" aria-hidden="true" tabindex="-1"></a>    plotly<span class="sc">::</span><span class="fu">ggplotly</span>()</span></code></pre></div>
-<div id="htmlwidget-79992be2cf2c34feb2c2" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-79992be2cf2c34feb2c2">{"x":{"data":[{"orientation":"v","width":[0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[4.29310344827586,4.3448275862069,4.39655172413793,4.44827586206896,4.5,4.55172413793103,4.60344827586207,4.6551724137931,4.70689655172414,4.75862068965517,4.81034482758621,4.86206896551724,4.91379310344828,4.96551724137931,5.01724137931034,5.06896551724138,5.12068965517241,5.17241379310345,5.22413793103448,5.27586206896552,5.32758620689655,5.37931034482759,5.43103448275862,5.48275862068965,5.53448275862069,5.58620689655172,5.63793103448276,5.68965517241379,5.74137931034483,5.79310344827586],"y":[1,0,3,0,1,0,4,0,2,0,5,0,4,0,8,0,8,0,3,1,0,5,0,2,0,0,0,2,0,1],"text":["count: 1<br />Sepal.Length: 4.293","count: 0<br />Sepal.Length: 4.345","count: 3<br />Sepal.Length: 4.397","count: 0<br />Sepal.Length: 4.448","count: 1<br />Sepal.Length: 4.500","count: 0<br />Sepal.Length: 4.552","count: 4<br />Sepal.Length: 4.603","count: 0<br />Sepal.Length: 4.655","count: 2<br />Sepal.Length: 4.707","count: 0<br />Sepal.Length: 4.759","count: 5<br />Sepal.Length: 4.810","count: 0<br />Sepal.Length: 4.862","count: 4<br />Sepal.Length: 4.914","count: 0<br />Sepal.Length: 4.966","count: 8<br />Sepal.Length: 5.017","count: 0<br />Sepal.Length: 5.069","count: 8<br />Sepal.Length: 5.121","count: 0<br />Sepal.Length: 5.172","count: 3<br />Sepal.Length: 5.224","count: 1<br />Sepal.Length: 5.276","count: 0<br />Sepal.Length: 5.328","count: 5<br />Sepal.Length: 5.379","count: 0<br />Sepal.Length: 5.431","count: 2<br />Sepal.Length: 5.483","count: 0<br />Sepal.Length: 5.534","count: 0<br />Sepal.Length: 5.586","count: 0<br />Sepal.Length: 5.638","count: 2<br />Sepal.Length: 5.690","count: 0<br />Sepal.Length: 5.741","count: 1<br />Sepal.Length: 5.793"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(16,78,139,0.7)","line":{"width":1.88976377952756,"color":"rgba(24,116,205,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":31.4155251141553},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Histograma de Sepal Lenth para la especie setosa","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[4.18965517241379,5.89655172413793],"tickmode":"array","ticktext":["4.5","5.0","5.5"],"tickvals":[4.5,5,5.5],"categoryorder":"array","categoryarray":["4.5","5.0","5.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Sepal Length","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.4,8.4],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Frecuencia","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"c3f3077327d":{"x":{},"type":"bar"}},"cur_data":"c3f3077327d","visdat":{"c3f3077327d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d5f7fdd368d9a0ec6341" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d5f7fdd368d9a0ec6341">{"x":{"data":[{"orientation":"v","width":[0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310356,0.0517241379310338,0.0517241379310356,0.0517241379310356],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[4.29310344827586,4.3448275862069,4.39655172413793,4.44827586206896,4.5,4.55172413793103,4.60344827586207,4.6551724137931,4.70689655172414,4.75862068965517,4.81034482758621,4.86206896551724,4.91379310344828,4.96551724137931,5.01724137931034,5.06896551724138,5.12068965517241,5.17241379310345,5.22413793103448,5.27586206896552,5.32758620689655,5.37931034482759,5.43103448275862,5.48275862068965,5.53448275862069,5.58620689655172,5.63793103448276,5.68965517241379,5.74137931034483,5.79310344827586],"y":[1,0,3,0,1,0,4,0,2,0,5,0,4,0,8,0,8,0,3,1,0,5,0,2,0,0,0,2,0,1],"text":["count: 1<br />Sepal.Length: 4.293","count: 0<br />Sepal.Length: 4.345","count: 3<br />Sepal.Length: 4.397","count: 0<br />Sepal.Length: 4.448","count: 1<br />Sepal.Length: 4.500","count: 0<br />Sepal.Length: 4.552","count: 4<br />Sepal.Length: 4.603","count: 0<br />Sepal.Length: 4.655","count: 2<br />Sepal.Length: 4.707","count: 0<br />Sepal.Length: 4.759","count: 5<br />Sepal.Length: 4.810","count: 0<br />Sepal.Length: 4.862","count: 4<br />Sepal.Length: 4.914","count: 0<br />Sepal.Length: 4.966","count: 8<br />Sepal.Length: 5.017","count: 0<br />Sepal.Length: 5.069","count: 8<br />Sepal.Length: 5.121","count: 0<br />Sepal.Length: 5.172","count: 3<br />Sepal.Length: 5.224","count: 1<br />Sepal.Length: 5.276","count: 0<br />Sepal.Length: 5.328","count: 5<br />Sepal.Length: 5.379","count: 0<br />Sepal.Length: 5.431","count: 2<br />Sepal.Length: 5.483","count: 0<br />Sepal.Length: 5.534","count: 0<br />Sepal.Length: 5.586","count: 0<br />Sepal.Length: 5.638","count: 2<br />Sepal.Length: 5.690","count: 0<br />Sepal.Length: 5.741","count: 1<br />Sepal.Length: 5.793"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(16,78,139,0.7)","line":{"width":1.88976377952756,"color":"rgba(24,116,205,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":31.4155251141553},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Histograma de Sepal Lenth para la especie setosa","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[4.18965517241379,5.89655172413793],"tickmode":"array","ticktext":["4.5","5.0","5.5"],"tickvals":[4.5,5,5.5],"categoryorder":"array","categoryarray":["4.5","5.0","5.5"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Sepal Length","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.4,8.4],"tickmode":"array","ticktext":["0","2","4","6","8"],"tickvals":[0,2,4,6,8],"categoryorder":"array","categoryarray":["0","2","4","6","8"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Frecuencia","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2c60127e7207":{"x":{},"type":"bar"}},"cur_data":"2c60127e7207","visdat":{"2c60127e7207":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="actividad-6" class="section level2" number="6.7">
-<h2><span class="header-section-number">6.7</span> Actividad</h2>
+<div id="actividad-6" class="section level2" number="7.7">
+<h2><span class="header-section-number">7.7</span> Actividad</h2>
 <p>Genere un reporte automático en R Markdown (formato html) que describa
 la situación en enero de 2021 respecto al coronavirus en Argentina, Chile y Perú. ¡Use toda su imaginación!</p>
 
@@ -709,6 +747,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": {}
 },
 "fontsettings": {

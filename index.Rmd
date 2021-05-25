@@ -46,12 +46,12 @@ if(is_latex_output()){
   )
 }
 
-pkgs <- c('dplyr',
-          'magrittr', 
-          'ggplot2', 
+pkgs <- c('magrittr', 
           'knitr', 
           'echarts4r',
-          'BiocManager')
+          'BiocManager',
+          'gt',
+          'tidyverse')
 
 pacman::p_load(pkgs, character.only = TRUE)
 

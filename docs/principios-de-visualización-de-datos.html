@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Principios de Visualización de Datos | Libro Personal de Apuntes</title>
+  <meta name="description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Principios de Visualización de Datos | Libro Personal de Apuntes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  <meta name="github-repo" content="estebanrucan/personal-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Principios de Visualización de Datos | Libro Personal de Apuntes" />
+  
+  <meta name="twitter:description" content="Expande tus conocimientos de R con el material que he preparado." />
+  
+
+<meta name="author" content="Hecho por Esteban Rucán Carrasco" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="transformación-de-datos-con-tidyverse.html"/>
+<link rel="next" href="gráficos-estáticos-con-ggplot2.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<script src="libs/core-js/shim.min.js"></script>
+<script src="libs/react/react.min.js"></script>
+<script src="libs/react/react-dom.min.js"></script>
+<script src="libs/reactwidget/react-tools.js"></script>
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/reactable-binding/reactable.js"></script>
+<script src="libs/plotly-binding/plotly.js"></script>
+<script src="libs/typedarray/typedarray.min.js"></script>
+<link href="libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Libro Personal de Apuntes</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prefacio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#estructura-del-libro"><i class="fa fa-check"></i><b>0.1</b> Estructura del libro</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#agradecimientos"><i class="fa fa-check"></i><b>0.2</b> Agradecimientos</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="recomendaciones.html"><a href="recomendaciones.html"><i class="fa fa-check"></i><b>1</b> Recomendaciones</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="recomendaciones.html"><a href="recomendaciones.html#libros"><i class="fa fa-check"></i><b>1.1</b> Libros</a></li>
+<li class="chapter" data-level="1.2" data-path="recomendaciones.html"><a href="recomendaciones.html#páginas-web"><i class="fa fa-check"></i><b>1.2</b> Páginas web</a></li>
+<li class="chapter" data-level="1.3" data-path="recomendaciones.html"><a href="recomendaciones.html#canales-de-youtube"><i class="fa fa-check"></i><b>1.3</b> Canales de Youtube</a></li>
+<li class="chapter" data-level="1.4" data-path="recomendaciones.html"><a href="recomendaciones.html#aprendizaje-interactivo"><i class="fa fa-check"></i><b>1.4</b> Aprendizaje interactivo</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="guiaestilo.html"><a href="guiaestilo.html"><i class="fa fa-check"></i><b>2</b> Guía de Estilo</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="guiaestilo.html"><a href="guiaestilo.html#directorio"><i class="fa fa-check"></i><b>2.1</b> Directorio</a></li>
+<li class="chapter" data-level="2.2" data-path="guiaestilo.html"><a href="guiaestilo.html#archivos-del-directorio"><i class="fa fa-check"></i><b>2.2</b> Archivos del directorio</a></li>
+<li class="chapter" data-level="2.3" data-path="guiaestilo.html"><a href="guiaestilo.html#asignación-de-variables"><i class="fa fa-check"></i><b>2.3</b> Asignación de variables</a></li>
+<li class="chapter" data-level="2.4" data-path="guiaestilo.html"><a href="guiaestilo.html#operadores"><i class="fa fa-check"></i><b>2.4</b> Operadores</a></li>
+<li class="chapter" data-level="2.5" data-path="guiaestilo.html"><a href="guiaestilo.html#paréntesis"><i class="fa fa-check"></i><b>2.5</b> Paréntesis</a></li>
+<li class="chapter" data-level="2.6" data-path="guiaestilo.html"><a href="guiaestilo.html#comas"><i class="fa fa-check"></i><b>2.6</b> Comas</a></li>
+<li class="chapter" data-level="2.7" data-path="guiaestilo.html"><a href="guiaestilo.html#punto-y-coma"><i class="fa fa-check"></i><b>2.7</b> Punto y coma</a></li>
+<li class="chapter" data-level="2.8" data-path="guiaestilo.html"><a href="guiaestilo.html#packages"><i class="fa fa-check"></i><b>2.8</b> Packages</a></li>
+<li class="chapter" data-level="2.9" data-path="guiaestilo.html"><a href="guiaestilo.html#cantidad-de-código-por-fila"><i class="fa fa-check"></i><b>2.9</b> Cantidad de código por fila</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html"><i class="fa fa-check"></i><b>3</b> Rutas, Importación y exportación de datos en R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas"><i class="fa fa-check"></i><b>3.1</b> Rutas</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas-absolutas"><i class="fa fa-check"></i><b>3.1.1</b> Rutas Absolutas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#rutas-relativas"><i class="fa fa-check"></i><b>3.1.2</b> Rutas relativas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#importación-y-exportación-de-archivos-de-texto-plano."><i class="fa fa-check"></i><b>3.2</b> Importación y exportación de archivos de texto plano.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.csv.-comma-separated-values"><i class="fa fa-check"></i><b>3.2.1</b> Formato <code>.csv</code>. (comma-separated values)</a></li>
+<li class="chapter" data-level="3.2.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.txt-text"><i class="fa fa-check"></i><b>3.2.2</b> Formato <code>.txt</code> (text)</a></li>
+<li class="chapter" data-level="3.2.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.tsv-tab-separed-values"><i class="fa fa-check"></i><b>3.2.3</b> Formato <code>.tsv</code> (tab separed values)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-generalizado"><i class="fa fa-check"></i><b>3.2.4</b> Formato generalizado</a></li>
+<li class="chapter" data-level="3.2.5" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.json-javascript-object-notation"><i class="fa fa-check"></i><b>3.2.5</b> Formato <code>.json</code> (JavaScript object notation)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#importación-y-exportación-de-archivos-de-texto-no-plano."><i class="fa fa-check"></i><b>3.3</b> Importación y exportación de archivos de texto no plano.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.rds"><i class="fa fa-check"></i><b>3.3.1</b> Formato <code>.RDS</code></a></li>
+<li class="chapter" data-level="3.3.2" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#formato-.xlsx-y-.xls."><i class="fa fa-check"></i><b>3.3.2</b> Formato <code>.xlsx</code> y <code>.xls</code>.</a></li>
+<li class="chapter" data-level="3.3.3" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#comentario"><i class="fa fa-check"></i><b>3.3.3</b> Comentario</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#bonus"><i class="fa fa-check"></i><b>3.4</b> Bonus</a></li>
+<li class="chapter" data-level="3.5" data-path="rutas-importación-y-exportación-de-datos-en-r.html"><a href="rutas-importación-y-exportación-de-datos-en-r.html#bonus-2"><i class="fa fa-check"></i><b>3.5</b> Bonus 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html"><i class="fa fa-check"></i><b>4</b> Transformación de datos con Tidyverse</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#importar-un-data-frame-en-r"><i class="fa fa-check"></i><b>4.1</b> Importar un data frame en R</a></li>
+<li class="chapter" data-level="4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-magrittr"><i class="fa fa-check"></i><b>4.2</b> El package <code>magrittr</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#ejemplos"><i class="fa fa-check"></i><b>4.2.1</b> Ejemplos</a></li>
+<li class="chapter" data-level="4.2.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#el-package-dplyr"><i class="fa fa-check"></i><b>4.3</b> El package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#filter"><i class="fa fa-check"></i><b>4.3.1</b> <code>filter</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#group_by-summarize"><i class="fa fa-check"></i><b>4.3.2</b> <code>group_by</code> &amp; <code>summarize</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#mutate"><i class="fa fa-check"></i><b>4.3.3</b> <code>mutate</code></a></li>
+<li class="chapter" data-level="4.3.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#arrange"><i class="fa fa-check"></i><b>4.3.4</b> <code>arrange</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#select"><i class="fa fa-check"></i><b>4.3.5</b> <code>select</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividades"><i class="fa fa-check"></i><b>4.4</b> Actividades</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-3"><i class="fa fa-check"></i><b>4.4.1</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-4"><i class="fa fa-check"></i><b>4.4.2</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-5"><i class="fa fa-check"></i><b>4.4.3</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-6"><i class="fa fa-check"></i><b>4.4.4</b> <span class="math inline">\(\,\)</span></a></li>
+<li class="chapter" data-level="4.4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#section-7"><i class="fa fa-check"></i><b>4.4.5</b> <span class="math inline">\(\,\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#solución-de-actividades"><i class="fa fa-check"></i><b>4.5</b> Solución de Actividades</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-1"><i class="fa fa-check"></i><b>4.5.1</b> Actividad 1</a></li>
+<li class="chapter" data-level="4.5.2" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-2"><i class="fa fa-check"></i><b>4.5.2</b> Actividad 2</a></li>
+<li class="chapter" data-level="4.5.3" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-3"><i class="fa fa-check"></i><b>4.5.3</b> Actividad 3</a></li>
+<li class="chapter" data-level="4.5.4" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-4"><i class="fa fa-check"></i><b>4.5.4</b> Actividad 4</a></li>
+<li class="chapter" data-level="4.5.5" data-path="transformación-de-datos-con-tidyverse.html"><a href="transformación-de-datos-con-tidyverse.html#actividad-5"><i class="fa fa-check"></i><b>4.5.5</b> Actividad 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html"><i class="fa fa-check"></i><b>5</b> Principios de Visualización de Datos</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#carga-cognitiva"><i class="fa fa-check"></i><b>5.1</b> Carga cognitiva</a></li>
+<li class="chapter" data-level="5.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#principios-de-gestalt"><i class="fa fa-check"></i><b>5.2</b> Principios de Gestalt</a></li>
+<li class="chapter" data-level="5.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#público"><i class="fa fa-check"></i><b>5.3</b> Público</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#conoce-al-usuario"><i class="fa fa-check"></i><b>5.3.1</b> Conoce al usuario</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#etiquetas-y-ejes."><i class="fa fa-check"></i><b>5.4</b> Etiquetas y ejes.</a></li>
+<li class="chapter" data-level="5.5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#tipos-de-gráficos"><i class="fa fa-check"></i><b>5.5</b> Tipos de gráficos</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#el-gráfico-de-barras"><i class="fa fa-check"></i><b>5.5.1</b> El gráfico de barras</a></li>
+<li class="chapter" data-level="5.5.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#gráfico-de-pie"><i class="fa fa-check"></i><b>5.5.2</b> Gráfico de pie</a></li>
+<li class="chapter" data-level="5.5.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#el-gráfico-de-dispersión."><i class="fa fa-check"></i><b>5.5.3</b> El gráfico de dispersión.</a></li>
+<li class="chapter" data-level="5.5.4" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#mapas-de-calor"><i class="fa fa-check"></i><b>5.5.4</b> Mapas de calor</a></li>
+<li class="chapter" data-level="5.5.5" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#la-gráfica-de-tabla"><i class="fa fa-check"></i><b>5.5.5</b> La gráfica de tabla</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#reportes"><i class="fa fa-check"></i><b>5.6</b> Reportes</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#factores-a-considerar"><i class="fa fa-check"></i><b>5.6.1</b> Factores a considerar</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#colores"><i class="fa fa-check"></i><b>5.7</b> Colores</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#semiótica-de-colores"><i class="fa fa-check"></i><b>5.7.1</b> Semiótica de colores</a></li>
+<li class="chapter" data-level="5.7.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#daltonismo"><i class="fa fa-check"></i><b>5.7.2</b> Daltonismo</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#construcción-de-paletas-de-colores"><i class="fa fa-check"></i><b>5.8</b> Construcción de paletas de colores</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-cualitativas"><i class="fa fa-check"></i><b>5.8.1</b> Escalas cualitativas</a></li>
+<li class="chapter" data-level="5.8.2" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-secuenciales"><i class="fa fa-check"></i><b>5.8.2</b> Escalas secuenciales</a></li>
+<li class="chapter" data-level="5.8.3" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#escalas-divergentes"><i class="fa fa-check"></i><b>5.8.3</b> Escalas divergentes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="principios-de-visualización-de-datos.html"><a href="principios-de-visualización-de-datos.html#recomendaciones-de-visualización-de-datos"><i class="fa fa-check"></i><b>5.9</b> Recomendaciones de visualización de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos estáticos con ggplot2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#primer-gráfico-con-ggplot2"><i class="fa fa-check"></i><b>6.1</b> Primer gráfico con <code>ggplot2</code></a></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>6.2</b> Aesthetics</a></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geoms"><i class="fa fa-check"></i><b>6.3</b> Geoms</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_point"><i class="fa fa-check"></i><b>6.3.1</b> <code>geom_point()</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_line"><i class="fa fa-check"></i><b>6.3.2</b> <code>geom_line()</code></a></li>
+<li class="chapter" data-level="6.3.3" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_histogram"><i class="fa fa-check"></i><b>6.3.3</b> <code>geom_histogram</code></a></li>
+<li class="chapter" data-level="6.3.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_boxplot"><i class="fa fa-check"></i><b>6.3.4</b> <code>geom_boxplot</code></a></li>
+<li class="chapter" data-level="6.3.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#geom_bar"><i class="fa fa-check"></i><b>6.3.5</b> <code>geom_bar</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#labs"><i class="fa fa-check"></i><b>6.4</b> Labs</a></li>
+<li class="chapter" data-level="6.5" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#lims"><i class="fa fa-check"></i><b>6.5</b> Lims</a></li>
+<li class="chapter" data-level="6.6" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#temas"><i class="fa fa-check"></i><b>6.6</b> Temas</a></li>
+<li class="chapter" data-level="6.7" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráfico-ggplot-como-un-objeto"><i class="fa fa-check"></i><b>6.7</b> Gráfico <code>ggplot</code> como un objeto</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#distintos-geoms"><i class="fa fa-check"></i><b>6.7.1</b> 1. Distintos Geoms</a></li>
+<li class="chapter" data-level="6.7.2" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#gráficos-interactivos"><i class="fa fa-check"></i><b>6.7.2</b> 2. Gráficos interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#actividad"><i class="fa fa-check"></i><b>6.8</b> Actividad</a></li>
+<li class="chapter" data-level="6.9" data-path="gráficos-estáticos-con-ggplot2.html"><a href="gráficos-estáticos-con-ggplot2.html#solución-de-actividad"><i class="fa fa-check"></i><b>6.9</b> Solución de Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html"><i class="fa fa-check"></i><b>7</b> Reportes con R Markdown</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#la-estructura-yaml"><i class="fa fa-check"></i><b>7.1</b> La estructura YAML</a></li>
+<li class="chapter" data-level="7.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#markdown"><i class="fa fa-check"></i><b>7.2</b> Markdown</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas"><i class="fa fa-check"></i><b>7.2.1</b> Tablas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks"><i class="fa fa-check"></i><b>7.3</b> Chunks</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#parámetros-de-un-chunk"><i class="fa fa-check"></i><b>7.3.1</b> Parámetros de un chunk</a></li>
+<li class="chapter" data-level="7.3.2" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#el-chunk-setup"><i class="fa fa-check"></i><b>7.3.2</b> El chunk “setup”</a></li>
+<li class="chapter" data-level="7.3.3" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#chunks-inline"><i class="fa fa-check"></i><b>7.3.3</b> Chunks inline</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#tablas-desde-r"><i class="fa fa-check"></i><b>7.4</b> Tablas desde R</a></li>
+<li class="chapter" data-level="7.5" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#imágenes"><i class="fa fa-check"></i><b>7.5</b> Imágenes</a></li>
+<li class="chapter" data-level="7.6" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#reportes-automáticos"><i class="fa fa-check"></i><b>7.6</b> Reportes automáticos</a></li>
+<li class="chapter" data-level="7.7" data-path="reportes-con-r-markdown.html"><a href="reportes-con-r-markdown.html#actividad-6"><i class="fa fa-check"></i><b>7.7</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mis-proyectos.html"><a href="mis-proyectos.html"><i class="fa fa-check"></i><b>8</b> Mis Proyectos</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="mis-proyectos.html"><a href="mis-proyectos.html#visualización-interactiva-del-coronavirus"><i class="fa fa-check"></i><b>8.1</b> Visualización Interactiva del Coronavirus</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="palabras-finales.html"><a href="palabras-finales.html"><i class="fa fa-check"></i><b>9</b> Palabras Finales</a></li>
+<li class="chapter" data-level="10" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>10</b> Referencias</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="referencias.html"><a href="referencias.html#guía-de-estilo"><i class="fa fa-check"></i><b>10.1</b> Guía de Estilo</a></li>
+<li class="chapter" data-level="10.2" data-path="referencias.html"><a href="referencias.html#principios-de-visualización-de-datos-1"><i class="fa fa-check"></i><b>10.2</b> Principios de Visualización de Datos</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Libro Personal de Apuntes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="principios-de-visualización-de-datos" class="section level1" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Principios de Visualización de Datos</h1>
+<ul>
+<li>Escribo este capítulo para difundir lo importante que es generar una buena visualización de datos. Con el paso del tiempo, he visto muy malas prácticas y escribir esto es una de aportar con un pequeño grano de arena a crear visualización eficientes y fáciles de entender.</li>
+<li>Es una recopilación de varias fuentes, en conjunto a los conocimientos que tengo sobre este tema.</li>
+<li>Lo pasé muy bien escribiendo sobre este tema, ojalá puedas pasarlo de la misma forma. ¡Gracias por darte el tiempo de leer esto! Obtendrás conocimientos muy útiles sobre visualizaciones de datos.</li>
+</ul>
+<div id="carga-cognitiva" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Carga cognitiva</h2>
+<ul>
+<li>Es el esfuerzo que nos demanda procesar y retener determinada información.</li>
+<li>La percepción visual ayuda a reducir la carga cognitiva, ayudando a entender las cosas de mejor forma, más fácil y dando la posibilidad de retener la información con el paso del tiempo.</li>
+</ul>
+<p>Para ejemplificar la reducción de carga cognitiva, se mostrarán dos paneles de gráficos. ¿Cuál gráfico cumple de mejor forma su objetivo y reduce la carga cognitiva?</p>
+<p><img src="personal-book_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /><img src="personal-book_files/figure-html/unnamed-chunk-55-2.png" width="672" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p>Contrastando las figuras 1 y 2, es más fácil comparar Chile con el resto de Sudamérica en la Figura 2.</p></li>
+<li><p>Al visualizar datos, los elementos del gráfico deben cumplir una función específica y no distraer al usuario del mensaje que se intenta comunicar.</p></li>
+<li><p>Debes disminuir en la mayor cantidad posible los códigos visuales innecesarios.</p></li>
+</ul>
+</div>
+<div id="principios-de-gestalt" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Principios de Gestalt</h2>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-56"></span>
+<img src="figuras/gestalt.png" alt="Figura 3&lt;br&gt;Fuente: toptal.com" width="860" />
+<p class="caption">
+Figure 5.1: Figura 3<br>Fuente: toptal.com
+</p>
+</div>
+<ul>
+<li><strong>Semejanza</strong>: La mente humana agrupa cosas similares. Relacionamos que elementos son del mismo tipo si mantienen forma, tamaño, color u alguna característica de similitud.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-57"></span>
+<img src="figuras/similitud.png" alt="Figura 4&lt;br&gt;Fuente: toptal.com" width="1092" />
+<p class="caption">
+Figure 5.2: Figura 4<br>Fuente: toptal.com
+</p>
+</div>
+<ul>
+<li><strong>Cierre</strong>: Nuestro cerebro completará partes faltantes de una imagen para crear un todo. El ojo humano creará una linea punteada para completar las imágenes.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-58"></span>
+<img src="figuras/cierre.png" alt="Figura 5&lt;br&gt;Fuente: toptal.com" width="840" />
+<p class="caption">
+Figure 5.3: Figura 5<br>Fuente: toptal.com
+</p>
+</div>
+<ul>
+<li><strong>Continuidad</strong>: El ojo humano eligirá el camino mas suave para seguir las líneas, independiente de su forma, color o tamaño.</li>
+</ul>
+<p><img src="personal-book_files/figure-html/unnamed-chunk-59-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>En este caso nuestros ojos seguirán la tendencia creciente que hay entre las dos variables, recorriendo la linea recta de alguna u otra forma.</p>
+<ul>
+<li><strong>Proximidad</strong>: Objetos que estén cercanos entre sí, nos haran pensar que forman parte de un grupo.</li>
+</ul>
+<p><img src="personal-book_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Seguramente en el primer gráfico, asociaste los elementos que están en la parte inferior izquierda como un grupo, y efectivamente lo son.</p>
+<ul>
+<li><strong>Figura y fondo</strong>: Nos muestra que nuestro cerebro encuentran un enfoco visual separando la figura del fondo.</li>
+</ul>
+<p><img src="personal-book_files/figure-html/unnamed-chunk-61-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Es recomendable generar contrastes entre la figura (los elementos del gráfico) y el fondo.</p>
+<ul>
+<li><strong>Simetría y orden</strong>: Las figuras simétricas o geométricas simples y regulares se perciben como un conjunto.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-62"></span>
+<img src="figuras/simetriaorden.png" alt="Figura 9&lt;br&gt;Fuente: toptal.com" width="840" />
+<p class="caption">
+Figure 5.4: Figura 9<br>Fuente: toptal.com
+</p>
+</div>
+<p>En este caso, nuestra mente interpreta las figuras de la parte izquierda como un triángulo, un círculo y un cuadrado respectivamente, a pesar de que estén superpuestas entre sí y tengan el mismo color en común.</p>
+</div>
+<div id="público" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Público</h2>
+<ul>
+<li>Un tema muy importante es saber a que público debes adaptar tus gráficos y colores.</li>
+</ul>
+<div id="conoce-al-usuario" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Conoce al usuario</h3>
+<ul>
+<li>El factor edad puede influir en el tamaño de la letra y el contraste de los colores y el fondo.</li>
+<li>La ubicación geográfica puede incidir en la capacidad de conexión a Internet y el lenguaje usado.</li>
+<li>El nivel socio-económico puede determinar factores como el acceso a dispositivos, su tipo y acceso a impresiones a color.</li>
+<li>El mejor gráfico es el que puede ser interpretado sencillamente por el público objetivo, por lo que tienes que tener cuidado en la sencillez o dificultad de estos.</li>
+</ul>
+</div>
+</div>
+<div id="etiquetas-y-ejes." class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Etiquetas y ejes.</h2>
+<ul>
+<li><p>Algunas buenas practicas generales son añadir etiquetas de ejes y título, uso de leyendas y colores adecuados según lo que necesitas transmitir.</p></li>
+<li><p>En el caso de las etiquetas de ejes, es una buena practica incluir la unidad de medida que se utiliza en la variable.</p></li>
+<li><p>Usar pocas fuentes tipográficas, ya que pueden añadir una carga visual innecesaria y restar legibilidad a los gráficos. En este caso es recomendable usar fuentes que solo mejoren la interpretabilidad.</p></li>
+<li><p>El estilo de las etiquetas debe estar alineado al mensaje que necesitas entregar.</p></li>
+<li><p>Los títulos pueden tener una mayor libertad en cuanto a fuentes tipográficas, al tener un gran tamaño.</p></li>
+<li><p>En cada tipo de gráfico debes considerar una grilla adecuada, eliminando las grillas que no sean fundamentales para comprender la gráfica.</p></li>
+<li><p>Presta atención a la posición de las etiquetas, ya que también pueden incidir en su interpretabilidad.</p></li>
+</ul>
+</div>
+<div id="tipos-de-gráficos" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Tipos de gráficos</h2>
+<ul>
+<li>En esta sección analizaré las gráficas más usadas y errores que se puedan cometer.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-63"></span>
+<img src="figuras/mega.jpg" alt="Figura 10" width="512" />
+<p class="caption">
+Figure 5.5: Figura 10
+</p>
+</div>
+<ul>
+<li><p>Este es un típico ejemplo en que se altera el gráfico para hacer notar una tendencia que no es como parece. Es recomendable dejar que los datos hablen por si solos, sin alterar la información visual que producen.</p></li>
+<li><p>Otra mala práctica es el <em>cherry-picking</em>, esto es seleccionar solo datos que confirmen o demuestren nuestra teoría.</p></li>
+<li><p>Todos los elementos deben ser incluidos de forma armónica, ya que su fin es mejorar y ayudar a mejorar la interpretabilidad de los gráficos.</p></li>
+</ul>
+<div id="el-gráfico-de-barras" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> El gráfico de barras</h3>
+<ul>
+<li><p>Es un gráfico fácil de interpretar, a través de barras se pueden hacer comparaciones rápidas a simple vista.</p></li>
+<li><p>Se recomienda ordenar las categorías del gráfico según un orden, para que sea notoria la tendencia que deseas comunicar, al igual que colorear las barras según otra variable de interés.</p></li>
+<li><p>Además, si las categorías tienen muchos caracteres y se superponen entre sí, es recomendable cambiar de orientación el gráfico</p></li>
+<li><p>Un buen ejemplo es esta visualización de redes sociales:</p></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-64"></span>
+<img src="figuras/barras.jpeg" alt="Figura 11" width="600" />
+<p class="caption">
+Figure 5.6: Figura 11
+</p>
+</div>
+</div>
+<div id="gráfico-de-pie" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Gráfico de pie</h3>
+<ul>
+<li>Muestra la distribución de las frecuencias a través de dividir el área total de un círculo en partes que representen la frecuencia de cada categoría.</li>
+<li>También puedes optar al gráfico de dona, que es el gráfico de pie pero sin su zona central.</li>
+<li>No uses gráficos de pie cuando:
+<ul>
+<li>Tengas más de 5 categorías.</li>
+<li>Tengas variables con categorías con valores muy similares. Por ejemplo, si tienes una categoría con valores 35%, 36% y 37% y quieres mostrar que hay diferencias en los porcentajes, es mejor pensar en otro tipo de gráfico como el de barras, porque se llevará más tiempo entenderlo y al ojo humano se le dificultará encontrar esas pequeñas diferencias.</li>
+<li>Si dentro de tu gráfico la mayoría de las categorías es representada por valores pequeños, es mejor utilizar otro gráfico, ya que en estos gráficos podrían llegar a perderse o verse demasiado pequeñas y resultará más difícil interpretarlos para la audiencia.</li>
+<li>También si en tu gráfico tienes categorías con valores iguales es mejor que cambies de gráfico. Es decir si tienes categoría como A: 15%, B: 12%, C: 15%, D: 12% y E: 8%, es mejor cambiar de gráfico porque no se podrá ver rápidamente la distribución de los datos.</li>
+</ul></li>
+<li>Un ejemplo de buen uso de gráfico de pie es el siguiente:</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-65"></span>
+<img src="figuras/pie.jpeg" alt="Figura 12" width="600" />
+<p class="caption">
+Figure 5.7: Figura 12
+</p>
+</div>
+</div>
+<div id="el-gráfico-de-dispersión." class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> El gráfico de dispersión.</h3>
+<ul>
+<li>Conocido también como <em>scatter plot</em> o gráfico de puntos.</li>
+<li>Esta visualización se usa para encontrar relaciones existentes entre dos variables.</li>
+<li>Las relaciones existentes son del tipo:
+<ul>
+<li>Lineal, logarítmica, exponencial, etc.</li>
+<li>Fuerte o débil.</li>
+<li>Positiva o Negativa.</li>
+</ul></li>
+<li>Puedes añadir una linea o curva que haga notar la tendencia que intentas comunicar.</li>
+<li>También puedes etiquetar cada punto, pero cuidado con tener un exceso de texto que dificulte la interpretación del gráfico.</li>
+<li>Evita usar este gráfico cuando cuentas con muchos datos, porque las relaciones suelen hacerse menos evidentes. En este caso es mejor usar un mapa de calor.</li>
+<li>También evita usar gráficos de puntos con tres dimensiones, se hace complicado comparar en tres ejes al mismo tiempo.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-66"></span>
+<img src="figuras/disp2.png" alt="Figura 13" width="1618" />
+<p class="caption">
+Figure 5.8: Figura 13
+</p>
+</div>
+</div>
+<div id="mapas-de-calor" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Mapas de calor</h3>
+<ul>
+<li>Los mapas de calor son muy útiles en grandes conjuntos de datos, ya que pueden representar fácilmente la densidad de los puntos que conforman una tabla.</li>
+<li>Como muestran la densidad de puntos en determinada zona de un gráfico, no son efectivos cuando se cuentan con pocos datos.</li>
+<li>Este ejemplo de <em>eye-tracking</em> muestra en que zonas las personas tienen una mayor interactividad en una determinada página web.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-67"></span>
+<img src="figuras/heat.png" alt="Figura 14" width="305" />
+<p class="caption">
+Figure 5.9: Figura 14
+</p>
+</div>
+</div>
+<div id="la-gráfica-de-tabla" class="section level3" number="5.5.5">
+<h3><span class="header-section-number">5.5.5</span> La gráfica de tabla</h3>
+<ul>
+<li>Estas son las típicas tablas de datos.</li>
+<li>Deben ser entendibles para la audiencia, por lo que debemos tener en cuenta la expertiz del público.</li>
+<li>Se recomienda etiquetar con colores los valores para facilitar la interpretación.</li>
+<li>También es recomendado acompañar las tablas de un gráfico, para dar en evidencia lo que se exhibe en las tablas.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-68"></span>
+<img src="figuras/tablas.png" alt="Figura 15" width="500" />
+<p class="caption">
+Figure 5.10: Figura 15
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-69"></span>
+<img src="C:/Users/esteb/AppData/Local/Temp/RtmpyApgt8/temp.png" alt="Tabla 1" width="281" />
+<p class="caption">
+Figure 5.11: Tabla 1
+</p>
+</div>
+</div>
+</div>
+<div id="reportes" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Reportes</h2>
+<ul>
+<li>Los reportes son un conglomerado de visualizaciones de datos que comunican determinados mensajes para generar una toma de decisiones sencilla.</li>
+</ul>
+<div id="factores-a-considerar" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Factores a considerar</h3>
+<ul>
+<li>Concentran los resultados, van directo al grano.</li>
+<li>Generan una fácil retención de resultados con poco esfuerzo.</li>
+<li>Deben narrar una historia, concepto asociado a <em>storytelling</em>.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-70"></span>
+<img src="figuras/dash.jpg" alt="Figura 16" width="692" />
+<p class="caption">
+Figure 5.12: Figura 16
+</p>
+</div>
+</div>
+</div>
+<div id="colores" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Colores</h2>
+<div id="semiótica-de-colores" class="section level3" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> Semiótica de colores</h3>
+<ul>
+<li>Debes tomar en cuenta que los colores también representan un significado.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-71"></span>
+<img src="figuras/semiotica3.jpg" alt="Figura 19" width="540" />
+<p class="caption">
+Figure 5.13: Figura 19
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-72"></span>
+<img src="figuras/semiótica 2.jpg" alt="Figura 20" width="540" />
+<p class="caption">
+Figure 5.14: Figura 20
+</p>
+</div>
+<ul>
+<li>No tan solo en marketing, en los gráficos también debes tomar en cuenta cuales son los colores más apropiados para usar.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-73"></span>
+<img src="figuras/semiotica1.png" alt="Figura 21" width="745" />
+<p class="caption">
+Figure 5.15: Figura 21
+</p>
+</div>
+<ul>
+<li>Intenta usar los colores adecuados para expresar las emociones correspondientes a través de los gráficos.</li>
+<li>Evita generar percepciones discriminatorias mediante el uso de los colores.</li>
+</ul>
+</div>
+<div id="daltonismo" class="section level3" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Daltonismo</h3>
+<ul>
+<li>No todas las personas somos capaces de ver colores de igual forma, por lo que tienes que tener en cuenta este aspecto.</li>
+<li>Debes darle a todo el público la posibilidad de interpretar los colores con la misma facilidad.</li>
+<li>En este caso los colores deben ser muy distinguibles entre si.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-74"></span>
+<img src="figuras/daltonismo.jpg" alt="Figura 22" width="396" />
+<p class="caption">
+Figure 5.16: Figura 22
+</p>
+</div>
+<ul>
+<li>La Figura x muestra los tipos de daltonismo existente, para tomar en consideración los problemas que considera cada tipo.</li>
+<li>Una buena herramienta para crear paletas de colores pensando en personas daltónicas es <strong>Viz Palette</strong> desarrollada por <em>Elijah Meeks</em> y <em>Susie Lu</em>, puedes acceder desde el siguiente <a href="https://projects.susielu.com/viz-palette">link</a>.</li>
+</ul>
+</div>
+</div>
+<div id="construcción-de-paletas-de-colores" class="section level2" number="5.8">
+<h2><span class="header-section-number">5.8</span> Construcción de paletas de colores</h2>
+<ul>
+<li>En esta sección hablaré de como usar colores en un gráfico según la situación en que te encuentres.</li>
+<li>Usar los colores adecuados evitará que el observador realice interpretaciones inadecuadas.</li>
+<li>Recuerda tomar en cuenta quienes son nuestros usuarios, para generar paletas de colores que se adapten a sus necesidades.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-75"></span>
+<img src="figuras/escalas.png" alt="Figura 23" width="576" />
+<p class="caption">
+Figure 5.17: Figura 23
+</p>
+</div>
+<div id="escalas-cualitativas" class="section level3" number="5.8.1">
+<h3><span class="header-section-number">5.8.1</span> Escalas cualitativas</h3>
+<ul>
+<li>Se utilizan cuando las categorías no tienen un orden específico.</li>
+<li>Los colores no deben transmitir un orden y deben ser claramente distinguibles entre sí.</li>
+</ul>
+</div>
+<div id="escalas-secuenciales" class="section level3" number="5.8.2">
+<h3><span class="header-section-number">5.8.2</span> Escalas secuenciales</h3>
+<ul>
+<li>Se usan para representar valores numéricos o categorías ordenadas.</li>
+<li>Son gradientes desde un color a otro.</li>
+<li>Deben dar cuenta de un valor mínimo y un valor máximo con los colores usados.</li>
+<li>Estas escalas suelen ser más llamativas cuando se introduce otro color en la paleta.</li>
+</ul>
+</div>
+<div id="escalas-divergentes" class="section level3" number="5.8.3">
+<h3><span class="header-section-number">5.8.3</span> Escalas divergentes</h3>
+<ul>
+<li>Son escalas de colores para medir variables extremas.</li>
+<li>Usan dos colores distintos en cada extremo y un color neutro a la mitad.</li>
+<li>Los colores extremos deben ser igual de llamativos.</li>
+</ul>
+</div>
+</div>
+<div id="recomendaciones-de-visualización-de-datos" class="section level2" number="5.9">
+<h2><span class="header-section-number">5.9</span> Recomendaciones de visualización de datos</h2>
+<ul>
+<li><a href="https://www.datasketch.news/especiales" class="uri">https://www.datasketch.news/especiales</a></li>
+<li><a href="https://www.r-graph-gallery.com/" class="uri">https://www.r-graph-gallery.com/</a></li>
+<li><a href="https://www.openculture.com/2019/07/napoleons-disastrous-invasion-of-russia-explained-in-an-1869-data-visualization.html" class="uri">https://www.openculture.com/2019/07/napoleons-disastrous-invasion-of-russia-explained-in-an-1869-data-visualization.html</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="transformación-de-datos-con-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gráficos-estáticos-con-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": {}
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
