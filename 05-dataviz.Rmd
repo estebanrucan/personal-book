@@ -383,9 +383,9 @@ tabla_1 <- datos %>%
   tab_source_note('Source: Our World in Data') %>% 
   tab_footnote('High value but expected', locations = cells_body(`% Variance`, 2)) %>% 
   tab_footnote('Comparing the previous month', locations = cells_column_labels(`% Variance`)) %>% 
-  gt::gtsave(file = file.path(tempdir(), "temp.png"))
+  gt::gtsave(file = file.path('figuras', "tabla_1.png"))
 
-knitr::include_graphics(file.path(tempdir(), "temp.png"))
+knitr::include_graphics(file.path('figuras', "tabla_1.png"))
 ```
 
 ## Reportes
